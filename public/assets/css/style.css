@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=ABeeZee|Lato:400,700');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #586b8f;
+    --light-blue: #addce4;
+    --yellow: #ffed78;
+    --light-yellow: #feffea;
+    --dark-teal: #305f72;
+}
