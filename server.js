@@ -1,20 +1,29 @@
-// Dependencies
+// dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
-
-// Create an instance of the express app.
 var app = express();
-
-// Set the port of our application
-// process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 8080;
+// database requires all models in folder
+var db = require("./models");
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Static Serve
+app.use(express.static("public"));
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function () {
-    // Log (server-side) when our server has started
-    console.log("Server listening on: http://localhost:" + PORT);
+// Routes
+// e.g. require("./routes/html-routes.js")(app);
+
+// Don't run app unless we have db sync
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
+
