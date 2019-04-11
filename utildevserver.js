@@ -20,9 +20,16 @@ app.set("view engine", "handlebars");
 // Routes
 // e.g. require("./routes/html-routes.js")(app);
 require("./controllers/Controller.js")(app);
+
+// dev environment-----THIS IS WHERE WE WORK
+var get8 = require("./utils/get8.js");
+get8(2, function(res) {
+  console.log("server", res);
+});
+
 // Don't run app unless we have db sync
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    // console.log("App listening on PORT " + PORT);
   });
 });
