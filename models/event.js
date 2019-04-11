@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Event = sequelize.define("Event", {
+  var Event = sequelize.define("Event ", {
     // how app will address the user
     description: {
       type: DataTypes.STRING,
@@ -20,19 +20,25 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: 1000
     },
     // optional entry field for future or past events, otherwise we will take CREATED AT
-    date: DataTypes.DATEONLY,
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
     // is bill(true means event has not yet occured; funds not yet transferred)
     billFlag: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
     // if the Bill is recurring
-    isRecurring: {
+    recurringFlag: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    // recurrence periodicity as string to parse
-    periodicity: DataTypes.STRING,
+    //** */ recurrence periodicity as string to parse
+    periodicity: {
+      type: DataTypes.STRING,
+      defaultValue: "Monthly"
+    },
 
     // should the user wish to cancel the event, it will be deactivated
     activeFlag: {
