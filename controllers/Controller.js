@@ -15,12 +15,12 @@ module.exports = function(app) {
       password: req.password
     };
     //  post3(queryObject,function(response){
-    // var id = response.id
+    // var id = response.uid
     // if (id){
-    // res.render("index",id)
+    // res.send(id)
     // }
     // else{
-    // res.render("index",false)
+    // res.send(false)
     // }
     // })
   });
@@ -39,13 +39,14 @@ module.exports = function(app) {
       password: req.body.password
     };
     // post5(queryObject,function(response){
-    // res.render("/signup",response)
+    // res.send(response)
     // })
   });
 
   app.get("/profile/:id", function(req, res) {
     // Route 6
-    var id = req.params.id;
+    var queryObject = {
+    uid: req.params.userid}
     // var data = PlaceholderNickFunction(id)
     res.render("profile", data);
   });
@@ -53,7 +54,7 @@ module.exports = function(app) {
   app.put("/profile/:id", function(req, res) {
     // Route 7
     var queryObject = {
-      id: req.params.id,
+      uid: req.params.id,
       preferredName: req.body.preferredName,
       password: req.body.password,
       monthlyIncome: req.body.monthlyIncome,
@@ -63,16 +64,17 @@ module.exports = function(app) {
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catName
     };
-    // var data = placeholderNickFunction(queryObject,function(response){
-    //   res.render('/profile/' + id,response)
+    // var data = put7(queryObject,function(response){
+    //   res.send(response)
     // })
   });
 
-  app.get("/entry", function(req, res) {
+  app.get("/entry/:id", function(req, res) {
     // Route 8
+    var uid = req.params.id
     var req = req.body;
     var queryObject = {
-      id: req.userid,
+      uid: uid,
       description: req.description,
       category: req.category,
       amount: req.amount,
@@ -88,9 +90,10 @@ module.exports = function(app) {
 
   app.post("/entry", function(req, res) {
     // Route 9
+    uid = req.params.userid
     var req = req.body;
     var queryObject = {
-      id: req.userid,
+      uid: uid,
       description: req.description,
       category: req.categoryid,
       amount: req.amount,
@@ -98,14 +101,14 @@ module.exports = function(app) {
       recurringFlag: req.isRecurring
     };
     post9(querObject, function(response) {
-      res.render("/entry", response);
+      res.send(response);
     });
   });
 
-  app.get("/bills", function(req, res) {
+  app.get("/bills/:id", function(req, res) {
     // Route 10
-    var id = req.body.id;
-    querObject = {
+    var id = req.params.id;
+    queryObject = {
       id: id
     };
     get10(queryObject, function(response) {
@@ -113,6 +116,18 @@ module.exports = function(app) {
     });
   });
 
+  app.put("/bills", function(req, res) {
+    // Route 11
+    var req = req.body
+    var queryObject = {
+      uid: req.userid,
+      description = req.description,
+      category = req.category,
+      amount: req.amount,
+      date: req.date,
+      eid: req.eventId
+    }
+  });
   app.get("/", function(req, res) {
     var id = req.body.id;
     // We will need the main dashboard page to send across the id. This will likely be in local storage.
