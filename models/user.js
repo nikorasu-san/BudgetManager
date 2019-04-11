@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // how app will address the user
-    preferedName: {
+    preferredName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -53,22 +53,31 @@ module.exports = function(sequelize, DataTypes) {
     // The other categories are optional, for slicing the pie (chart)
     cat1name: DataTypes.STRING,
     cat1cap: DataTypes.DECIMAL(10, 2),
+    cat1warn: DataTypes.DECIMAL(10, 2),
+    cat2warn: DataTypes.DECIMAL(10, 2),
     cat2name: DataTypes.STRING,
     cat2cap: DataTypes.DECIMAL(10, 2),
     cat3name: DataTypes.STRING,
     cat3cap: DataTypes.DECIMAL(10, 2),
+    cat3warn: DataTypes.DECIMAL(10, 2),
     cat4name: DataTypes.STRING,
     cat4cap: DataTypes.DECIMAL(10, 2),
+    cat4warn: DataTypes.DECIMAL(10, 2),
     cat5name: DataTypes.STRING,
     cat5cap: DataTypes.DECIMAL(10, 2),
+    cat5warn: DataTypes.DECIMAL(10, 2),
     cat6name: DataTypes.STRING,
     cat6cap: DataTypes.DECIMAL(10, 2),
+    cat6warn: DataTypes.DECIMAL(10, 2),
     cat7name: DataTypes.STRING,
     cat7cap: DataTypes.DECIMAL(10, 2),
+    cat7warn: DataTypes.DECIMAL(10, 2),
     cat8name: DataTypes.STRING,
     cat8cap: DataTypes.DECIMAL(10, 2),
+    cat8warn: DataTypes.DECIMAL(10, 2),
     cat9name: DataTypes.STRING,
     cat9cap: DataTypes.DECIMAL(10, 2),
+    cat9warn: DataTypes.DECIMAL(10, 2),
     // should the user wish to 'delete' their account, it will be deactivated
     activeFlag: {
       type: DataTypes.BOOLEAN,
