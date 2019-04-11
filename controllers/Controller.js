@@ -50,7 +50,23 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
-    res.render("login", data);
+    res.render("index", true);
+  });
+
+  app.post("/login", function(req, res) {
+    var id = req.body.id;
+    if (id) {
+      res.redirect("/");
+    }
+    var email = req.email;
+    var password = req.password;
+    // var id =PlaceHolderForNickFunction(email,password)
+    // if (id){
+    // res.render("index",id)
+    // }
+    // else{
+    // res.render("index",false)
+    // }
   });
 
   app.get("/profile", function(req, res) {
@@ -61,8 +77,16 @@ module.exports = function(app) {
     res.render("signup", data);
   });
 
-  app.post("/login", function(req, res) {
-    var username = req.body.username;
+  app.post("/signup", function(req, res) {
+    var name = req.body.preferredName;
+    var email = req.body.email;
+    var phone = req.body.phoneNumber;
     var password = req.body.password;
+    // PlaceholderNickFunction(name,email,phone,password,function(res){
+    // res.render("/signup",res)
+    // })
+    // Note: Not positive about the above code. It should require a callback function,
+    // though, so that we don't send anything back to the main page
+    // until after we've completed the database query.
   });
 };
