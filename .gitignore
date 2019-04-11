@@ -33,6 +33,7 @@ bower_components
 build/Release
 
 # Dependency directories
+.DS_Store
 node_modules/
 jspm_packages/
 
