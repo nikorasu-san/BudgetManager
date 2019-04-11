@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Event = sequelize.define("User", {
+  var Event = sequelize.define("Event", {
     // how app will address the user
     description: {
       type: DataTypes.STRING,
