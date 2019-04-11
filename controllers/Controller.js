@@ -3,7 +3,116 @@
 module.exports = function(app) {
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
-  // index route loads view.html
+  app.get("/login", function(req, res) {
+    // Route 2
+    res.render("index", true);
+  });
+
+  app.post("/login", function(req, res) {
+    // Route 3
+    var queryObject = {
+      email: req.email,
+      password: req.password
+    };
+    //  post3(queryObject,function(response){
+    // var id = response.id
+    // if (id){
+    // res.render("index",id)
+    // }
+    // else{
+    // res.render("index",false)
+    // }
+    // })
+  });
+
+  app.get("/signup", function(req, res) {
+    // Route 4
+    res.render("signup", true);
+  });
+
+  app.post("/signup", function(req, res) {
+    // Route 5
+    var queryObject = {
+      preferredName: req.body.preferredName,
+      email: req.body.email,
+      phone: req.body.phoneNumber,
+      password: req.body.password
+    };
+    // post5(queryObject,function(response){
+    // res.render("/signup",response)
+    // })
+  });
+
+  app.get("/profile/:id", function(req, res) {
+    // Route 6
+    var id = req.params.id;
+    // var data = PlaceholderNickFunction(id)
+    res.render("profile", data);
+  });
+
+  app.put("/profile/:id", function(req, res) {
+    // Route 7
+    var queryObject = {
+      id: req.params.id,
+      preferredName: req.body.preferredName,
+      password: req.body.password,
+      monthlyIncome: req.body.monthlyIncome,
+      email: req.body.email,
+      emailFlag: req.body.emailFlag,
+      phone: req.body.phoneNumber,
+      phoneFlag: req.body.phoneFlag,
+      catNames: req.body.catName
+    };
+    // var data = placeholderNickFunction(queryObject,function(response){
+    //   res.render('/profile/' + id,response)
+    // })
+  });
+
+  app.get("/entry", function(req, res) {
+    // Route 8
+    var req = req.body;
+    var queryObject = {
+      id: req.userid,
+      description: req.description,
+      category: req.category,
+      amount: req.amount,
+      billFlag: req.isBill,
+      date: req.date,
+      recurringFlag: releaseEvents.isRecurring,
+      activeFlag: true
+    };
+    get8(queryObject, function(response) {
+      res.render("entries", data);
+    });
+  });
+
+  app.post("/entry", function(req, res) {
+    // Route 9
+    var req = req.body;
+    var queryObject = {
+      id: req.userid,
+      description: req.description,
+      category: req.categoryid,
+      amount: req.amount,
+      date: req.date,
+      recurringFlag: req.isRecurring
+    };
+    post9(querObject, function(response) {
+      res.render("/entry", response);
+    });
+  });
+
+  app.get("/bills", function(req, res) {
+    // Route 10
+    var id = req.body.id;
+    querObject = {
+      id: id
+    };
+    get10(queryObject, function(response) {
+      res.render("bills", response);
+    });
+  });
+
   app.get("/", function(req, res) {
     var id = req.body.id;
     // We will need the main dashboard page to send across the id. This will likely be in local storage.
@@ -21,21 +130,6 @@ module.exports = function(app) {
     res.render("dashboard", data);
   });
 
-  app.get("/bills", function(req, res) {
-    var id = req.body.id;
-    // Hit up the DB and fetch our bills history.
-    // Bills will then be saved to data.
-    // Psudocoded data:
-    // var data = {
-    // bills: [bill1,bill2,bill3....]
-    // Bill object: description, category, amount, dueDate
-    // Maybe put a limit on bills, and add a "next" button that should be used to find the next however many bills?
-    // }
-    var data;
-
-    res.render("bills", data);
-  });
-
   app.get("/caps", function(req, res) {
     // query users database for all categories and their associated caps
     // Proto-data:
@@ -43,26 +137,5 @@ module.exports = function(app) {
     //
     // }
     res.render("/caps", data);
-  });
-
-  app.get("/event", function(req, res) {
-    res.render("event", data);
-  });
-
-  app.get("/login", function(req, res) {
-    res.render("login", data);
-  });
-
-  app.get("/profile", function(req, res) {
-    res.render("profile", data);
-  });
-
-  app.get("/signup", function(req, res) {
-    res.render("signup", data);
-  });
-
-  app.post("/login", function(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
   });
 };
