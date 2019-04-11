@@ -22,11 +22,13 @@ module.exports = function(app) {
   });
 
   app.get("/bills", function(req, res) {
+    var id = req.body.id;
     // Hit up the DB and fetch our bills history.
     // Bills will then be saved to data.
     // Psudocoded data:
     // var data = {
     // bills: [bill1,bill2,bill3....]
+    // Bill object: description, category, amount, dueDate
     // Maybe put a limit on bills, and add a "next" button that should be used to find the next however many bills?
     // }
     var data;
@@ -37,7 +39,7 @@ module.exports = function(app) {
   app.get("/caps", function(req, res) {
     // query users database for all categories and their associated caps
     // Proto-data:
-    // var data = {
+    // var data = {catNames = [], catTotals = []}
     //
     // }
     res.render("/caps", data);
@@ -58,9 +60,9 @@ module.exports = function(app) {
   app.get("/signup", function(req, res) {
     res.render("signup", data);
   });
-};
 
-app.post("/login", function(req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-});
+  app.post("/login", function(req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+  });
+};

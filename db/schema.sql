@@ -1,4 +1,4 @@
 -- Drops the todolist if it exists currently --
-DROP DATABASE IF EXISTS budgetManager;
+DROP DATABASE IF EXISTS budget;
 -- Creates the "todolist" database --
-CREATE DATABASE budgetManager;
+CREATE DATABASE budget;
