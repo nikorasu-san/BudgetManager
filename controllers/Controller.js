@@ -3,64 +3,18 @@
 module.exports = function(app) {
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
-  // index route loads view.html
-  app.get("/", function(req, res) {
-    var id = req.body.id;
-    // We will need the main dashboard page to send across the id. This will likely be in local storage.
-    var data;
-    // This is where we will query the events database to return all bills and events for the current year.
-    // The back end will then construct an object, data, and attach the sums of each category to it.
-    // I think we'd be best suited to put that in an array. We also need to query to users database so we can construct an array of the user's
-    // category names. The two arrays will index identically. Psudocode for the final "data" object below:
-    //  var data= {
-    // categoryTotals: [eventTotal1, eventTotal2, eventTotal3, eventTotal4...],
-    // categoryNames: [categoryName1, categoryName2, categoryName3, categoryName4...]
-    // }
-    // I think it's doable, I just want Nick's database model before I start hacking away at this.
-
-    res.render("dashboard", data);
-  });
-
-  app.get("/bills", function(req, res) {
-    var id = req.body.id;
-    // Hit up the DB and fetch our bills history.
-    // Bills will then be saved to data.
-    // Psudocoded data:
-    // var data = {
-    // bills: [bill1,bill2,bill3....]
-    // Bill object: description, category, amount, dueDate
-    // Maybe put a limit on bills, and add a "next" button that should be used to find the next however many bills?
-    // }
-    var data;
-
-    res.render("bills", data);
-  });
-
-  app.get("/caps", function(req, res) {
-    // query users database for all categories and their associated caps
-    // Proto-data:
-    // var data = {catNames = [], catTotals = []}
-    //
-    // }
-    res.render("/caps", data);
-  });
-
-  app.get("/event", function(req, res) {
-    res.render("event", data);
-  });
-
   app.get("/login", function(req, res) {
+    // Route 2
     res.render("index", true);
   });
 
   app.post("/login", function(req, res) {
-    var id = req.body.id;
-    if (id) {
-      res.redirect("/");
-    }
-    var email = req.email;
-    var password = req.password;
-    // var id =PlaceHolderForNickFunction(email,password)
+    // Route 3
+    var queryObject = {
+      email: req.email,
+      password: req.password
+    };
+    // var id =PlaceHolderForNickFunction(queryObject)
     // if (id){
     // res.render("index",id)
     // }
@@ -69,24 +23,122 @@ module.exports = function(app) {
     // }
   });
 
-  app.get("/profile", function(req, res) {
-    res.render("profile", data);
-  });
-
   app.get("/signup", function(req, res) {
-    res.render("signup", data);
+    // Route 4
+    res.render("signup", true);
   });
 
   app.post("/signup", function(req, res) {
-    var name = req.body.preferredName;
-    var email = req.body.email;
-    var phone = req.body.phoneNumber;
-    var password = req.body.password;
-    // PlaceholderNickFunction(name,email,phone,password,function(res){
-    // res.render("/signup",res)
+    // Route 5
+    var queryObject = {
+      preferredName: req.body.preferredName,
+      email: req.body.email,
+      phone: req.body.phoneNumber,
+      password: req.body.password
+    };
+    // PlaceholderNickFunction(queryObject,function(response){
+    // res.render("/signup",response)
     // })
     // Note: Not positive about the above code. It should require a callback function,
     // though, so that we don't send anything back to the main page
     // until after we've completed the database query.
   });
 };
+
+app.get("/profile/:id", function(req, res) {
+  // Route 6
+  var id = req.params.id;
+  // var data = PlaceholderNickFunction(id)
+  res.render("profile", data);
+});
+
+app.put("/profile/:id", function(req, res) {
+  // Route 7
+  var queryObject = {
+    id: req.params.id,
+    preferredName: req.body.preferredName,
+    password: req.body.password,
+    monthlyIncome: req.body.monthlyIncome,
+    email: req.body.email,
+    emailFlag: req.body.emailFlag,
+    phone: req.body.phoneNumber,
+    phoneFlag: req.body.phoneFlag,
+    catNames: req.body.catName
+  };
+  // var data = placeholderNickFunction(queryObject,function(response){
+  //   res.render('/profile/' + id,response)
+  // })
+});
+
+app.get("/entry", function(req, res) {
+  // Route 8
+  var req = req.body;
+  var queryObject = {
+    id: req.userid,
+    description: req.description,
+    category: req.category,
+    amount: req.amount,
+    billFlag: req.isBill,
+    date: req.date,
+    recurringFlag: releaseEvents.isRecurring,
+    activeFlag: true
+  };
+  res.render("entries", data);
+});
+
+app.post("/entry", function(req, res) {
+  // Route 9
+  var req = req.body;
+  var queryObject = {
+    id: req.userid,
+    description: req.description,
+    category: req.categoryid,
+    amount: req.amount,
+    date: req.date,
+    recurringFlag: req.isRecurring
+  };
+  post9(querObject, function(response) {
+    res.render("/entry", response);
+  });
+});
+
+app.get("/", function(req, res) {
+  var id = req.body.id;
+  // We will need the main dashboard page to send across the id. This will likely be in local storage.
+  var data;
+  // This is where we will query the events database to return all bills and events for the current year.
+  // The back end will then construct an object, data, and attach the sums of each category to it.
+  // I think we'd be best suited to put that in an array. We also need to query to users database so we can construct an array of the user's
+  // category names. The two arrays will index identically. Psudocode for the final "data" object below:
+  //  var data= {
+  // categoryTotals: [eventTotal1, eventTotal2, eventTotal3, eventTotal4...],
+  // categoryNames: [categoryName1, categoryName2, categoryName3, categoryName4...]
+  // }
+  // I think it's doable, I just want Nick's database model before I start hacking away at this.
+
+  res.render("dashboard", data);
+});
+
+app.get("/bills", function(req, res) {
+  var id = req.body.id;
+  // Hit up the DB and fetch our bills history.
+  // Bills will then be saved to data.
+  // Psudocoded data:
+  // var data = {
+  // bills: [bill1,bill2,bill3....]
+  // Bill object: description, category, amount, dueDate
+  // Maybe put a limit on bills, and add a "next" button that should be used to find the next however many bills?
+  // }
+  var data;
+
+  res.render("bills", data);
+});
+
+app.get("/caps", function(req, res) {
+  // query users database for all categories and their associated caps
+  // Proto-data:
+  // var data = {catNames = [], catTotals = []}
+  //
+  // }
+  res.render("/caps", data);
+});
