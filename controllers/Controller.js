@@ -90,14 +90,17 @@ module.exports = function(app) {
     // Route 9
     var req = req.body;
     var queryObject = {
-      id: req.userid,
+      UserId: req.userid,
       description: req.description,
       category: req.categoryid,
       amount: req.amount,
       date: req.date,
+      // If we are flagging recurring it means it will happen at a periodicity
       recurringFlag: req.isRecurring
+      // Bill flag only means that it hasn't happened yet, perhaps we need to generate this from the date
+      // billFlag: REVISIT
     };
-    post9(querObject, function(response) {
+    post9(queryObject, function(response) {
       res.render("/entry", response);
     });
   });

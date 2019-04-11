@@ -13,3 +13,8 @@ Values( 1, "cheetos", 2, 500.00, "2001-01-01", 123, 123),
 ( 1, "rent", 6, 500.00, "2001-01-01", 123, 123),
 ( 1, "cheetos", 2, 50.00, "2001-01-01", 123, 123),
 ( 1, "cheezeWhiz", 2, 500.00, "2001-01-01", 123, 123)
+
+insert into events( userId, description, category, amount,date, createdAt, updatedAt, billFlag)
+Values( 1, "car insurance", 2, 500.00, "2019-04-15", 123, 123, true),
+( 1, "taxes", 2, 500.00, "2019-04-15", 123, 123, true),
+( 2, "taxes", 2, 500.00, "2019-04-15", 123, 123, true)

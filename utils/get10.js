@@ -20,7 +20,7 @@ var get8 = function(userid, callback) {
     ];
   });
   db.Event.findAll({
-    where: { userId: userid }
+    where: { userId: userid, billFlag: true }
   }).then(y => {
     let eventsArr = [];
     y.forEach(v => {
@@ -44,7 +44,7 @@ module.exports = get8;
 
 // // //HOW I CALLED IN SERVER
 // // dev environment-----THIS IS WHERE WE WORK
-// var get8 = require("./utils/get8.js");
-// get8(2, function(res) {
+// var get10 = require("./utils/get10.js");
+// get10(2, function(res) {
 //   console.log("server", res);
 // });

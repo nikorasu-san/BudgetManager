@@ -22,8 +22,18 @@ app.set("view engine", "handlebars");
 require("./controllers/Controller.js")(app);
 
 // dev environment-----THIS IS WHERE WE WORK
-var get8 = require("./utils/get8.js");
-get8(2, function(res) {
+var queryObject = {
+  UserId: 1,
+  description: "zoomba",
+  category: 9,
+  amount: 45.4,
+  date: "2019-4-13",
+  billFlag: true,
+  recurringFlag: true
+};
+
+var post9 = require("./utils/post9.js");
+post9(queryObject, function(res) {
   console.log("server", res);
 });
 
