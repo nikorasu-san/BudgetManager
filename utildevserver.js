@@ -22,18 +22,24 @@ app.set("view engine", "handlebars");
 require("./controllers/Controller.js")(app);
 
 // dev environment-----THIS IS WHERE WE WORK
+// var queryObject = {
+//   UserId: 1,
+//   description: "zoomba",
+//   category: 9,
+//   amount: 45.4,
+//   date: "2019-4-13",
+//   billFlag: true,
+//   recurringFlag: true
+// };
 var queryObject = {
-  UserId: 1,
-  description: "zoomba",
-  category: 9,
-  amount: 45.4,
-  date: "2019-4-13",
-  billFlag: true,
-  recurringFlag: true
+  preferredName: "rocky2",
+  email: "rockstar@grammy.com",
+  phone: 4212322321,
+  password: "musicm5~"
 };
 
-var post9 = require("./utils/post9.js");
-post9(queryObject, function(res) {
+var post5 = require("./utils/post5.js");
+post5(queryObject, function(res) {
   console.log("server", res);
 });
 
