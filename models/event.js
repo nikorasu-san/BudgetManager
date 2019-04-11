@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    //** */ recurrence periodicity as string to parse
+    //** recurrence periodicity as string to parse
     periodicity: {
       type: DataTypes.STRING,
       defaultValue: "Monthly"
