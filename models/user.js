@@ -85,9 +85,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   // 1 user to many events
-  // User.associate = function(models) {
-  //   User.hasMany(models.Event);
-  // };
+  User.associate = function(models) {
+    // console.log("hello", models);
+
+    User.hasMany(models.Event, {
+      onDelete: "cascade"
+    });
+  };
 
   return User;
 };
