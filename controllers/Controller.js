@@ -1,14 +1,14 @@
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
-  app.get("/login", function(req, res) {
+  app.get("/login", function (req, res) {
     // Route 2
-    res.render("index", true);
+    res.render("login", { true: true });
   });
 
-  app.post("/login", function(req, res) {
+  app.post("/login", function (req, res) {
     // Route 3
     var queryObject = {
       email: req.email,
@@ -25,12 +25,12 @@ module.exports = function(app) {
     // })
   });
 
-  app.get("/signup", function(req, res) {
+  app.get("/signup", function (req, res) {
     // Route 4
-    res.render("signup", true);
+    res.render("signup", { true: true });
   });
 
-  app.post("/signup", function(req, res) {
+  app.post("/signup", function (req, res) {
     // Route 5
     var queryObject = {
       preferredName: req.body.preferredName,
@@ -43,14 +43,14 @@ module.exports = function(app) {
     // })
   });
 
-  app.get("/profile/:id", function(req, res) {
+  app.get("/profile/:id", function (req, res) {
     // Route 6
     var id = req.params.id;
     // var data = PlaceholderNickFunction(id)
     res.render("profile", data);
   });
 
-  app.put("/profile/:id", function(req, res) {
+  app.put("/profile/:id", function (req, res) {
     // Route 7
     var queryObject = {
       id: req.params.id,
@@ -68,7 +68,7 @@ module.exports = function(app) {
     // })
   });
 
-  app.get("/entry", function(req, res) {
+  app.get("/entry", function (req, res) {
     // Route 8
     var req = req.body;
     var queryObject = {
@@ -81,12 +81,12 @@ module.exports = function(app) {
       recurringFlag: releaseEvents.isRecurring,
       activeFlag: true
     };
-    get8(queryObject, function(response) {
+    get8(queryObject, function (response) {
       res.render("entries", data);
     });
   });
 
-  app.post("/entry", function(req, res) {
+  app.post("/entry", function (req, res) {
     // Route 9
     var req = req.body;
     var queryObject = {
@@ -97,23 +97,23 @@ module.exports = function(app) {
       date: req.date,
       recurringFlag: req.isRecurring
     };
-    post9(querObject, function(response) {
+    post9(querObject, function (response) {
       res.render("/entry", response);
     });
   });
 
-  app.get("/bills", function(req, res) {
+  app.get("/bills", function (req, res) {
     // Route 10
     var id = req.body.id;
     querObject = {
       id: id
     };
-    get10(queryObject, function(response) {
+    get10(queryObject, function (response) {
       res.render("bills", response);
     });
   });
 
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     var id = req.body.id;
     // We will need the main dashboard page to send across the id. This will likely be in local storage.
     var data;
@@ -130,7 +130,7 @@ module.exports = function(app) {
     res.render("dashboard", data);
   });
 
-  app.get("/caps", function(req, res) {
+  app.get("/caps", function (req, res) {
     // query users database for all categories and their associated caps
     // Proto-data:
     // var data = {catNames = [], catTotals = []}
