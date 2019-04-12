@@ -21,7 +21,8 @@
 }
 .login-button {
     width: 100%;
-    background-color: var(--dark-blue);
+    background-color: var(--yellow);
+    color: var(--dark-blue);
 }
 .solo-card {
     top: 1rem;
