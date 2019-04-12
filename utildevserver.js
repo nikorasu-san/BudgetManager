@@ -19,9 +19,12 @@ app.set("view engine", "handlebars");
 
 // Routes
 // e.g. require("./routes/html-routes.js")(app);
-require("./controllers/Controller.js")(app);
+// require("./controllers/Controller.js")(app);
 
-// dev environment-----THIS IS WHERE WE WORK
+// //dev environment-----THIS IS WHERE WE WORK
+// //KEEP COMMENTS FOR TESTING CASES
+
+// ROUTE 9
 // var queryObject = {
 //   UserId: 1,
 //   description: "zoomba",
@@ -31,6 +34,7 @@ require("./controllers/Controller.js")(app);
 //   billFlag: true,
 //   recurringFlag: true
 // };
+
 // var queryObject = {
 //   preferredName: "rocky2",
 //   email: "rockstar@grammy.com",
@@ -38,14 +42,28 @@ require("./controllers/Controller.js")(app);
 //   password: "musicm5~"
 // };
 // app.post("/login", function(req, res) {
+
 // Route 3
+// var queryObject = {
+//   email: "star@star.com",
+//   password: "sugarrush"
+// };
+
+// Route 7
 var queryObject = {
-  email: "star@star.com",
-  password: "sugarrush"
+  uid: 3,
+  preferredName: "jimmyjohn",
+  password: "freakyFAST",
+  monthlyIncome: 10000000,
+  email: "req@body.email",
+  emailFlag: false,
+  phone: 0987654321,
+  phoneFlag: true,
+  catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
 };
 
-var post3 = require("./utils/post3.js");
-post3(queryObject, function(res) {
+var put7 = require("./utils/put7.js");
+put7(queryObject, function(res) {
   console.log("server", res);
 });
 
