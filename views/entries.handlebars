@@ -1,6 +1,10 @@
 <body id="spendingBody">
-    <header class="container">
-        <h1 class="pageTitle">Spending</h1>
+    <header>
+        <div class="container">
+            <h4 class="link-left"><a href="/">Dashboard</a></h4>
+            <h4 class="link-right"><a href="/profile">Profile</a></h4>
+            <h1 class="pageTitle">Spending</h1>
+        </div>
     </header>
 
     <section>
@@ -33,9 +37,9 @@
                         <label for="categories" class="spending-label">Categories</label>
 
                         <p>
-                            <label>
+                            <label class="spending-label">
                                 <input type="checkbox" value="bill" id="isBill" />
-                                <span>Is It A Bill?</span>
+                                <span>Is This Recurring?</span>
                             </label>
                         </p>
                         <input type="text" class="datepicker" placeholder="Enter purchase date">

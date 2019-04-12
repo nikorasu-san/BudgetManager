@@ -20,11 +20,29 @@ body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
+    margin-top: 0;
+    color: var(--light-yellow);
 }
 
 .pageSubTitle {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
+}
+
+.link-right a,
+.link-left a {
+    font-size: 1.75rem;
+    text-decoration: none;
+    color: var(--light-yellow);
+    cursor: pointer;
+}
+
+.link-left {
+    float: left;
+}
+
+.link-right {
+    float: right;
 }
 
 .bigButton {
@@ -41,6 +59,8 @@ body {
 
 header {
     background-color: var(--dark-blue);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 #spendingSection {
@@ -64,6 +84,11 @@ header {
     background-color: var(--dark-blue);
     color: var(--light-yellow);
     border-radius: 5px;
+}
+
+.spending-label,
+.spending-input {
+    color: var(--darker-blue);
 }
 
 #spendingForm {
