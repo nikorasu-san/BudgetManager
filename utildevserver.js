@@ -43,7 +43,7 @@ app.set("view engine", "handlebars");
 // };
 // app.post("/login", function(req, res) {
 
-// Route 3
+// // Route 3
 // var queryObject = {
 //   email: "star@star.com",
 //   password: "sugarrush"
@@ -73,16 +73,28 @@ app.set("view engine", "handlebars");
 //   eid: 1
 // };
 
-// Route 12
-// var uid = req.params.id
-// var req = req.body;
-var queryObject = {
-  //   uid:uid,
-  eid: 8
-};
+// // Route 12
+// // var uid = req.params.id
+// // var req = req.body;
+// var queryObject = {
+//   //   uid:uid,
+//   eid: 8
+// };
 
-var put12 = require("./utils/put12.js");
-put12(queryObject, function(res) {
+// // Route 14
+// //   var uid = req.params.id;
+// //   req = req.body;
+// var queryObject = {
+//   // date:req.dueDate,
+//   uid: 5,
+//   //   description: req.description,
+//   category: 9,
+//   capAmount: 1000,
+//   warnAmount: 1000
+// };
+
+var put14 = require("./utils/put14.js");
+put14(queryObject, function(res) {
   console.log("server", res);
 });
 

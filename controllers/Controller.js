@@ -180,7 +180,7 @@ module.exports = function(app) {
     // Route 14
     var uid = req.params.id;
     req = req.body;
-    var querObject = {
+    var queryObject = {
       // date:req.dueDate,
       uid: uid,
       description: req.description,
