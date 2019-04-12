@@ -62,19 +62,27 @@ app.set("view engine", "handlebars");
 //   catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
 // };
 
-// Route 11
-// var req = req.body
+// // Route 11
+// // var req = req.body
+// var queryObject = {
+//   uid: 1,
+//   description: "Party like Prince",
+//   category: 4,
+//   amount: 1999.99,
+//   date: "1999-12-31",
+//   eid: 1
+// };
+
+// Route 12
+// var uid = req.params.id
+// var req = req.body;
 var queryObject = {
-  uid: 1,
-  description: "Party like Prince",
-  category: 4,
-  amount: 1999.99,
-  date: "1999-12-31",
-  eid: 1
+  //   uid:uid,
+  eid: 8
 };
 
-var put11 = require("./utils/put11.js");
-put11(queryObject, function(res) {
+var put12 = require("./utils/put12.js");
+put12(queryObject, function(res) {
   console.log("server", res);
 });
 
