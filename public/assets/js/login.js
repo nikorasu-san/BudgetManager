@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $(document).on("click","#loginbtn", function () {
+    $(document).on("click", "#loginbtn", function () {
         let email = $("#email").val();
         let password = $("#password").val();
 
         // validate if email
         if (email.trim() === "") {
             alert("Please add in an email")
-        } 
-        else if (password.length < 6 ) {
+        }
+        else if (password.length < 6) {
             alert("Please enter a password of at least 6 characters")
         } else {
 
@@ -26,31 +26,34 @@ $(document).ready(function () {
         }
     })
 
-    $(document).on("click","#newUser", function () {
+    $(document).on("click", "#newUser", function () {
         let preferredName = $("#preferredName").val();
         let email = $("#email").val();
         let phoneNumber = $("#phoneNumber").val();
         let password = $("#password").val();
-        console.log("name:",preferredName)
+        console.log("name:", preferredName)
 
         // validate if email is not blank
         if (email.trim() === "") {
             alert("Please add in an email")
-        } else if (preferredName.trim() === ""){
+        } else if (preferredName.trim() === "") {
             alert("Please add in a name")
-        } else if (password.length < 6 ) {
+        } else if (password.length < 6) {
             alert("Please enter a password of at least 6 characters")
         } else {
             let newUser = {
                 preferredName: preferredName.trim(),
                 email: email.trim(),
-                phoneNumber = phoneNumber,
+                phoneNumber: phoneNumber,
                 password: password
             }
             console.log(newUser);
             $.post("/signup", userDetails).then(function (data) {
-                if (data) {
+                if (data.id) {
                     window.location.href = "/dashboard";
+                } else if (data.error) {
+                    let message = data.error;
+                    alert(message);
                 }
             })
 
