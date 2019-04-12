@@ -1,11 +1,32 @@
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+
+// Require get helping functions
+  var get6 = require("./../utils/get6.js")
+  var get8 = require("./../utils/get8.js")
+  var get10 = require("./../utils/get10.js")
+  var get13 = require("./../utils/get13.js")
+
+  // Require post helping functions
+  var post3 = require("./../utils/post3.js")
+  var post5 = require("./../utils/post5.js")
+  var post9 = require("./../utils/post9.js")
+  
+// Require put helping functions
+var put7 = require("./../utils/put7.js")
+var put12 = require("./../utils/put12.js")
+var put14 = require("./../utils/put14.js")
+
+
+
+
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
   app.get("/login", function(req, res) {
     // Route 2
-    res.render("index", true);
+    res.render("login", { true: true });
   });
 
   app.post("/login", function(req, res) {
@@ -14,20 +35,20 @@ module.exports = function(app) {
       email: req.email,
       password: req.password
     };
-    //  post3(queryObject,function(response){
-    // var id = response.uid
-    // if (id){
-    // res.send(id)
-    // }
-    // else{
-    // res.send(false)
-    // }
-    // })
+     post3(queryObject,function(response){
+    var id = response.uid
+    if (id){
+    res.send(id)
+    }
+    else{
+    res.send(false)
+    }
+    })
   });
 
   app.get("/signup", function(req, res) {
     // Route 4
-    res.render("signup", true);
+    res.render("signup", { true: true });
   });
 
   app.post("/signup", function(req, res) {
@@ -38,17 +59,18 @@ module.exports = function(app) {
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    // post5(queryObject,function(response){
-    // res.send(response)
-    // })
+    post5(queryObject,function(response){
+    res.send(response)
+    })
   });
 
   app.get("/profile/:id", function(req, res) {
     // Route 6
     var queryObject = {
-      uid: req.params.userid
-    };
-    // var data = PlaceholderNickFunction(id)
+
+    uid: req.params.userid}
+    
+
     res.render("profile", data);
   });
 
@@ -65,9 +87,9 @@ module.exports = function(app) {
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catName
     };
-    // var data = put7(queryObject,function(response){
-    //   res.send(response)
-    // })
+    put7(queryObject,function(response){
+      res.send(response)
+    })
   });
 
   app.get("/entry/:id", function(req, res) {
@@ -89,9 +111,11 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/entry/:id", function(req, res) {
+
+  app.post("/entry", function(req, res) {
     // Route 9
-    var uid = req.params.userid;
+    uid = req.params.userid
+
     var req = req.body;
     var queryObject = {
       uid: uid,
@@ -99,12 +123,15 @@ module.exports = function(app) {
       category: req.categoryid,
       amount: req.amount,
       date: req.date,
-      // If we are flagging recurring it means it will happen at a periodicity
       recurringFlag: req.isRecurring
+
       // Bill flag only means that it hasn't happened yet, perhaps we need to generate this from the date
       // billFlag: REVISIT
     };
     post9(queryObject, function(response) {
+
+
+
       res.send(response);
     });
   });
@@ -132,21 +159,63 @@ module.exports = function(app) {
       eid: req.eventId
     };
   });
-  app.get("/", function(req, res) {
-    var id = req.body.id;
-    // We will need the main dashboard page to send across the id. This will likely be in local storage.
-    var data;
-    // This is where we will query the events database to return all bills and events for the current year.
-    // The back end will then construct an object, data, and attach the sums of each category to it.
-    // I think we'd be best suited to put that in an array. We also need to query to users database so we can construct an array of the user's
-    // category names. The two arrays will index identically. Psudocode for the final "data" object below:
-    //  var data= {
-    // categoryTotals: [eventTotal1, eventTotal2, eventTotal3, eventTotal4...],
-    // categoryNames: [categoryName1, categoryName2, categoryName3, categoryName4...]
-    // }
-    // I think it's doable, I just want Nick's database model before I start hacking away at this.
 
-    res.render("dashboard", data);
+
+app.put("/bills/delete/:id",function(req,res){
+  // Route 12
+  var uid = req.params.id
+  var req = req.body;
+  var queryObject = {
+    uid:uid,
+    eid: req.eventid
+  }
+
+  put12(queryObject,function(response){
+    res.send(response)
+  })
+})
+
+app.get("/caps/:id",function(req,res){
+  // Route 13
+  var uid = req.params.id;
+  var queryObject = {
+    uid:uid
+  }
+  get13(queryObject,function(response){
+    res.render("caps",response)
+  })
+})
+
+app.put("/caps/:id",function(req,res){
+  // Route 14
+  var uid = req.params.id;
+  req = req.body
+  var querObject = {
+    // date:req.dueDate,
+    uid:uid,
+    description:req.description,
+     category: req.categoryid,
+     capAmount:req.amount
+  }
+  put14(queryObject,function(response){
+    res.send(response)
+  })
+})
+
+  app.get("/:id", function(req, res) {
+    // Route 15
+    var id = req.params.id;
+
+    // We will need the main dashboard page to send across the id. This will likely be in local storage.
+    var queryObject = {
+      uid:id,
+
+    }
+    get15(queryObject,function(response){
+      res.render('dashboard',response)
+    })
+
+
   });
 
   app.get("/caps", function(req, res) {
