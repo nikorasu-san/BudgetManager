@@ -80,7 +80,7 @@ module.exports = function(app) {
       amount: req.amount,
       billFlag: req.isBill,
       date: req.date,
-      recurringFlag: releaseEvents.isRecurring,
+      recurringFlag: req.isRecurring,
       activeFlag: true
     };
     get8(queryObject, function(response) {
