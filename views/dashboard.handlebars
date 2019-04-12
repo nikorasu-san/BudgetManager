@@ -1,17 +1,26 @@
-<header>
-    <h1>Welcome!</h1>
+<header class="container">
+    <h1 class="pageTitle">Welcome!</h1>
 </header>
 <section>
     <div class="container">
         <div class="row">
             <div class="col l4 s12">
-                <h3>Entries</h3>
+                <h3 class="pageSubTitle">Entries</h3>
+                <div id="entryInfo">
+                </div>
+                <button tabindex="0" class="bigButton">Add</button>
             </div>
             <div class="col l4 s12">
-                <h3>Bills</h3>
+                <h3 class="pageSubTitle">Bills</h3>
+                <div id="billsInfo">
+                </div>
+                <button tabindex="0" class="bigButton">Manage</button>
             </div>
             <div class="col l4 s12">
-                <h3>Caps</h3>
+                <h3 class="pageSubTitle">Caps</h3>
+                <div id="capsInfo">
+                </div>
+                <button tabindex="0" class="bigButton">Manage</button>
             </div>
         </div>
     </div>
@@ -20,6 +29,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
+                <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
                 <canvas id="pieChart"></canvas>
             </div>
         </div>
