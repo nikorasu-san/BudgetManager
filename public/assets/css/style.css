@@ -32,11 +32,15 @@
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
+    color: var(--light-yellow);
+
 }
 
 .pageSubTitle {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
+    color: var(--light-yellow);
+
 }
 
 .bigButton {
@@ -46,4 +50,9 @@
     background: var(--yellow);
     color: var(--dark-blue);
     border-radius: 5px;
+}
+
+.headers {
+    background-color: var(--dark-blue);
+
 }

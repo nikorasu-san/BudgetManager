@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $(document).on("click", "#loginbtn", function () {
+    $(document).on("click", "#loginbtn", function (event) {
+        event.preventDefault()
         let email = $("#email").val();
         let password = $("#password").val();
 
@@ -10,19 +11,20 @@ $(document).ready(function () {
         else if (password.length < 6) {
             alert("Please enter a password of at least 6 characters")
         } else {
-
+            console.log("yay")
             let userDetails = {
                 email: email.trim(),
                 password: password.trim()
             }
             console.log(userDetails);
             $.post("/login", userDetails).then(function (data) {
-                if (data) {
-                    window.location.href = "/dashboard";
+                if (data.id) {
+                    location.replace("/");
                 }
             })
-            // test if we can redirect on front end
-            // document.location.href = "/";
+
+            //test if we can redirect on front end
+            // location.replace("/");
         }
     })
 
@@ -50,7 +52,7 @@ $(document).ready(function () {
             console.log(newUser);
             $.post("/signup", userDetails).then(function (data) {
                 if (data.id) {
-                    window.location.href = "/dashboard";
+                    location.replace("/");
                 } else if (data.error) {
                     let message = data.error;
                     alert(message);
