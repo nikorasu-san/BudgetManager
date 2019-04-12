@@ -5,7 +5,7 @@ module.exports = function(app) {
 
   app.get("/login", function(req, res) {
     // Route 2
-    res.render("index", true);
+    res.render("login", { true: true });
   });
 
   app.post("/login", function(req, res) {
@@ -27,7 +27,7 @@ module.exports = function(app) {
 
   app.get("/signup", function(req, res) {
     // Route 4
-    res.render("signup", true);
+    res.render("signup", { true: true });
   });
 
   app.post("/signup", function(req, res) {
