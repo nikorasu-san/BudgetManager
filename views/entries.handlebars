@@ -1,7 +1,33 @@
+<header class="container">
+    <h1 class="pageTitle">Add to Spending Chart</h1>
+</header>
+
 <section>
     <div class="container">
         <div class="row">
+            <div class="col l6 s12">
+                <h3>View Spending</h3>
+                <div id="spendingSection">
+                    <div class="spending-item">
 
+                    </div>
+                </div>
+            </div>
+            <div class="col l6 s12">
+                <h3>Add Spending</h3>
+                <form id="spendingForm">
+                    <label for="desc" class="spending-label">Description</label>
+                    <input type="text" id="desc" tabindex="0" class="spending-input">
+                    <label for="amount" class="spending-label">Amount</label>
+                    <input type="text" id="amount" tabindex="0" class="spending-input">
+                    <label for="desc" class="spending-label">Categories</label>
+                    <select name="categoryList" id="spendingList">
+                        {{!-- enter handlebars for this part --}}
+                    </select>
+                    <input type="checkbox" name="isBill" value="Bill"> Is it a bill?
+                    <input type="text" class="datepicker">
+                </form>
+            </div>
         </div>
     </div>
 </section>
