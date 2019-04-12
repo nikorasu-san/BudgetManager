@@ -2,6 +2,7 @@
 // =============================================================
 module.exports = function(app) {
 
+
 // Require get helping functions
   var get6 = require("./../utils/get6.js")
   var get8 = require("./../utils/get8.js")
@@ -66,8 +67,10 @@ var put14 = require("./../utils/put14.js")
   app.get("/profile/:id", function(req, res) {
     // Route 6
     var queryObject = {
+
     uid: req.params.userid}
     
+
     res.render("profile", data);
   });
 
@@ -91,7 +94,7 @@ var put14 = require("./../utils/put14.js")
 
   app.get("/entry/:id", function(req, res) {
     // Route 8
-    var uid = req.params.id
+    var uid = req.params.id;
     var req = req.body;
     var queryObject = {
       uid: uid,
@@ -108,9 +111,11 @@ var put14 = require("./../utils/put14.js")
     });
   });
 
+
   app.post("/entry", function(req, res) {
     // Route 9
     uid = req.params.userid
+
     var req = req.body;
     var queryObject = {
       uid: uid,
@@ -119,8 +124,14 @@ var put14 = require("./../utils/put14.js")
       amount: req.amount,
       date: req.date,
       recurringFlag: req.isRecurring
+
+      // Bill flag only means that it hasn't happened yet, perhaps we need to generate this from the date
+      // billFlag: REVISIT
     };
-    post9(querObject, function(response) {
+    post9(queryObject, function(response) {
+
+
+
       res.send(response);
     });
   });
@@ -138,16 +149,17 @@ var put14 = require("./../utils/put14.js")
 
   app.put("/bills", function(req, res) {
     // Route 11
-    var req = req.body
+    var req = req.body;
     var queryObject = {
       uid: req.userid,
-      description = req.description,
-      category = req.category,
+      description: req.description,
+      category: req.category,
       amount: req.amount,
       date: req.date,
       eid: req.eventId
-    }
+    };
   });
+
 
 app.put("/bills/delete/:id",function(req,res){
   // Route 12
@@ -193,6 +205,7 @@ app.put("/caps/:id",function(req,res){
   app.get("/:id", function(req, res) {
     // Route 15
     var id = req.params.id;
+
     // We will need the main dashboard page to send across the id. This will likely be in local storage.
     var queryObject = {
       uid:id,
