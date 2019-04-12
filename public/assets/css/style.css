@@ -13,6 +13,9 @@
     --darker-blue: #142d4c;
 }
 
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+
 #login-body {
     background-color: var(--light-blue);
 }
@@ -32,6 +35,8 @@
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
+    margin-top: 0;
+    color: var(--light-yellow);
 }
 
 .pageSubTitle {
@@ -39,11 +44,74 @@
     font-weight: 700;
 }
 
+.link-right a,
+.link-left a {
+    font-size: 1.75rem;
+    text-decoration: none;
+    color: var(--light-yellow);
+    cursor: pointer;
+}
+
+.link-left {
+    float: left;
+}
+
+.link-right {
+    float: right;
+}
+
 .bigButton {
     width: 100%;
-    max-width: 300px;
     height: 50px;
     background: var(--yellow);
     color: var(--dark-blue);
     border-radius: 5px;
+}
+
+#dashboardBody {
+    background-color: var(--light-blue);
+}
+
+header {
+    background-color: var(--dark-blue);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#spendingSection {
+    width: 80%;
+    margin-top: .5rem;
+}
+
+.spending-item {
+    background-color: var(--light-yellow);
+    padding: 10px 25px 45px 25px;
+    border-radius: 5px;
+}
+
+.spending-text {
+    float: left;
+    font-size: 1.25rem;
+}
+
+.spending-delete {
+    float: right;
+    background-color: var(--dark-blue);
+    color: var(--light-yellow);
+    border-radius: 5px;
+}
+
+.spending-label,
+.spending-input {
+    color: var(--darker-blue);
+}
+
+#spendingForm {
+    background-color: var(--light-yellow);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#spendingBody {
+    background-color: var(--light-blue);
 }
