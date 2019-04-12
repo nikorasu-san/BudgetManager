@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 // //dev environment-----THIS IS WHERE WE WORK
 // //KEEP COMMENTS FOR TESTING CASES
 
-// ROUTE 9
+// // ROUTE 9
 // var queryObject = {
 //   UserId: 1,
 //   description: "zoomba",
@@ -49,21 +49,32 @@ app.set("view engine", "handlebars");
 //   password: "sugarrush"
 // };
 
-// Route 7
+// // Route 7
+// var queryObject = {
+//   uid: 3,
+//   preferredName: "jimmyjohn",
+//   password: "freakyFAST",
+//   monthlyIncome: 10000000,
+//   email: "req@body.email",
+//   emailFlag: false,
+//   phone: 0987654321,
+//   phoneFlag: true,
+//   catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+// };
+
+// Route 11
+// var req = req.body
 var queryObject = {
-  uid: 3,
-  preferredName: "jimmyjohn",
-  password: "freakyFAST",
-  monthlyIncome: 10000000,
-  email: "req@body.email",
-  emailFlag: false,
-  phone: 0987654321,
-  phoneFlag: true,
-  catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+  uid: 1,
+  description: "Party like Prince",
+  category: 4,
+  amount: 1999.99,
+  date: "1999-12-31",
+  eid: 1
 };
 
-var put7 = require("./utils/put7.js");
-put7(queryObject, function(res) {
+var put11 = require("./utils/put11.js");
+put11(queryObject, function(res) {
   console.log("server", res);
 });
 
