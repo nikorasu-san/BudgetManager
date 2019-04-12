@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    color: var(--dark-blue);
 }
 
 :root {
@@ -14,6 +15,20 @@
 
 body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
+
+#login-body {
+    background-color: var(--light-blue);
+}
+#login-card {
+    background-color: var(--light-yellow);
+}
+.login-button {
+    width: 100%;
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+}
+.solo-card {
+    top: 1rem;
 }
 
 .pageTitle {

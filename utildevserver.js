@@ -19,11 +19,62 @@ app.set("view engine", "handlebars");
 
 // Routes
 // e.g. require("./routes/html-routes.js")(app);
-require("./controllers/Controller.js")(app);
+// require("./controllers/Controller.js")(app);
 
-// dev environment-----THIS IS WHERE WE WORK
-var get8 = require("./utils/get8.js");
-get8(2, function(res) {
+// //dev environment-----THIS IS WHERE WE WORK
+// //KEEP COMMENTS FOR TESTING CASES
+
+// // ROUTE 9
+// var queryObject = {
+//   UserId: 1,
+//   description: "zoomba",
+//   category: 9,
+//   amount: 45.4,
+//   date: "2019-4-13",
+//   billFlag: true,
+//   recurringFlag: true
+// };
+
+// var queryObject = {
+//   preferredName: "rocky2",
+//   email: "rockstar@grammy.com",
+//   phone: 4212322321,
+//   password: "musicm5~"
+// };
+// app.post("/login", function(req, res) {
+
+// Route 3
+// var queryObject = {
+//   email: "star@star.com",
+//   password: "sugarrush"
+// };
+
+// // Route 7
+// var queryObject = {
+//   uid: 3,
+//   preferredName: "jimmyjohn",
+//   password: "freakyFAST",
+//   monthlyIncome: 10000000,
+//   email: "req@body.email",
+//   emailFlag: false,
+//   phone: 0987654321,
+//   phoneFlag: true,
+//   catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+// };
+
+// Route 11
+// var req = req.body
+var queryObject = {
+  uid: 1,
+  description: "Party like Prince",
+  category: 4,
+  amount: 1999.99,
+  date: "1999-12-31",
+  eid: 1
+};
+
+var put11 = require("./utils/put11.js");
+put11(queryObject, function(res) {
   console.log("server", res);
 });
 
