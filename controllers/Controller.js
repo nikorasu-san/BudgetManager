@@ -71,19 +71,22 @@ module.exports = function (app) {
   app.get("/entry", function (req, res) {
     // Route 8
     var req = req.body;
-    var queryObject = {
-      id: req.userid,
-      description: req.description,
-      category: req.category,
-      amount: req.amount,
-      billFlag: req.isBill,
-      date: req.date,
-      recurringFlag: releaseEvents.isRecurring,
-      activeFlag: true
-    };
-    get8(queryObject, function (response) {
-      res.render("entries", data);
-    });
+    // var queryObject = {
+    //   id: req.userid,
+    //   description: req.description,
+    //   category: req.category,
+    //   amount: req.amount,
+    //   billFlag: req.isBill,
+    //   date: req.date,
+    //   recurringFlag: releaseEvents.isRecurring,
+    //   activeFlag: true
+    // };
+    // get8(queryObject, function (response) {
+    //   res.render("entries", data);
+    // });
+    res.render("entries", {
+      true: true
+    })
   });
 
   app.post("/entry", function (req, res) {

@@ -1,34 +1,48 @@
-<header class="container">
-    <h1 class="pageTitle">Spending</h1>
-</header>
+<body id="spendingBody">
+    <header class="container">
+        <h1 class="pageTitle">Spending</h1>
+    </header>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h3>View Spending</h3>
-                <div id="spendingSection">
-                    <div class="spending-item">
-
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h3 class="pageSubTitle">View Spending</h3>
+                    <div id="spendingSection">
+                        <div class="spending-item">
+                            <span class="spending-text">Concert Tickets</span>
+                            <button class="btn spending-delete">Delete</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col l6 s12">
-                <h3>Add to Spending</h3>
-                <form id="spendingForm">
-                    <label for="desc" class="spending-label">Description</label>
-                    <input type="text" id="desc" tabindex="0" class="spending-input">
-                    <label for="amount" class="spending-label">Amount</label>
-                    <input type="text" id="amount" tabindex="0" class="spending-input">
-                    <label for="desc" class="spending-label">Categories</label>
-                    <select name="categoryList" id="spendingList">
-                        {{!-- enter handlebars for this part --}}
-                    </select>
-                    <input type="checkbox" name="isBill" value="Bill"> Is it a bill?
-                    <input type="text" class="datepicker">
-                    <button class="bigButton">Add to Spending</button>
-                </form>
+                <div class="col l6 s12">
+                    <h3 class="pageSubTitle">Add to Spending</h3>
+                    <form id="spendingForm">
+                        <label for="desc" class="spending-label">Description</label>
+                        <input type="text" id="desc" tabindex="0" class="spending-input"
+                            placeholder="Enter purchase description">
+                        <label for="amount" class="spending-label">Amount</label>
+                        <input type="text" id="amount" tabindex="0" class="spending-input"
+                            placeholder="Enter purchase amount">
+                        <select name="categoryList" id="spendingList">
+                            {{!-- enter handlebars for this part --}}
+                            {{#each categories}}
+                            <option value="">hello</option>
+                            {{/each}}
+                        </select>
+                        <label for="categories" class="spending-label">Categories</label>
+
+                        <p>
+                            <label>
+                                <input type="checkbox" value="bill" id="isBill" />
+                                <span>Is It A Bill?</span>
+                            </label>
+                        </p>
+                        <input type="text" class="datepicker" placeholder="Enter purchase date">
+                        <a href="/entry" class="btn btn-large bigButton">Add to Spending</a>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</body>
