@@ -30,8 +30,8 @@ $(document).ready(function () {
         let preferredName = $("#preferredName").val();
         let email = $("#email").val();
         let phoneNumber = $("#phoneNumber").val();
-        let password = $("password").val();
-        console.log("name",preferredName)
+        let password = $("#password").val();
+        console.log("name:",preferredName)
 
         // validate if email is not blank
         if (email.trim() === "") {
@@ -44,9 +44,16 @@ $(document).ready(function () {
             let newUser = {
                 preferredName: preferredName.trim(),
                 email: email.trim(),
-                password: password.trim()
+                phoneNumber = phoneNumber,
+                password: password
             }
             console.log(newUser);
+            $.post("/signup", userDetails).then(function (data) {
+                if (data) {
+                    window.location.href = "/dashboard";
+                }
+            })
+
         }
     })
 
