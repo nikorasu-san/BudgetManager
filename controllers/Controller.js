@@ -1,6 +1,26 @@
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+// Require get helping functions
+  var get6 = require("./../utils/get6.js")
+  var get8 = require("./../utils/get8.js")
+  var get10 = require("./../utils/get10.js")
+  var get13 = require("./../utils/get13.js")
+
+  // Require post helping functions
+  var post3 = require("./../utils/post3.js")
+  var post5 = require("./../utils/post5.js")
+  var post9 = require("./../utils/post9.js")
+  
+// Require put helping functions
+var put7 = require("./../utils/put7.js")
+var put12 = require("./../utils/put12.js")
+var put14 = require("./../utils/put14.js")
+
+
+
+
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
   app.get("/login", function(req, res) {
@@ -14,15 +34,15 @@ module.exports = function(app) {
       email: req.email,
       password: req.password
     };
-    //  post3(queryObject,function(response){
-    // var id = response.uid
-    // if (id){
-    // res.send(id)
-    // }
-    // else{
-    // res.send(false)
-    // }
-    // })
+     post3(queryObject,function(response){
+    var id = response.uid
+    if (id){
+    res.send(id)
+    }
+    else{
+    res.send(false)
+    }
+    })
   });
 
   app.get("/signup", function(req, res) {
@@ -38,16 +58,16 @@ module.exports = function(app) {
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    // post5(queryObject,function(response){
-    // res.send(response)
-    // })
+    post5(queryObject,function(response){
+    res.send(response)
+    })
   });
 
   app.get("/profile/:id", function(req, res) {
     // Route 6
     var queryObject = {
     uid: req.params.userid}
-    // var data = PlaceholderNickFunction(id)
+    
     res.render("profile", data);
   });
 
@@ -64,9 +84,9 @@ module.exports = function(app) {
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catName
     };
-    // var data = put7(queryObject,function(response){
-    //   res.send(response)
-    // })
+    put7(queryObject,function(response){
+      res.send(response)
+    })
   });
 
   app.get("/entry/:id", function(req, res) {
