@@ -93,8 +93,14 @@ app.set("view engine", "handlebars");
 //   warnAmount: 1000
 // };
 
-var put14 = require("./utils/put14.js");
-put14(queryObject, function(res) {
+// Route 13
+//  var uid = req.params.id;
+var queryObject = {
+  uid: 1
+};
+
+var get13 = require("./utils/get13.js");
+get13(queryObject, function(res) {
   console.log("server", res);
 });
 
