@@ -1,11 +1,17 @@
 var db = require("../models");
+var thismonth = require("./date");
+
+// console.log("get8month", thismonth);
+
 // function
 let catNames;
 var get8 = function(userid, callback) {
   // // we find the user's row and return the relevant columns or arrays of columns
 
   db.User.findOne({
-    where: { id: userid }
+    where: {
+      id: userid
+    }
   }).then(x => {
     // console.log("returned user object", x.dataValues);
     catNames = [
@@ -22,7 +28,10 @@ var get8 = function(userid, callback) {
     ];
   });
   db.Event.findAll({
-    where: { userId: userid }
+    where: {
+      UserId: userid,
+      date: thismonth
+    }
   }).then(y => {
     let eventsArr = [];
     y.forEach(v => {

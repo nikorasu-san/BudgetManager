@@ -99,6 +99,26 @@ var queryObject = {
   uid: 1
 };
 
+// // Route 8
+// var uid = 1;
+// //  var req = req.body;
+// //  var queryObject = {
+// //    uid: uid,
+// //    description: req.description,
+// //    category: req.category,
+// //    amount: req.amount,
+// //    billFlag: req.isBill,
+// //    date: req.date,
+// //    recurringFlag: req.isRecurring,
+// //    activeFlag: true
+// //  };
+
+// // Route 10
+// var id = 1;
+// queryObject = {
+//   id: id
+// };
+
 var get13 = require("./utils/get13.js");
 get13(queryObject, function(res) {
   console.log("server", res);

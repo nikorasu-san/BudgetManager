@@ -1,4 +1,6 @@
 var db = require("../models");
+var thismonth = require("./date");
+
 // function
 let catNames;
 let catCaps;
@@ -54,7 +56,8 @@ var get13 = function(userid, callback) {
     db.Event.findAll({
       where: {
         userId: userid.uid,
-        activeFlag: true
+        activeFlag: true,
+        date: thismonth
       }
     }).then(y => {
       // // initialize some arrays
@@ -65,6 +68,7 @@ var get13 = function(userid, callback) {
       // // position using category id as index
       y.forEach(v => {
         let w = v.dataValues;
+        console.log(w);
         catTotalFloats[w.category] += parseFloat(w.amount);
       });
       // // now that all events or sorted, do the math on the categories
