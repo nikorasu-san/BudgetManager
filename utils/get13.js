@@ -68,6 +68,7 @@ var get13 = function(userid, callback) {
       // // position using category id as index
       y.forEach(v => {
         let w = v.dataValues;
+        console.log(w);
         catTotalFloats[w.category] += parseFloat(w.amount);
       });
       // // now that all events or sorted, do the math on the categories

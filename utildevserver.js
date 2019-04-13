@@ -93,11 +93,11 @@ app.set("view engine", "handlebars");
 //   warnAmount: 1000
 // };
 
-// // Route 13
-// //  var uid = req.params.id;
-// var queryObject = {
-//   uid: 1
-// };
+// Route 13
+//  var uid = req.params.id;
+var queryObject = {
+  uid: 1
+};
 
 // // Route 8
 // var uid = 1;
@@ -113,14 +113,14 @@ app.set("view engine", "handlebars");
 // //    activeFlag: true
 // //  };
 
-// Route 10
-var id = 1;
-queryObject = {
-  id: id
-};
+// // Route 10
+// var id = 1;
+// queryObject = {
+//   id: id
+// };
 
-var get10 = require("./utils/get10.js");
-get10(queryObject, function(res) {
+var get13 = require("./utils/get13.js");
+get13(queryObject, function(res) {
   console.log("server", res);
 });
 
