@@ -1,31 +1,42 @@
 <body id="dashboardBody">
     <header>
         <div class="container">
-            <h4 class="link-left"><a href="/">Dashboard</a></h4>
-            <h4 class="link-right"><a href="/profile">Profile</a></h4>
-            <h1 class="pageTitle">Welcome!</h1>
+            <h4 class="link-left"><a href="/" tabindex="0">Dashboard</a></h4>
+            <h4 class="link-right"><a href="/profile" tabindex="0">Profile</a></h4>
+            <h1 class="pageTitle">Welcome {{data.preferredName}}!</h1>
         </div>
     </header>
     <section>
         <div class="container">
             <div class="row">
                 <div class="col l4 s12">
-                    <h3 class="pageSubTitle">Entries</h3>
-                    <div id="entryInfo">
+                    <div class="dashboard-section">
+                        <h3 class="pageSubTitle">Entries</h3>
+                        <div id="entryInfo">
+                            {{#each data.Events}}
+                            <div class="dashboard-entry">
+                                <p>{{description}} | ${{amount}} | {{date}}</p>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <a href="/entry" class=" btn btn-large bigButton">Add</a>
                     </div>
-                    <a href="/entry" class=" btn btn-large bigButton">Add</a>
                 </div>
                 <div class="col l4 s12">
-                    <h3 class="pageSubTitle">Bills</h3>
-                    <div id="billsInfo">
+                    <div class="dashboard-section">
+                        <h3 class="pageSubTitle">Bills</h3>
+                        <div id="billsInfo">
+                        </div>
+                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                     </div>
-                    <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                 </div>
                 <div class="col l4 s12">
-                    <h3 class="pageSubTitle">Caps</h3>
-                    <div id="capsInfo">
+                    <div class="dashboard-section">
+                        <h3 class="pageSubTitle">Caps</h3>
+                        <div id="capsInfo">
+                        </div>
+                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                     </div>
-                    <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                 </div>
             </div>
         </div>
@@ -34,11 +45,14 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
-                    <canvas id="pieChart"></canvas>
+                    <div class="dashboard-section">
+                        <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
-
+    <script src="/assets/js/dashboard.js"></script>
 </body>
