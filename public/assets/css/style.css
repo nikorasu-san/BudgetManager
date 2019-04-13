@@ -14,20 +14,27 @@
 
 body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
-    color: var(--dark-blue);
 }
 
 #login-body {
     background-color: var(--light-blue);
 }
+
 #login-card {
     background-color: var(--light-yellow);
+    color: var(--dark-blue);
 }
+
+.b-text {
+    color: var(--dark-blue)!important;
+}
+
 .login-button {
     width: 100%;
     background-color: var(--yellow);
     color: var(--dark-blue);
 }
+
 .solo-card {
     top: 1rem;
 }
@@ -43,8 +50,8 @@ body {
 .pageSubTitle {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
+    text-align: center;
     color: var(--light-yellow);
-
 }
 
 .link-right a,
@@ -53,6 +60,14 @@ body {
     text-decoration: none;
     color: var(--light-yellow);
     cursor: pointer;
+    transition: .25s;
+}
+
+.link-right a:hover,
+.link-left a:hover {
+    border-bottom: 2px solid var(--light-yellow);
+    padding-bottom: 2px;
+    transition: .25s;
 }
 
 .link-left {
@@ -75,10 +90,26 @@ body {
     background-color: var(--light-blue);
 }
 
+.dashboard-section {
+    background-color: var(--light-yellow);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.dashboard-entry {
+    border-bottom: 1px solid var(--dark-blue);
+    margin-bottom: 10px;
+}
+
 header {
     background-color: var(--dark-blue);
     padding-bottom: 1rem;
+    padding-top: 1rem;
     margin-bottom: 1rem;
+    -webkit-box-shadow: -1px 11px 17px -3px rgba(20, 45, 76, 1);
+    -moz-box-shadow: -1px 11px 17px -3px rgba(20, 45, 76, 1);
+    box-shadow: -1px 11px 17px -3px rgba(20, 45, 76, 1);
 }
 
 #spendingSection {
@@ -90,10 +121,10 @@ header {
     background-color: var(--light-yellow);
     padding: 10px 25px 45px 25px;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .spending-text {
-    float: left;
     font-size: 1.25rem;
 }
 
@@ -102,6 +133,10 @@ header {
     background-color: var(--dark-blue);
     color: var(--light-yellow);
     border-radius: 5px;
+}
+
+::placeholder {
+    color: var(--dark-blue);
 }
 
 .spending-label,
@@ -115,19 +150,67 @@ header {
     border-radius: 5px;
 }
 
-#spendingBody {
+#spendingBody,
+#billsBody {
     background-color: var(--light-blue);
 }
 
+.date-text {
+    color: var(--light-yellow);
+}
 
+.datepicker-date-display {
+    background-color: var(--dark-blue);
+}
 
+select {
+    display: block;
+    background-color: var(--light-yellow);
+}
 
+.bill-section {
+    background-color: var(--light-yellow);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
 
+.bill-entry-title {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    padding: 5px 0 5px 0;
+}
 
+.bill-entry-title h5 {
+    font-size: 2rem;
+    font-weight: 700;
+}
 
+.bill-entry-text {
+    font-size: 1.25rem;
+    border-bottom: 1.25px solid var(--dark-blue);
+    padding: 5px;
+}
 
+.buttonDelete {
+    background-color: var(--dark-blue);
+    color: var(--light-yellow);
+    width: 100%;
+}
 
+.buttonDelete:hover {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+}
 
+.dashboard-section,
+.spending-item,
+#spendingForm {
+    -webkit-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
+    -moz-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
+    box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
+}
 
 #profileBody {
     background-color: var(--light-blue);
@@ -163,10 +246,13 @@ header {
 
 }
 
-/* #profileIncome > .card-panel > input, input[type=text],input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, .input-field>label {
-    color: var(--dark-blue);
-} */
-
 #profileInfo > .card-panel > input, input[type=text],input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, .input-field>label {
     color: var(--light-yellow);
+}
+
+.profile-card ::placeholder {
+    color: var(--light-yellow)!important;
+}
+.income-card ::placeholder {
+    color: var(--light-yellow)!important;
 }

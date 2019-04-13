@@ -13,37 +13,50 @@
                 <div class="col l6 s12">
                     <h3 class="pageSubTitle">View Spending</h3>
                     <div id="spendingSection">
+                        {{#each all}}
                         <div class="spending-item">
-                            <span class="spending-text">Concert Tickets</span>
+                            <p class="spending-text">{{description}}</p>
+                            <span>{{date}} | ${{amount}} </span>
                             <button class="btn spending-delete">Delete</button>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
                 <div class="col l6 s12">
                     <h3 class="pageSubTitle">Add to Spending</h3>
                     <form id="spendingForm">
-                        <label for="desc" class="spending-label">Description</label>
-                        <input type="text" id="desc" tabindex="0" class="spending-input"
-                            placeholder="Enter purchase description">
-                        <label for="amount" class="spending-label">Amount</label>
-                        <input type="text" id="amount" tabindex="0" class="spending-input"
-                            placeholder="Enter purchase amount">
-                        <select name="categoryList" id="spendingList">
-                            {{!-- enter handlebars for this part --}}
-                            {{#each categories}}
-                            <option value="">hello</option>
-                            {{/each}}
-                        </select>
-                        <label for="categories" class="spending-label">Categories</label>
+                        <div class="input-field s12">
+                            <label for="desc" class="spending-label">Description</label>
+                            <input type="text" id="desc" tabindex="0" class="spending-input"
+                                placeholder="Enter purchase description">
+                        </div>
+                        <div class="input-field s12">
+                            <label for="amount" class="spending-label">Amount</label>
+                            <input type="text" id="amount" tabindex="0" class="spending-input"
+                                placeholder="Enter purchase amount">
+                        </div>
 
-                        <p>
-                            <label class="spending-label">
-                                <input type="checkbox" value="bill" id="isBill" />
-                                <span>Is This Recurring?</span>
-                            </label>
-                        </p>
+                        <div class="input-field s12">
+                            <select name="categoryList" id="spendingList">
+                                {{!-- enter handlebars for this part --}}
+                                <option value="" disabled selected>Choose your category</option>
+                                {{#each cat}}
+                                <option value="{{category}}">{{category}}</option>
+                                {{/each}}
+                            </select>
+
+                        </div>
+                        <div class="input-field s12">
+                            <p>
+                                <label class="spending-label">
+                                    <input type="checkbox" value="bill" id="isBill" />
+                                    <span>Is This Recurring?</span>
+                                </label>
+                            </p>
+                        </div>
+
                         <input type="text" class="datepicker" placeholder="Enter purchase date">
-                        <a href="/entry" class="btn btn-large bigButton">Add to Spending</a>
+                        <a href="/entry" type="submit" class="btn btn-large bigButton">Add to Spending</a>
                     </form>
                 </div>
             </div>
