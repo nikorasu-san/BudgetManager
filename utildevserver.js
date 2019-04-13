@@ -93,14 +93,28 @@ app.set("view engine", "handlebars");
 //   warnAmount: 1000
 // };
 
-// Route 13
-//  var uid = req.params.id;
-var queryObject = {
-  uid: 1
-};
+// // Route 13
+// //  var uid = req.params.id;
+// var queryObject = {
+//   uid: 1
+// };
 
-var get13 = require("./utils/get13.js");
-get13(queryObject, function(res) {
+// Route 8
+var uid = 1;
+//  var req = req.body;
+//  var queryObject = {
+//    uid: uid,
+//    description: req.description,
+//    category: req.category,
+//    amount: req.amount,
+//    billFlag: req.isBill,
+//    date: req.date,
+//    recurringFlag: req.isRecurring,
+//    activeFlag: true
+//  };
+
+var get8 = require("./utils/get8.js");
+get8(uid, function(res) {
   console.log("server", res);
 });
 
