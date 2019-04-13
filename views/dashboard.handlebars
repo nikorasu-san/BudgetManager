@@ -1,37 +1,44 @@
-<header class="container">
-    <h1 class="pageTitle">Welcome!</h1>
-</header>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col l4 s12">
-                <h3 class="pageSubTitle">Entries</h3>
-                <div id="entryInfo">
+<body id="dashboardBody">
+    <header>
+        <div class="container">
+            <h4 class="link-left"><a href="/">Dashboard</a></h4>
+            <h4 class="link-right"><a href="/profile">Profile</a></h4>
+            <h1 class="pageTitle">Welcome!</h1>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col l4 s12">
+                    <h3 class="pageSubTitle">Entries</h3>
+                    <div id="entryInfo">
+                    </div>
+                    <a href="/entry" class=" btn btn-large bigButton">Add</a>
                 </div>
-                <button tabindex="0" class="bigButton">Add</button>
-            </div>
-            <div class="col l4 s12">
-                <h3 class="pageSubTitle">Bills</h3>
-                <div id="billsInfo">
+                <div class="col l4 s12">
+                    <h3 class="pageSubTitle">Bills</h3>
+                    <div id="billsInfo">
+                    </div>
+                    <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                 </div>
-                <button tabindex="0" class="bigButton">Manage</button>
-            </div>
-            <div class="col l4 s12">
-                <h3 class="pageSubTitle">Caps</h3>
-                <div id="capsInfo">
+                <div class="col l4 s12">
+                    <h3 class="pageSubTitle">Caps</h3>
+                    <div id="capsInfo">
+                    </div>
+                    <a tabindex="0" class="btn btn-large bigButton">Manage</a>
                 </div>
-                <button tabindex="0" class="bigButton">Manage</button>
             </div>
         </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
-                <canvas id="pieChart"></canvas>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
+                    <canvas id="pieChart"></canvas>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</body>
