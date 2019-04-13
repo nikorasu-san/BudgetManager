@@ -1,4 +1,6 @@
 var db = require("../models");
+var thismonth = require("./date");
+
 // function
 let catNames;
 let catCaps;
@@ -54,7 +56,8 @@ var get13 = function(userid, callback) {
     db.Event.findAll({
       where: {
         userId: userid.uid,
-        activeFlag: true
+        activeFlag: true,
+        date: thismonth
       }
     }).then(y => {
       // // initialize some arrays

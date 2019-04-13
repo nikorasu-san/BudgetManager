@@ -99,22 +99,28 @@ app.set("view engine", "handlebars");
 //   uid: 1
 // };
 
-// Route 8
-var uid = 1;
-//  var req = req.body;
-//  var queryObject = {
-//    uid: uid,
-//    description: req.description,
-//    category: req.category,
-//    amount: req.amount,
-//    billFlag: req.isBill,
-//    date: req.date,
-//    recurringFlag: req.isRecurring,
-//    activeFlag: true
-//  };
+// // Route 8
+// var uid = 1;
+// //  var req = req.body;
+// //  var queryObject = {
+// //    uid: uid,
+// //    description: req.description,
+// //    category: req.category,
+// //    amount: req.amount,
+// //    billFlag: req.isBill,
+// //    date: req.date,
+// //    recurringFlag: req.isRecurring,
+// //    activeFlag: true
+// //  };
 
-var get8 = require("./utils/get8.js");
-get8(uid, function(res) {
+// Route 10
+var id = 1;
+queryObject = {
+  id: id
+};
+
+var get10 = require("./utils/get10.js");
+get10(queryObject, function(res) {
   console.log("server", res);
 });
 
