@@ -2,7 +2,6 @@
 
 * {
     box-sizing: border-box;
-    color: var(--dark-blue);
 }
 
 :root {
@@ -11,6 +10,11 @@
     --yellow: #ffed78;
     --light-yellow: #feffea;
     --darker-blue: #142d4c;
+}
+
+body {
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    color: var(--dark-blue);
 }
 
 #login-body {
@@ -32,8 +36,8 @@
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
+    margin-top: 0;
     color: var(--light-yellow);
-
 }
 
 .pageSubTitle {
@@ -43,16 +47,126 @@
 
 }
 
+.link-right a,
+.link-left a {
+    font-size: 1.75rem;
+    text-decoration: none;
+    color: var(--light-yellow);
+    cursor: pointer;
+}
+
+.link-left {
+    float: left;
+}
+
+.link-right {
+    float: right;
+}
+
 .bigButton {
     width: 100%;
-    max-width: 300px;
     height: 50px;
     background: var(--yellow);
     color: var(--dark-blue);
     border-radius: 5px;
 }
 
-.headers {
-    background-color: var(--dark-blue);
+#dashboardBody {
+    background-color: var(--light-blue);
+}
 
+header {
+    background-color: var(--dark-blue);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#spendingSection {
+    width: 80%;
+    margin-top: .5rem;
+}
+
+.spending-item {
+    background-color: var(--light-yellow);
+    padding: 10px 25px 45px 25px;
+    border-radius: 5px;
+}
+
+.spending-text {
+    float: left;
+    font-size: 1.25rem;
+}
+
+.spending-delete {
+    float: right;
+    background-color: var(--dark-blue);
+    color: var(--light-yellow);
+    border-radius: 5px;
+}
+
+.spending-label,
+.spending-input {
+    color: var(--darker-blue);
+}
+
+#spendingForm {
+    background-color: var(--light-yellow);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#spendingBody {
+    background-color: var(--light-blue);
+}
+
+
+
+
+
+
+
+
+
+
+
+#profileBody {
+    background-color: var(--light-blue);
+}
+
+#profileInfo {
+    background-color: var(--light-blue);
+    height: 100vh;
+    width: 100vw;
+}
+
+#profileIncome{
+    background-color: var(--light-yellow);
+    color: var(--dark-blue)!important;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* .income-card {
+    background-color: var(--light-blue);
+    color: var(--dark-blue)!important;
+    height: 40rem;
+    width: 100%;
+    overflow: auto;
+} */
+
+.profile-card,.income-card {
+    background-color: var(--dark-blue);
+    color: var(--light-yellow)!important;
+    height: 40rem;
+    width: 100%;
+    overflow: auto;
+
+}
+
+/* #profileIncome > .card-panel > input, input[type=text],input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, .input-field>label {
+    color: var(--dark-blue);
+} */
+
+#profileInfo > .card-panel > input, input[type=text],input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, .input-field>label {
+    color: var(--light-yellow);
 }
