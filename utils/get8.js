@@ -2,6 +2,8 @@ var db = require("../models");
 // function
 let catNames;
 var get8 = function(userid, callback) {
+  // // we find the user's row and return the relevant columns or arrays of columns
+
   db.User.findOne({
     where: { id: userid }
   }).then(x => {

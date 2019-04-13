@@ -43,7 +43,7 @@ app.set("view engine", "handlebars");
 // };
 // app.post("/login", function(req, res) {
 
-// Route 3
+// // Route 3
 // var queryObject = {
 //   email: "star@star.com",
 //   password: "sugarrush"
@@ -62,19 +62,45 @@ app.set("view engine", "handlebars");
 //   catNames: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
 // };
 
-// Route 11
-// var req = req.body
+// // Route 11
+// // var req = req.body
+// var queryObject = {
+//   uid: 1,
+//   description: "Party like Prince",
+//   category: 4,
+//   amount: 1999.99,
+//   date: "1999-12-31",
+//   eid: 1
+// };
+
+// // Route 12
+// // var uid = req.params.id
+// // var req = req.body;
+// var queryObject = {
+//   //   uid:uid,
+//   eid: 8
+// };
+
+// // Route 14
+// //   var uid = req.params.id;
+// //   req = req.body;
+// var queryObject = {
+//   // date:req.dueDate,
+//   uid: 5,
+//   //   description: req.description,
+//   category: 9,
+//   capAmount: 1000,
+//   warnAmount: 1000
+// };
+
+// Route 13
+//  var uid = req.params.id;
 var queryObject = {
-  uid: 1,
-  description: "Party like Prince",
-  category: 4,
-  amount: 1999.99,
-  date: "1999-12-31",
-  eid: 1
+  uid: 1
 };
 
-var put11 = require("./utils/put11.js");
-put11(queryObject, function(res) {
+var get13 = require("./utils/get13.js");
+get13(queryObject, function(res) {
   console.log("server", res);
 });
 
