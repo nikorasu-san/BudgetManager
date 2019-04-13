@@ -1,12 +1,13 @@
-// dev environment
+// // dev environment
 var db = require("../models");
 
-// function
+// // function
 var get6 = function(userid, callback) {
+  // // we find the user's row and return the relevant columns or arrays of columns
   db.User.findOne({
     where: { id: userid }
   }).then(x => {
-    console.log(x.dataValues);
+    // console.log(x.dataValues);
     let newOb = {
       preferredName: x.dataValues.preferredName,
       email: x.dataValues.email,
@@ -37,7 +38,7 @@ var get6 = function(userid, callback) {
         x.dataValues.cat9cap
       ]
     };
-    console.log(newOb);
+    // console.log(newOb);
     callback(newOb);
   });
 };

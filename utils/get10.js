@@ -2,6 +2,8 @@ var db = require("../models");
 // function
 let catNames;
 var get8 = function(userid, callback) {
+  // // we find the user's row and return the relevant array of columns
+
   db.User.findOne({
     where: { id: userid }
   }).then(x => {
@@ -19,12 +21,19 @@ var get8 = function(userid, callback) {
       x.dataValues.cat9name
     ];
   });
+  // // find all active bill spending events of user
+
   db.Event.findAll({
-    where: { userId: userid, billFlag: true }
+    where: {
+      userId: userid,
+      billFlag: true,
+      activeFlag: true
+    }
   }).then(y => {
+    // // initialize an empty array to push to
     let eventsArr = [];
+    // // create a relevantly keyed object out of each row, then push it
     y.forEach(v => {
-      //   console.log(v.dataValues);
       let eventOb = {
         description: v.dataValues.description,
         date: v.dataValues.date,
@@ -35,8 +44,12 @@ var get8 = function(userid, callback) {
       };
       eventsArr.push(eventOb);
     });
-    let returnOb = { catNames: catNames, events: eventsArr };
-    console.log(returnOb);
+    //  // we return the front end what it needs, as a callback for async issues
+    let returnOb = {
+      catNames,
+      events: eventsArr
+    };
+    // console.log(returnOb);
     callback(returnOb);
   });
 };
