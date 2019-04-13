@@ -1,0 +1,62 @@
+<body id="spendingBody">
+    <header>
+        <div class="container">
+            <h4 class="link-left"><a href="/">Dashboard</a></h4>
+            <h4 class="link-right"><a href="/profile">Profile</a></h4>
+            <h1 class="pageTitle">Budgets</h1>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h3 class="pageSubTitle b-text">View Budgets</h3>
+                    {{!-- <div id="spendingSection">
+                        {{#each all}}
+                        <div class="spending-item">
+                            <p class="spending-text">{{description}}</p>
+                            <span>{{date}} | ${{amount}} </span>
+                            <button class="btn spending-delete">Delete</button>
+                        </div>
+                        {{/each}}
+                    </div> --}}
+                    {{#each data}}
+                    <div class="cap-item">
+                        <h5 class="b-text">{{catName}}</h5>
+
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="col l6 s12">
+                    <h3 class="pageSubTitle b-text">Edit Budgets</h3>
+                    <form id="spendingForm">
+                        <div class="input-field s12">
+                            <select name="categoryList" id="spendingList">
+                                {{!-- enter handlebars for this part --}}
+                                <option value="" disabled selected>Choose your category</option>
+                                {{#each cat}}
+                                <option value="{{category}}">{{category}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="input-field s12">
+                                <input type="text" id="targetAmount" tabindex="0" class="spending-input b-text"
+                                    placeholder="Enter Target Amount">
+                                <label for="targetAmount" class="spending-label">Target Amount</label>
+                            </div>
+                            <div class="input-field s12">
+                                <input type="text" id="warningAmount" tabindex="0" class="spending-input b-text"
+                                    placeholder="Enter Warning Amount">
+                                <label for="warningAmount" class="spending-label">Warning Amount</label>
+                            </div>
+
+
+                        </div>
+
+                        <a href="/caps/1" type="submit" class="btn btn-large bigButton">Add to Budget</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

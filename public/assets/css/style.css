@@ -117,7 +117,7 @@ header {
     margin-top: .5rem;
 }
 
-.spending-item {
+.spending-item, .cap-item {
     background-color: var(--light-yellow);
     padding: 10px 25px 45px 25px;
     border-radius: 5px;
@@ -206,7 +206,7 @@ select {
 
 .dashboard-section,
 .spending-item,
-#spendingForm {
+#spendingForm, .cap-item {
     -webkit-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     -moz-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
