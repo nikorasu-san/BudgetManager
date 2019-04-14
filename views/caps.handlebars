@@ -25,9 +25,9 @@
                     <div class="cap-item">
                         <h5 class="b-text center-align">{{catName}}</h5>
                         {{!-- bar goes here --}}
-                        <div class="skillbar clearfix " data-percent="{{monthPercent}}">
-                            <div class="skillbar-title" style="background: #d35400;"><span>{{monthPercent}}</span></div>
-                            <div class="skillbar-bar" style="background: #e67e22;"></div>
+                        <div class="skillbar clearfix " data-percent="{{monthPercent}}%">
+                            <div class="skillbar-title" style="background: #ffed78;"></div>
+                            <div class="skillbar-bar" style="background: #142d4c;"></div>
                             <div class="skill-bar-percent"></div>
                         </div>
                         <div class="row">
@@ -61,7 +61,7 @@
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
                                 {{#each catNames}}
-                                <option value="{{category}}">{{category}}</option>
+                                <option value="{{@index}}">{{category}}</option>
                                 {{/each}}
                             </select>
                             <br>
