@@ -5,7 +5,7 @@ var db = require("../models");
 var get6 = function(userid, callback) {
   // // we find the user's row and return the relevant columns or arrays of columns
   db.User.findOne({
-    where: { id: userid }
+    where: { id: userid.uid }
   }).then(x => {
     // console.log(x.dataValues);
     let newOb = {

@@ -110,7 +110,7 @@ module.exports = function(app) {
 
     var req = req.body;
     var queryObject = {
-      uid: uid,
+      UserId: uid,
       description: req.description,
       category: req.categoryid,
       amount: req.amount,
@@ -183,7 +183,7 @@ module.exports = function(app) {
     var queryObject = {
       // date:req.dueDate,
       uid: uid,
-      description: req.description,
+      // description: req.description,
       category: req.categoryid,
       capAmount: req.amount
     };

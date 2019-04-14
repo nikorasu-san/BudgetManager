@@ -10,7 +10,7 @@ var get8 = function(userid, callback) {
 
   db.User.findOne({
     where: {
-      id: userid
+      id: userid.uid
     }
   }).then(x => {
     // console.log("returned user object", x.dataValues);
@@ -29,7 +29,7 @@ var get8 = function(userid, callback) {
   });
   db.Event.findAll({
     where: {
-      UserId: userid,
+      UserId: userid.uid,
       date: thismonth
     }
   }).then(y => {
