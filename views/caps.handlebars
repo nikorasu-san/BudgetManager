@@ -23,7 +23,32 @@
                     </div> --}}
                     {{#each data}}
                     <div class="cap-item">
-                        <h5 class="b-text">{{catName}}</h5>
+                        <h5 class="b-text center-align">{{catName}}</h5>
+                        {{!-- bar goes here --}}
+                        <div class="skillbar clearfix " data-percent="{{monthPercent}}">
+                            <div class="skillbar-title" style="background: #d35400;"><span>{{monthPercent}}</span></div>
+                            <div class="skillbar-bar" style="background: #e67e22;"></div>
+                            <div class="skill-bar-percent"></div>
+                        </div>
+                        <div class="row">
+                            {{!-- bar stops --}}
+                            <div class="input-field col s12">
+                                <input disabled value={{monthSpend}} id="disabled" type="text" class="validate">
+                                <label for="disabled">Total Spend this Month</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input disabled value={{catCap}} id="disabled" type="text" class="validate">
+                                <label for="disabled">Budget Amount</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input disabled value={{catWarn}} id="disabled" type="text" class="validate">
+                                <label for="disabled">Warning Amount</label>
+                            </div>
+                        </div>
 
                     </div>
                     {{/each}}
@@ -35,19 +60,21 @@
                             <select name="categoryList" id="spendingList">
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
-                                {{#each cat}}
+                                {{#each catNames}}
                                 <option value="{{category}}">{{category}}</option>
                                 {{/each}}
                             </select>
+                            <br>
                             <div class="input-field s12">
                                 <input type="text" id="targetAmount" tabindex="0" class="spending-input b-text"
                                     placeholder="Enter Target Amount">
-                                <label for="targetAmount" class="spending-label">Target Amount</label>
+                                <label for="targetAmount" class="spending-label b-text">Target Amount</label>
                             </div>
+                            <br>
                             <div class="input-field s12">
                                 <input type="text" id="warningAmount" tabindex="0" class="spending-input b-text"
                                     placeholder="Enter Warning Amount">
-                                <label for="warningAmount" class="spending-label">Warning Amount</label>
+                                <label for="warningAmount" class="spending-label b-text">Warning Amount</label>
                             </div>
 
 
@@ -59,4 +86,7 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="/assets/js/caps.js"></script>
 </body>
