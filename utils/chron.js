@@ -3,9 +3,11 @@
 // use that to run appropriate files as needed
 let fs = require("fs");
 let moment = require("moment");
+var path = require("path");
+var logPath = path.join(__dirname, "./chronLog.txt");
 
 function checkLog(callback) {
-  fs.readFile("./chronLog.txt", "utf8", (err, data) => {
+  fs.readFile(logPath, "utf8", (err, data) => {
     if (err) throw err;
     // console.log(data);
     data = data.split("\n");
@@ -18,10 +20,14 @@ let logDate = moment().format("YYYY-MM-DD hh:mm:ss");
 
 function execute(callback) {
   checkLog(x => {
-    console.log(typeof x);
+    // console.log(typeof x);
     let lastLog = x.substr(0, 10);
     let now = logDate.substr(0, 10);
+    console.log("now", now);
+    console.log("lastLog", lastLog);
     if (now != lastLog) {
+      console.log("kaboom");
+
       writeLog(logDate);
       callback();
     }
