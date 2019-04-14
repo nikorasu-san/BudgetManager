@@ -10,25 +10,25 @@
     <section>
         <div class="container">
             <div class="row">
+                {{!-- Left Panel --}}
                 <div class="col l6 s12">
                     <h3 class="pageSubTitle b-text">View Budgets</h3>
-                    {{!-- <div id="spendingSection">
-                        {{#each all}}
-                        <div class="spending-item">
-                            <p class="spending-text">{{description}}</p>
-                            <span>{{date}} | ${{amount}} </span>
-                            <button class="btn spending-delete">Delete</button>
-                        </div>
-                        {{/each}}
-                    </div> --}}
                     {{#each data}}
                     <div class="cap-item">
-                        <h5 class="b-text center-align">{{catName}}</h5>
-                        {{!-- bar goes here --}}
-                        <div class="skillbar clearfix " data-percent="{{monthPercent}}%">
-                            <div class="skillbar-title" style="background: #ffed78;"></div>
-                            <div class="skillbar-bar" style="background: #142d4c;"></div>
-                            <div class="skill-bar-percent"></div>
+                        <div class="row sel-catName">
+                            <h5 class="b-text center-align">{{catName}}</h5>
+                            {{!-- bar goes here --}}
+                            <div class="skillbar clearfix " data-percent="{{monthPercent}}%"
+                                data-warn-percent="{{warnPercent}}%">
+                                <div class="skillbar-title" style="background: #142d4c;"></div>
+                                <div class="skillbar-bar" style="background: #142d4c;"></div>
+                                <div class="skill-bar-percent">Total Spent {{monthPercent}}%</div>
+                            </div>
+                            <div class="skillbar clearfix " data-percent="{{warnPercent}}%">
+                                <div class="skillbar-title" style="background: #142d4c;"></div>
+                                <div class="skillbar-bar" style="background: #ffed78;"></div>
+                                <div class="skill-bar-percent">Warning at {{warnPercent}}%</div>
+                            </div>
                         </div>
                         <div class="row">
                             {{!-- bar stops --}}
@@ -37,38 +37,43 @@
                                 <label for="disabled">Total Spend this Month</label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row sel-budget">
                             <div class="input-field col s12">
                                 <input disabled value={{catCap}} id="disabled" type="text" class="validate">
                                 <label for="disabled">Budget Amount</label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row sel-warning">
                             <div class="input-field col s12">
                                 <input disabled value={{catWarn}} id="disabled" type="text" class="validate">
                                 <label for="disabled">Warning Amount</label>
                             </div>
                         </div>
+                        <div class="row">
+                            <a id="toBudgetForm" class="btn btn-large bigButton">Add to Form</a>
+
+                        </div>
 
                     </div>
                     {{/each}}
                 </div>
+                {{!-- Right panel --}}
                 <div class="col l6 s12">
                     <h3 class="pageSubTitle b-text">Edit Budgets</h3>
-                    <form id="spendingForm">
+                    <form id="budgetForm" class="cap-item">
                         <div class="input-field s12">
-                            <select name="categoryList" id="spendingList">
+                            <select name="categoryList" id="categoryList">
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
                                 {{#each catNames}}
-                                <option value="{{@index}}">{{category}}</option>
+                                <option data-name="{{category}}" value="{{@index}}">{{category}}</option>
                                 {{/each}}
                             </select>
                             <br>
                             <div class="input-field s12">
                                 <input type="text" id="targetAmount" tabindex="0" class="spending-input b-text"
                                     placeholder="Enter Target Amount">
-                                <label for="targetAmount" class="spending-label b-text">Target Amount</label>
+                                <label for="targetAmount" class="spending-label b-text">Target Budget Amount</label>
                             </div>
                             <br>
                             <div class="input-field s12">
@@ -80,7 +85,8 @@
 
                         </div>
 
-                        <a href="/caps/1" type="submit" class="btn btn-large bigButton">Add to Budget</a>
+                        <a id="updateBudget" href="/caps/1" type="submit" class="btn btn-large bigButton">Update
+                            Budget</a>
                     </form>
                 </div>
             </div>

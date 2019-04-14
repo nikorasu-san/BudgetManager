@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    color: var(--dark-blue);
 }
 
 :root {
@@ -51,7 +52,7 @@ body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
     font-weight: 700;
     text-align: center;
-    color: var(--light-yellow);
+    color: var(--dark-blue);
 }
 
 .link-right a,
@@ -144,7 +145,7 @@ header {
     color: var(--darker-blue);
 }
 
-#spendingForm {
+#spendingForm,#budgetForm {
     background-color: var(--light-yellow);
     padding: 15px;
     border-radius: 5px;
@@ -206,7 +207,7 @@ select {
 
 .dashboard-section,
 .spending-item,
-#spendingForm, .cap-item {
+#spendingForm, .cap-item, .card-panel {
     -webkit-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     -moz-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
@@ -229,13 +230,6 @@ select {
     width: 100vw;
 }
 
-/* .income-card {
-    background-color: var(--light-blue);
-    color: var(--dark-blue)!important;
-    height: 40rem;
-    width: 100%;
-    overflow: auto;
-} */
 
 .profile-card,.income-card {
     background-color: var(--dark-blue);
@@ -246,7 +240,8 @@ select {
 
 }
 
-#profileInfo > .card-panel > input, input[type=text],input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, .input-field>label {
+
+.yellow-text {
     color: var(--light-yellow);
 }
 
@@ -287,7 +282,7 @@ width:110px;
 	font-weight:bold;
 	font-size:13px;
 	color:#ffffff;
-	background:#6adcfa;
+	/* background:#6adcfa; */
 	-webkit-border-top-left-radius:3px;
 	-webkit-border-bottom-left-radius:4px;
 	-moz-border-radius-topleft:3px;
@@ -310,7 +305,7 @@ width:110px;
 	border-bottom-left-radius:3px;
 }
 
-.skillbar-bar {
+.skillbar-bar,.skillbar-bar2 {
 	height:35px;
 	width:0px;
 	background:#6adcfa;
