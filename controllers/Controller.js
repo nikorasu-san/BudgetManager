@@ -127,9 +127,9 @@ module.exports = function(app) {
 
   app.get("/bills/:id", function(req, res) {
     // Route 10
-    var id = req.params.id;
+    var uid = req.params.id;
     queryObject = {
-      id: id
+      uid: uid
     };
     get10(queryObject, function(response) {
       res.render("bills", response);
