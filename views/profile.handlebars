@@ -66,7 +66,7 @@
                                     <label class="yellow-text" for="income">Monthly Income</label>
                                 </div>
                             </div>
-                            <div class="row">
+                            {{!-- <div class="row">
                                 <div class="input-field col s12">
                                     <input id="cat0name" type="text" class="validate yellow-text"
                                         placeholder={{cat0name}}>
@@ -128,14 +128,16 @@
                                         placeholder={{cat8name}}>
                                     <label class="yellow-text" for="cat8name">Add Category</label>
                                 </div>
-                            </div>
+                            </div> --}}
+                            {{#each catNames}}
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="cat9name" type="text" class="validate yellow-text"
-                                        placeholder={{cat9name}}>
-                                    <label class="yellow-text" for="cat9name">Add Category</label>
+                                    <input id="cat{{@index}}name" type="text" class="validate yellow-text"
+                                        placeholder={{cat}}>
+                                    <label class="yellow-text" for="{{cat}}">Add Category</label>
                                 </div>
                             </div>
+                            {{/each}}
                         </div>
                     </div>
                 </div>
@@ -144,6 +146,17 @@
             </div>
             </div>
         </section>
+        <div id="modal1" class="modal" style="bottom:10%;">
+            <div class="modal-content" id="error-content">
+                <h4>Alert</h4>
+            </div>
+            <div id="error-body">
+            </div>
+            <div class="modal-footer">
+                <a href="#close-modal" rel="modal:close" id="deleteConfirm" type="submit"
+                    class="modal-close btn btn-large b-text right-align deleteConfirm">Agree</a>
+            </div>
+        </div>
         <section id="bottom-buttons"><br>
             <div class="row">
                 <div class="col m5"></div>
@@ -165,5 +178,7 @@
     </form>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
     <script src="/assets/js/profile.js"></script>
 </body>
