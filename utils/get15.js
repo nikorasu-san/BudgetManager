@@ -99,9 +99,7 @@ var get15 = function(userid, callback) {
       for (i = 0; i < 10; i++) {
         moneySpent += catTotalFloats[i].catTotalF;
       }
-      // console.log("total spent", moneySpent);
       let moneyLeft = monthlyIncome - moneySpent;
-      console.log("total left", moneyLeft);
 
       catTotalFloats.forEach((v, i) => {
         catCapFloats[i].catCapF = parseInt(
@@ -112,19 +110,62 @@ var get15 = function(userid, callback) {
         //   (catTotalFloats[i].catTotalF * 100) / parseFloat(catWarns[i].catWarn)
         // );
       });
-      let returnOb = {
-        monthlyIncome,
-        catNames,
-        catCaps,
-        // catWarns,
-        catTotalFloats,
-        catCapFloats,
-        // catWarnFloats,
-        moneySpent,
-        moneyLeft
-      };
-      // console.log(returnOb);
-      callback(returnOb);
+      db.Event.findAll({
+        where: {
+          userId: userid.uid,
+          activeFlag: true,
+          billFlag: false,
+          date: thismonth
+        },
+        order: [["date", "DESC"]],
+        limit: 3
+      }).then(z => {
+        let entryArr = [];
+        z.forEach(x => {
+          let entryObject = {};
+          entryObject.date = x.dataValues.date;
+          entryObject.amount = x.dataValues.amount;
+          entryObject.description = x.dataValues.description;
+          entryArr.push(entryObject);
+        });
+        console.log(entryArr);
+        db.Event.findAll({
+          where: {
+            userId: userid.uid,
+            activeFlag: true,
+            billFlag: true,
+            date: thismonth
+          },
+          order: [["date", "DESC"]],
+          limit: 3
+        }).then(z => {
+          let billsArr = [];
+          z.forEach(x => {
+            let billsObject = {};
+            billsObject.date = x.dataValues.date;
+            billsObject.amount = x.dataValues.amount;
+            billsObject.description = x.dataValues.description;
+            billsArr.push(billsObject);
+          });
+          console.log(billsArr);
+
+          let returnOb = {
+            catNames,
+            catCaps,
+            // catWarns,
+            catTotalFloats,
+            catCapFloats,
+            monthlyIncome,
+            // catWarnFloats,
+            moneySpent,
+            moneyLeft,
+            entryArr,
+            billsArr
+          };
+          // console.log(returnOb);
+          callback(returnOb);
+        });
+      });
     });
   });
 };
