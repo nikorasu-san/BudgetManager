@@ -1,6 +1,6 @@
 // Routes
 // =============================================================
-module.exports = function (app) {
+module.exports = function(app) {
   // Require get helping functions
   var get6 = require("./../utils/get6.js");
   var get8 = require("./../utils/get8.js");
@@ -19,30 +19,30 @@ module.exports = function (app) {
 
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
-  app.get("/login", function (req, res) {
+  app.get("/login", function(req, res) {
     // Route 2
     res.render("login");
   });
 
-  app.post("/login", function (req, res) {
+  app.post("/login", function(req, res) {
     // Route 3
     var queryObject = {
       email: req.body.email,
       password: req.body.password
     };
-    post3(queryObject, function (response) {
-      console.log(response)
+    post3(queryObject, function(response) {
+      console.log(response);
       //var id = response.uid;
-      res.json(response)
+      res.json(response);
     });
   });
 
-  app.get("/signup", function (req, res) {
+  app.get("/signup", function(req, res) {
     // Route 4
     res.render("signup");
   });
 
-  app.post("/signup", function (req, res) {
+  app.post("/signup", function(req, res) {
     // Route 5
     console.log("In route 5");
     var queryObject = {
@@ -51,12 +51,12 @@ module.exports = function (app) {
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    post5(queryObject, function (response) {
+    post5(queryObject, function(response) {
       res.send({ id: response });
     });
   });
 
-  app.get("/profile/:id", function (req, res) {
+  app.get("/profile/:id", function(req, res) {
     // Route 6
     var queryObject = {
       uid: req.params.userid
@@ -65,7 +65,7 @@ module.exports = function (app) {
     res.render("profile", data);
   });
 
-  app.put("/profile/:id", function (req, res) {
+  app.put("/profile/:id", function(req, res) {
     // Route 7
     var queryObject = {
       uid: req.params.id,
@@ -78,12 +78,12 @@ module.exports = function (app) {
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catName
     };
-    put7(queryObject, function (response) {
+    put7(queryObject, function(response) {
       res.send(response);
     });
   });
 
-  app.get("/entry/:id", function (req, res) {
+  app.get("/entry/:id", function(req, res) {
     // Route 8
     var uid = req.params.id;
     var req = req.body;
@@ -97,12 +97,12 @@ module.exports = function (app) {
       recurringFlag: req.isRecurring,
       activeFlag: true
     };
-    get8(queryObject, function (response) {
+    get8(queryObject, function(response) {
       res.render("entries", data);
     });
   });
 
-  app.post("/entry", function (req, res) {
+  app.post("/entry", function(req, res) {
     // Route 9
     uid = req.params.userid;
 
@@ -118,23 +118,23 @@ module.exports = function (app) {
       // Bill flag only means that it hasn't happened yet, perhaps we need to generate this from the date
       // billFlag: REVISIT
     };
-    post9(queryObject, function (response) {
+    post9(queryObject, function(response) {
       res.send(response);
     });
   });
 
-  app.get("/bills/:id", function (req, res) {
+  app.get("/bills/:id", function(req, res) {
     // Route 10
     var uid = req.params.id;
     queryObject = {
       uid: uid
     };
-    get10(queryObject, function (response) {
+    get10(queryObject, function(response) {
       res.render("bills", response);
     });
   });
 
-  app.put("/bills", function (req, res) {
+  app.put("/bills", function(req, res) {
     // Route 11
     var req = req.body;
     var queryObject = {
@@ -147,7 +147,7 @@ module.exports = function (app) {
     };
   });
 
-  app.put("/bills/delete/:id", function (req, res) {
+  app.put("/bills/delete/:id", function(req, res) {
     // Route 12
 
     //NG thinks userId not required, eventId is sufficient bc indexed to user
@@ -158,23 +158,23 @@ module.exports = function (app) {
       eid: req.eventid
     };
 
-    put12(queryObject, function (response) {
+    put12(queryObject, function(response) {
       res.send(response);
     });
   });
 
-  app.get("/caps/:id", function (req, res) {
+  app.get("/caps/:id", function(req, res) {
     // Route 13
     var uid = req.params.id;
     var queryObject = {
       uid: uid
     };
-    get13(queryObject, function (response) {
+    get13(queryObject, function(response) {
       res.render("caps", response);
     });
   });
 
-  app.put("/caps/:id", function (req, res) {
+  app.put("/caps/:id", function(req, res) {
     // Route 14
     var uid = req.params.id;
     req = req.body;
@@ -185,12 +185,12 @@ module.exports = function (app) {
       category: req.categoryid,
       capAmount: req.amount
     };
-    put14(queryObject, function (response) {
+    put14(queryObject, function(response) {
       res.send(response);
     });
   });
 
-  app.get("/:id", function (req, res) {
+  app.get("/:id", function(req, res) {
     // Route 15
     var uid = req.params.id;
     var queryObject = {
@@ -199,12 +199,12 @@ module.exports = function (app) {
 
     // temporarily commented to allow server to load dashboard page
 
-    get15(queryObject, function (response) {
-      res.render("dashboard", { response: true });
-    });
+    // get15(queryObject, function (response) {
+    res.render("dashboard", { response: true });
+    // });
   });
 
-  app.get("/caps", function (req, res) {
+  app.get("/caps", function(req, res) {
     // query users database for all categories and their associated caps
     // Proto-data:
     // var data = {catNames = [], catTotals = []}
