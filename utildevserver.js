@@ -93,11 +93,17 @@ app.set("view engine", "handlebars");
 //   warnAmount: 1000
 // };
 
-// Route 13
+// Route 13/16
 //  var uid = req.params.id;
 var queryObject = {
-  uid: 1
+  uid: 5
 };
+
+// // Route 17
+// //  var eid = req.params.id;
+// var queryObject = {
+//   eid: 1
+// };
 
 // // Route 8
 // var uid = 1;
@@ -126,8 +132,8 @@ var queryObject = {
 //   uid: id
 // };
 
-var get13 = require("./utils/get13.js");
-get13(queryObject, function(res) {
+var put16 = require("./utils/put16.js");
+put16(queryObject, function(res) {
   console.log("server", res);
 });
 
