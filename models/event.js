@@ -47,13 +47,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   // 1 user to many events
-  // Event.associate = function(models) {
-  //   Event.belongsTo(models.User, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+  Event.associate = function(models) {
+    Event.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Event;
 };

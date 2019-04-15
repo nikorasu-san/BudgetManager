@@ -2,6 +2,8 @@ var db = require("../models");
 // function
 
 var put7 = function(entryObject, callback) {
+  // // for the profile page update we will first send the current information, then even if nothing is changed we will rewrite most of the row,
+  // // because at our scale, dev time is worth more than computational efficiency
   let uid = entryObject.uid;
   let insertOb = {
     preferredName: entryObject.preferredName,
@@ -28,6 +30,7 @@ var put7 = function(entryObject, callback) {
       id: uid
     }
   }).then(function(dbPost) {
+    // // "success is the number of rows changed (1)"
     callback(dbPost);
   });
 };

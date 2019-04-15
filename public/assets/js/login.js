@@ -3,7 +3,8 @@ $(document).ready(function() {
   // Check to see if the user has a login id.
 
   if (uid) {
-    console.log("I found a cookie!", uid);
+    document.location.href = "/" + uid;
+    // Code to redirect them to the dashboard.
   } else {
     $(document).on("click", "#loginbtn", function() {
       let email = $("#email").val();
@@ -55,7 +56,8 @@ $(document).ready(function() {
         $.post("/signup", userDetails).then(function(data) {
           if (data.id) {
             setCookie(data.id);
-            window.location.href = "/";
+            uid = checkCookie();
+            window.location.href = "/" + uid;
           } else if (data.error) {
             let message = data.error;
             alert(message);

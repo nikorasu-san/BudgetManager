@@ -50,6 +50,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL(10, 2),
       defaultValue: 1000
     },
+    cat0warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 800
+    },
     // The other categories are optional, for slicing the pie (chart)
     cat1name: DataTypes.STRING,
     cat1cap: DataTypes.DECIMAL(10, 2),
@@ -89,7 +93,7 @@ module.exports = function(sequelize, DataTypes) {
     // console.log("hello", models);
 
     User.hasMany(models.Event, {
-      onDelete: "cascade"
+      // onDelete: "cascade"
     });
   };
 

@@ -5,7 +5,7 @@ module.exports = function(app) {
   var get6 = require("./../utils/get6.js");
   var get8 = require("./../utils/get8.js");
   var get10 = require("./../utils/get10.js");
-  // var get13 = require("./../utils/get13.js")
+  var get13 = require("./../utils/get13.js");
 
   // Require post helping functions
   var post3 = require("./../utils/post3.js");
@@ -14,8 +14,8 @@ module.exports = function(app) {
 
   // Require put helping functions
   var put7 = require("./../utils/put7.js");
-  // var put12 = require("./../utils/put12.js");
-  // var put14 = require("./../utils/put14.js");
+  var put12 = require("./../utils/put12.js");
+  var put14 = require("./../utils/put14.js");
 
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
@@ -111,7 +111,7 @@ module.exports = function(app) {
 
     var req = req.body;
     var queryObject = {
-      uid: uid,
+      UserId: uid,
       description: req.description,
       category: req.categoryid,
       amount: req.amount,
@@ -128,9 +128,9 @@ module.exports = function(app) {
 
   app.get("/bills/:id", function(req, res) {
     // Route 10
-    var id = req.params.id;
+    var uid = req.params.id;
     queryObject = {
-      id: id
+      uid: uid
     };
     get10(queryObject, function(response) {
       res.render("bills", response);
@@ -152,10 +152,12 @@ module.exports = function(app) {
 
   app.put("/bills/delete/:id", function(req, res) {
     // Route 12
-    var uid = req.params.id;
+
+    //NG thinks userId not required, eventId is sufficient bc indexed to user
+    // var uid = req.params.id
     var req = req.body;
     var queryObject = {
-      uid: uid,
+      // uid:uid,
       eid: req.eventid
     };
 
@@ -179,10 +181,10 @@ module.exports = function(app) {
     // Route 14
     var uid = req.params.id;
     req = req.body;
-    var querObject = {
+    var queryObject = {
       // date:req.dueDate,
       uid: uid,
-      description: req.description,
+      // description: req.description,
       category: req.categoryid,
       capAmount: req.amount
     };
@@ -191,19 +193,19 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/", function(req, res) {
+  app.get("/:id", function(req, res) {
     // Route 15
     var id = req.params.id;
 
-    // We will need the main dashboard page to send across the id. This will likely be in local storage.
+  app.get("/:id", function(req, res) {
+    // Route 13
+    var uid = req.params.id;
     var queryObject = {
-      uid: id
+      uid: uid
     };
-    var response = true;
-    res.render("dashboard", response);
-    // get15(queryObject, function(response) {
-    //   res.render("dashboard", response);
-    // });
+    get15(queryObject, function(response) {
+      res.render("dashboard", response);
+    });
   });
 
   app.get("/caps", function(req, res) {
