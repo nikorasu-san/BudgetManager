@@ -1,13 +1,22 @@
+// $(document).ready(function () {
+// if cookies or local storage isn't figured out
+// console.log(window.location.href)
+// console.log(window.location.href.split("/"))
+// let windowArray = window.location.href.split("/");
+// let uid = windowArray[windowArray.length - 1]
+// console.log(uid)
 $(document).ready(function () {
-    // if cookies or local storage isn't figured out
-    // console.log(window.location.href)
-    // console.log(window.location.href.split("/"))
-    // let windowArray = window.location.href.split("/");
-    // let uid = windowArray[windowArray.length - 1]
-    // console.log(uid)
+    var uid;
+    checkCookie(function (data) {
+        uid = data;
+    });
+    if (!uid) {
+        document.location.href = "/login";
+    }
 
-    let uid = localStorage.getItem("budget_user_id")
-    console.log(uid)
+
+    // let uid = localStorage.getItem("budget_user_id")
+    // console.log(uid)
 
 
 
@@ -115,7 +124,39 @@ $(document).ready(function () {
             }
         })
 
+        // let updateDetails = {
+        //     preferredName: preferredName,
+        //     email: email,
+        //     phone: phone,
+        //     password: password,
+        //     monthlyIncome: income,
+        //     cat0name: cat0name,
+        //     cat1name: cat1name,
+        //     cat2name: cat2name,
+        //     cat3name: cat3name,
+        //     cat4name: cat4name,
+        //     cat5name: cat5name,
+        //     cat6name: cat6name,
+        //     cat7name: cat7name,
+        //     cat8name: cat8name,
+        //     cat9name: cat9name
+        // };
+        // console.log(updateDetails);
+        // // console.log("email: ", email)
+        // //$.put("/profile/1", updateDetails)
+        // $.ajax({
+        //     url: "/profile/" + uid,
+        //     method: "PUT",
+        //     data: updateDetails
+        // }).then(function (response) {
+        //     if (response.data) {
+        //         alert("Updates saved.");
+        //         location.replace("/" + uid);
+        //     } else {
+        //         alert("Data not saved.");
+        //     }
     });
+
 
     $(document).on("click", "#profileDelete", function (event) {
         event.preventDefault()

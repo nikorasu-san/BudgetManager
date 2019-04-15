@@ -32,9 +32,9 @@ module.exports = function (app) {
       password: req.body.password
     };
     post3(queryObject, function (response) {
-      console.log(response)
+      console.log(response);
       //var id = response.uid;
-      res.json(response)
+      res.json(response);
     });
   });
 
@@ -45,6 +45,7 @@ module.exports = function (app) {
 
   app.post("/signup", function (req, res) {
     // Route 5
+    console.log("In route 5");
     var queryObject = {
       preferredName: req.body.preferredName,
       email: req.body.email,
@@ -79,9 +80,9 @@ module.exports = function (app) {
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catNames
     };
-    console.log(queryObject)
+    // console.log(queryObject)
     put7(queryObject, function (response) {
-      console.log(response)
+      // console.log(response)
       res.send(response);
     });
   });
@@ -101,7 +102,7 @@ module.exports = function (app) {
       activeFlag: true
     };
     get8(queryObject, function (response) {
-      res.render("entries", data);
+      res.render("entries", response);
     });
   });
 
@@ -195,18 +196,20 @@ module.exports = function (app) {
 
   app.get("/:id", function (req, res) {
     // Route 15
-    var id = req.params.id;
-
-    // We will need the main dashboard page to send across the id. This will likely be in local storage.
+    var uid = req.params.id;
     var queryObject = {
-      uid: id
+      uid: uid
     };
 
     // temporarily commented to allow server to load dashboard page
 
-    // get15(queryObject, function (response) {
-    res.render("dashboard", { response: true });
-    //});
+    get15(queryObject, function (response) {
+      res.render("dashboard", { response: true });
+    });
+  });
+
+  app.get("/", function (req, res) {
+    res.render("dashboard");
   });
 
   app.get("/caps", function (req, res) {
