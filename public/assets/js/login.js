@@ -5,7 +5,17 @@ $(document).ready(function () {
     // if (uid){
     //     // Code to redirect them to the dashboard.
     // }
-    $(document).on("click", "#loginbtn", function () {
+
+    // initialize modal
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+    // var instance = M.Modal.getInstance(elem);
+    //$('.modal').modal();
+
+
+
+    $(document).on("click", "#loginbtn", function (event) {
+        event.preventDefault();
         let email = $("#email").val();
         let password = $("#password").val();
 
@@ -21,8 +31,19 @@ $(document).ready(function () {
             };
             console.log(userDetails);
             $.post("/login", userDetails).then(function (data) {
-                if (data) {
-                    window.location.href = "/dashboard";
+                if (data.error) {
+                    alert(data.error)
+                    //modal attempts
+                    $('#error-content').append("<p>" + data.error + "</p>");
+                    // instances.open();
+                    $.get('#modal1').modal();
+
+
+
+                } else if (data.id) {
+                    console.log(data.success)
+                    location.replace("/" + data.id);
+                    localStorage.setItem("budget_user_id", data.id)
                 }
             });
             // test if we can redirect on front end
@@ -30,12 +51,15 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on("click", "#newUser", function () {
+    $(document).on("click", "#newUser", function (event) {
+        event.preventDefault()
         let preferredName = $("#preferredName").val();
         let email = $("#email").val();
         let phoneNumber = $("#phoneNumber").val();
+        if (phoneNumber.length < 10) {
+            phoneNumber = 5555555555;
+        }
         let password = $("#password").val();
-        console.log("name:", preferredName);
 
         // validate if email is not blank
         if (email.trim() === "") {
@@ -52,9 +76,11 @@ $(document).ready(function () {
                 password: password
             };
             console.log(newUser);
-            $.post("/signup", userDetails).then(function (data) {
+            $.post("/signup", newUser).then(function (data) {
+                console.log("data: ", data)
                 if (data.id) {
-                    window.location.href = "/dashboard";
+                    localStorage.setItem("budget_user_id", data.id);
+                    location.replace("/" + data.id)
                 } else if (data.error) {
                     let message = data.error;
                     alert(message);

@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    // if cookies or local storage isn't figured out
+    console.log(window.location.href)
+    console.log(window.location.href.split("/"))
+    let windowArray = window.location.href.split("/");
+    let uid = windowArray[windowArray.length - 1]
+    console.log(uid)
+
+
 
     // define function for validating blank updates
     function nullChecker(field, tag) {
@@ -92,13 +100,13 @@ $(document).ready(function () {
         // console.log("email: ", email)
         //$.put("/profile/1", updateDetails)
         $.ajax({
-            url: "/profile/1",
+            url: "/profile/" + uid,
             method: "PUT",
             data: updateDetails
         }).then(function (response) {
             if (response.data) {
                 alert("Updates saved.");
-                location.replace("/1");
+                location.replace("/" + uid);
             } else {
                 alert("Data not saved.")
             }
@@ -111,7 +119,7 @@ $(document).ready(function () {
         let doubleConfirm = confirm("Are you sure that you want to delete this profile?")
         if (doubleConfirm) {
             $.ajax({
-                url: "/profile/delete/1",
+                url: "/profile/delete/" + uid,
                 method: "PUT",
                 // data: 1
             }).then(function (response) {
