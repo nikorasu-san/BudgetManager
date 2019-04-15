@@ -5,11 +5,9 @@ $(document).ready(function() {
   });
   // Check to see if the user has a login id.
 
-  console.log("User ID:", uid);
-  console.log(uid === false);
   if (uid) {
     document.location.href = "/" + uid;
-    console.log("User ID:", uid);
+
     // Code to redirect them to the dashboard.
   } else {
     $(document).on("click", "#loginbtn", function() {
@@ -29,7 +27,8 @@ $(document).ready(function() {
         console.log(userDetails);
         $.post("/login", userDetails).then(function(data) {
           if (data) {
-            window.location.href = "/dashboard";
+            setCookie(data.id);
+            window.location.href = "/" + data.id;
           }
         });
         // test if we can redirect on front end

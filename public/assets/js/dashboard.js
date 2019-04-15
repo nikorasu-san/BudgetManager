@@ -1,8 +1,15 @@
 //get all the information and format it
 $(document).ready(function() {
-  var id = 1;
+  var uid;
+  checkCookie(function(data) {
+    uid = data;
+  });
+  if (!uid) {
+    document.location.href = "/login";
+  }
+
   //get the information from the api to the dashboard
-  $.get("/api/dashboard/" + id).then(function(data) {
+  $.get("/api/dashboard/" + uid).then(function(data) {
     pieChart(
       data.cat0name,
       data.cat1name,

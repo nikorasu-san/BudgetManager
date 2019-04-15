@@ -98,7 +98,7 @@ module.exports = function(app) {
       activeFlag: true
     };
     get8(queryObject, function(response) {
-      res.render("entries", data);
+      res.render("entries", response);
     });
   });
 
