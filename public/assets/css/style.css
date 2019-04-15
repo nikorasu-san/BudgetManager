@@ -27,7 +27,7 @@ body {
 }
 
 .b-text {
-    color: var(--dark-blue)!important;
+    color: var(--dark-blue) !important;
 }
 
 .login-button {
@@ -87,6 +87,11 @@ body {
     border-radius: 5px;
 }
 
+.btn-large:hover {
+    color: var(--light-yellow);
+    background-color: var(--dark-blue);
+}
+
 #dashboardBody {
     background-color: var(--light-blue);
 }
@@ -103,6 +108,24 @@ body {
     margin-bottom: 10px;
 }
 
+.dashboard-bills {
+    border-bottom: 1px solid var(--dark-blue);
+    margin-bottom: 5px;
+}
+
+.d-bills-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.d-bills-date {
+    float: right;
+}
+
+#capsInfo {
+    margin-left: 11%;
+}
+
 header {
     background-color: var(--dark-blue);
     padding-bottom: 1rem;
@@ -114,11 +137,12 @@ header {
 }
 
 #spendingSection {
-    width: 80%;
+    width: 90%;
     margin-top: .5rem;
 }
 
-.spending-item, .cap-item {
+.spending-item,
+.cap-item {
     background-color: var(--light-yellow);
     padding: 10px 25px 45px 25px;
     border-radius: 5px;
@@ -136,6 +160,11 @@ header {
     border-radius: 5px;
 }
 
+.spending-delete:hover {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+}
+
 ::placeholder {
     color: var(--dark-blue);
 }
@@ -145,7 +174,8 @@ header {
     color: var(--darker-blue);
 }
 
-#spendingForm,#budgetForm {
+#spendingForm,
+#budgetForm {
     background-color: var(--light-yellow);
     padding: 15px;
     border-radius: 5px;
@@ -164,15 +194,26 @@ header {
     background-color: var(--dark-blue);
 }
 
+.datepicker-cancel,
+.datepicker-done {
+    color: var(--dark-blue);
+}
+
+.datepicker-table td.is-today {
+    color: var(--light-yellow);
+    background-color: var(--dark-blue);
+}
+
 select {
     display: block;
     background-color: var(--light-yellow);
 }
 
-.bill-section {
+.bill-entry {
     background-color: var(--light-yellow);
     border-radius: 5px;
     margin-bottom: 20px;
+
 }
 
 .bill-entry-title {
@@ -207,7 +248,10 @@ select {
 
 .dashboard-section,
 .spending-item,
-#spendingForm, .cap-item, .card-panel {
+#spendingForm,
+.bill-entry,
+.cap-item,
+.card-panel {
     -webkit-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     -moz-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
@@ -223,17 +267,18 @@ select {
     width: 100vw;
 }
 
-#profileIncome{
+#profileIncome {
     background-color: var(--light-yellow);
-    color: var(--dark-blue)!important;
+    color: var(--dark-blue) !important;
     height: 100vh;
     width: 100vw;
 }
 
 
-.profile-card,.income-card {
+.profile-card,
+.income-card {
     background-color: var(--dark-blue);
-    color: var(--light-yellow)!important;
+    color: var(--light-yellow) !important;
     height: 40rem;
     width: 100%;
     overflow: auto;
@@ -246,83 +291,89 @@ select {
 }
 
 .profile-card ::placeholder {
-    color: var(--light-yellow)!important;
+    color: var(--light-yellow) !important;
 }
+
 .income-card ::placeholder {
-    color: var(--light-yellow)!important;
+    color: var(--light-yellow) !important;
 }
 
 .skillbar {
-	position:relative;
-	display:block;
-	margin-bottom:15px;
-	width:100%;
-	background:#eee;
-	height:35px;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	-webkit-transition:0.4s linear;
-	-moz-transition:0.4s linear;
-	-ms-transition:0.4s linear;
-	-o-transition:0.4s linear;
-	transition:0.4s linear;
-	-webkit-transition-property:width, background-color;
-	-moz-transition-property:width, background-color;
-	-ms-transition-property:width, background-color;
-	-o-transition-property:width, background-color;
-	transition-property:width, background-color;
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    width: 100%;
+    background: #eee;
+    height: 35px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -ms-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+    transition: 0.4s linear;
+    -webkit-transition-property: width, background-color;
+    -moz-transition-property: width, background-color;
+    -ms-transition-property: width, background-color;
+    -o-transition-property: width, background-color;
+    transition-property: width, background-color;
 }
 
 .skillbar-title {
-	position:absolute;
-	top:0;
-	left:0;
-width:110px;
-	font-weight:bold;
-	font-size:13px;
-	color:#ffffff;
-	/* background:#6adcfa; */
-	-webkit-border-top-left-radius:3px;
-	-webkit-border-bottom-left-radius:4px;
-	-moz-border-radius-topleft:3px;
-	-moz-border-radius-bottomleft:3px;
-	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    font-weight: bold;
+    font-size: 13px;
+    color: #ffffff;
+    /* background:#6adcfa; */
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 .skillbar-title span {
-	display:block;
-	background:rgba(0, 0, 0, 0.1);
-	padding:0 20px;
-	height:35px;
-	line-height:35px;
-	-webkit-border-top-left-radius:3px;
-	-webkit-border-bottom-left-radius:3px;
-	-moz-border-radius-topleft:3px;
-	-moz-border-radius-bottomleft:3px;
-	border-top-left-radius:3px;
-	border-bottom-left-radius:3px;
+    display: block;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+    height: 35px;
+    line-height: 35px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
-.skillbar-bar,.skillbar-bar2 {
-	height:35px;
-	width:0px;
-	background:#6adcfa;
-	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
+.skillbar-bar,
+.skillbar-bar2 {
+    height: 35px;
+    width: 0px;
+    background: #6adcfa;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
 }
 
 .skill-bar-percent {
-	position:absolute;
-	right:10px;
-	top:0;
-	font-size:11px;
-	height:35px;
-	line-height:35px;
-	color:#ffffff;
-	color:rgba(0, 0, 0, 0.4);
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 11px;
+    height: 35px;
+    line-height: 35px;
+    color: #ffffff;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.dash-catName {
+    width: 90%;
 }
 
 .modal,.modal-footer{

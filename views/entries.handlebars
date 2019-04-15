@@ -17,7 +17,7 @@
                         <div class="spending-item">
                             <p class="spending-text">{{description}}</p>
                             <span>{{date}} | ${{amount}} </span>
-                            <button class="btn spending-delete">Delete</button>
+                            <button class="btn spending-delete" data-entryId="{{id}}">Delete</button>
                         </div>
                         {{/each}}
                     </div>
@@ -41,7 +41,7 @@
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
                                 {{#each cat}}
-                                <option value="{{category}}">{{category}}</option>
+                                <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
 
@@ -49,17 +49,18 @@
                         <div class="input-field s12">
                             <p>
                                 <label class="spending-label">
-                                    <input type="checkbox" value="bill" id="isBill" />
+                                    <input type="checkbox" value="is Recurring" id="isBill" />
                                     <span>Is This Recurring?</span>
                                 </label>
                             </p>
                         </div>
 
-                        <input type="text" class="datepicker" placeholder="Enter purchase date">
-                        <a href="/entry" type="submit" class="btn btn-large bigButton">Add to Spending</a>
+                        <input type="text" class="datepicker" id="date" placeholder="Enter purchase date">
+                        <button type="submit" class="btn btn-large bigButton">Add to Spending</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    <script src="/assets/js/entries.js"></script>
 </body>
