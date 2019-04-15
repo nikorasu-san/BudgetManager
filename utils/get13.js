@@ -149,13 +149,13 @@ var get13 = function(userid, callback) {
         // console.log("float", i, parseFloat(catCaps[i]));
         // console.log(v);
 
-        catCapFloats[i].catCapF = (
-          v.catTotalF / parseFloat(catCaps[i].catCap)
-        ).toFixed(2);
+        catCapFloats[i].catCapF = parseInt(
+          (v.catTotalF * 100) / parseFloat(catCaps[i].catCap)
+        );
 
-        catWarnFloats[i].catWarnF = (
-          v.catTotalF / parseFloat(catWarns[i].catWarn)
-        ).toFixed(3);
+        catWarnFloats[i].catWarnF = parseInt(
+          (v.catTotalF * 100) / parseFloat(catWarns[i].catWarn)
+        );
       });
       // // returning identically indexed arrays of category names, budget caps, warning levels,
       // // totals, and totals' percentage of budget caps and warning levels
