@@ -197,7 +197,8 @@ module.exports = function (app) {
 
   app.get("/:id", function (req, res) {
     // Route 15
-    var uid = req.params.id;
+    // making the UID a number seemed to resolve query issues
+    var uid = parseInt(req.params.id);
     var queryObject = {
       uid: uid
     };
@@ -205,7 +206,7 @@ module.exports = function (app) {
     // temporarily commented to allow server to load dashboard page
 
     get15(queryObject, function (response) {
-      res.render("dashboard", { response: true });
+      res.render("dashboard", response);
     });
   });
 

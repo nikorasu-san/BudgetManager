@@ -14,6 +14,9 @@ $(document).ready(function () {
         document.location.href = "/login";
     }
 
+    $(".dashboardLink").attr("href", `/${uid}`)
+    $(".profileLink").attr("href", `/profile/${uid}`)
+
 
     // let uid = localStorage.getItem("budget_user_id")
     // console.log(uid)
