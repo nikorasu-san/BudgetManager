@@ -19,6 +19,6 @@ var put14 = function(entryObject, callback) {
   });
 };
 module.exports = put14;
-// // N.B.: dynamic property computation examples from  stack overflow comment by – Bergi May 31 '16 at 14:14
+// // N.B.: dynamic property computation examples from stack overflow comment by – Bergi May 31 '16 at 14:14
 // // (https://stackoverflow.com/questions/33194138/template-string-as-object-property-name)
 // // "Either var obj = {[`${dyanmicKey}`]: val} or just var obj = {[dyanmicKey]: val}"
