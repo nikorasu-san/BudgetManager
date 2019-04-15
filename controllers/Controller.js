@@ -204,6 +204,10 @@ module.exports = function(app) {
     // });
   });
 
+  app.get("/", function(req, res) {
+    res.render("dashboard");
+  });
+
   app.get("/caps", function(req, res) {
     // query users database for all categories and their associated caps
     // Proto-data:
