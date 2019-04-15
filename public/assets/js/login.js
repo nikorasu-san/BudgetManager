@@ -18,13 +18,13 @@ $(document).ready(function () {
             // open error modal
             $('.modal').modal();
             $('#error-body').empty()
-            $('#error-body').append("<p>Please add in an email</p>")
+            $('#error-body').append("<p class='modal-p'>Please add in an email</p>")
             // alert("Please add in an email");
         } else if (password.length < 6) {
             // open error modal
             $('.modal').modal();
             $('#error-body').empty()
-            $('#error-body').append("<p>Please enter a password of at least 6 characters</p>")
+            $('#error-body').append("<p class='modal-p'>Please enter a password of at least 6 characters</p>")
             //alert("Please enter a password of at least 6 characters");
         } else {
             let userDetails = {
@@ -39,7 +39,7 @@ $(document).ready(function () {
                     // open error modal
                     $('.modal').modal();
                     $('#error-body').empty();
-                    $('#error-body').append("<p>" + data.error + "</p>");
+                    $('#error-body').append("<p class='modal-p'>" + data.error + "</p>");
 
                 } else if (data.uid) {
                     console.log(data.success)
@@ -68,19 +68,19 @@ $(document).ready(function () {
             // open error modal
             $('.modal').modal();
             $('#error-body').empty()
-            $('#error-body').append("<p>Please add in an email</p>");
+            $('#error-body').append("<p class='modal-p'>Please add in an email</p>");
             //alert("Please add in an email");
         } else if (preferredName.trim() === "") {
             // open error modal
             $('.modal').modal();
             $('#error-body').empty()
-            $('#error-body').append("<p>Please add in a name</p>");
+            $('#error-body').append("<p class='modal-p'>Please add in a name</p>");
             //alert("Please add in a name");
         } else if (password.length < 6) {
             // open error modal
             $('.modal').modal();
             $('#error-body').empty()
-            $('#error-body').append("<p>Please enter a password of at least 6 characters</p>");
+            $('#error-body').append("<p class='modal-p'>Please enter a password of at least 6 characters</p>");
             //alert("Please enter a password of at least 6 characters");
         } else {
             let newUser = {
@@ -101,13 +101,13 @@ $(document).ready(function () {
                     // open error modal
                     $('.modal').modal();
                     $('#error-body').empty()
-                    $('#error-body').append(`<p>${message}</p>`);
+                    $('#error-body').append(`<p class="modal-p">${message}</p>`);
                     //alert(message);
                 } else {
                     // open error modal
                     $('.modal').modal();
                     $('#error-body').empty()
-                    $('#error-body').append(`<p>There was an error with this request. Please make sure you have filled out the form correctly.</p>`);
+                    $('#error-body').append(`<p class="modal-p">There was an error with this request. Please make sure you have filled out the form correctly.</p>`);
                 }
             });
         }

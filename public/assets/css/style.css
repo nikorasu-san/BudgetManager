@@ -324,3 +324,11 @@ width:110px;
 	color:#ffffff;
 	color:rgba(0, 0, 0, 0.4);
 }
+
+.modal,.modal-footer{
+    background-color: var(--yellow)!important;
+}
+
+.modal-p {
+    padding:20px;
+}

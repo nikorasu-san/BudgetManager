@@ -16,6 +16,7 @@ module.exports = function (app) {
   var put7 = require("./../utils/put7.js");
   var put12 = require("./../utils/put12.js");
   var put14 = require("./../utils/put14.js");
+  var put16 = require("./../utils/put16.js");
 
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
@@ -58,10 +59,11 @@ module.exports = function (app) {
   app.get("/profile/:id", function (req, res) {
     // Route 6
     var queryObject = {
-      uid: req.params.userid
+      uid: req.params.id
     };
-
-    res.render("profile", data);
+    get6(queryObject, function (data) {
+      res.render("profile", data);
+    });
   });
 
   app.put("/profile/:id", function (req, res) {
@@ -75,9 +77,11 @@ module.exports = function (app) {
       emailFlag: req.body.emailFlag,
       phone: req.body.phoneNumber,
       phoneFlag: req.body.phoneFlag,
-      catNames: req.body.catName
+      catNames: req.body.catNames
     };
+    console.log(queryObject)
     put7(queryObject, function (response) {
+      console.log(response)
       res.send(response);
     });
   });
@@ -200,9 +204,9 @@ module.exports = function (app) {
 
     // temporarily commented to allow server to load dashboard page
 
-    get15(queryObject, function (response) {
-      res.render("dashboard", { response: true });
-    });
+    // get15(queryObject, function (response) {
+    res.render("dashboard", { response: true });
+    //});
   });
 
   app.get("/caps", function (req, res) {
@@ -213,4 +217,16 @@ module.exports = function (app) {
     // }
     res.render("/caps", data);
   });
+
+  app.put("/profile/delete/:id", function (req, res) {
+    //Route 16
+    var queryObject = {
+      uid: req.params.id
+    };
+
+    put16(queryObject, function (response) {
+      // returns [1] if successful edit
+      res.send(response);
+    });
+  })
 };

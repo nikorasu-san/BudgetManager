@@ -1,23 +1,21 @@
 $(document).ready(function () {
     // if cookies or local storage isn't figured out
-    console.log(window.location.href)
-    console.log(window.location.href.split("/"))
-    let windowArray = window.location.href.split("/");
-    let uid = windowArray[windowArray.length - 1]
+    // console.log(window.location.href)
+    // console.log(window.location.href.split("/"))
+    // let windowArray = window.location.href.split("/");
+    // let uid = windowArray[windowArray.length - 1]
+    // console.log(uid)
+
+    let uid = localStorage.getItem("budget_user_id")
     console.log(uid)
 
 
 
-    // define function for validating blank updates
-    function nullChecker(field, tag) {
-        if (!field) {
-            field = $(tag).attr("placeholder")
-        }
-        console.log("field: ", field)
-    }
+
 
     $(document).on("click", "#profileEdit", function () {
         // define field answers as new answer || placeholder from database
+        // performing a validation as conditionals to prevent synchronicity issue with function
         let preferredName = $("#preferredName").val();
         if (!preferredName) {
             preferredName = $("#preferredName").attr("placeholder")
@@ -85,18 +83,19 @@ $(document).ready(function () {
             phone: phone,
             password: password,
             monthlyIncome: income,
-            cat0name: cat0name,
-            cat1name: cat1name,
-            cat2name: cat2name,
-            cat3name: cat3name,
-            cat4name: cat4name,
-            cat5name: cat5name,
-            cat6name: cat6name,
-            cat7name: cat7name,
-            cat8name: cat8name,
-            cat9name: cat9name
+            catNames: [cat0name, cat1name, cat2name, cat3name, cat4name, cat5name, cat6name, cat7name, cat8name, cat9name]
+            // cat0name: cat0name,
+            // cat1name: cat1name,
+            // cat2name: cat2name,
+            // cat3name: cat3name,
+            // cat4name: cat4name,
+            // cat5name: cat5name,
+            // cat6name: cat6name,
+            // cat7name: cat7name,
+            // cat8name: cat8name,
+            // cat9name: cat9name
         }
-        console.log(updateDetails)
+        console.log(updateDetails.catNames)
         // console.log("email: ", email)
         //$.put("/profile/1", updateDetails)
         $.ajax({
@@ -104,33 +103,56 @@ $(document).ready(function () {
             method: "PUT",
             data: updateDetails
         }).then(function (response) {
-            if (response.data) {
-                alert("Updates saved.");
+            if (response[0] === 1) {
+                // alert("Updates saved.");
                 location.replace("/" + uid);
             } else {
-                alert("Data not saved.")
+                // alert("Data not saved.")
+                // open error modal
+                $('.modal').modal();
+                $('#error-body').empty()
+                $('#error-body').append(`<p class="modal-p">Update not saved.</p>`);
             }
         })
 
     });
 
-    $(document).on("click", "#profileDelete", function () {
-        // sent a put request with id.
-        let doubleConfirm = confirm("Are you sure that you want to delete this profile?")
-        if (doubleConfirm) {
+    $(document).on("click", "#profileDelete", function (event) {
+        event.preventDefault()
+        let message = "Are you sure that you want to delete this profile?";
+        // deleteConfirm
+
+        // open error modal
+        $('.modal').modal();
+        $('#error-body').empty()
+        $('#error-body').append(`<p class="modal-p">${message}</p>`);
+
+        $(document).on("click", "#deleteConfirm", function (event) {
+            event.preventDefault();
+            console.log("clicked")
+            // sent a put request with id.
+
             $.ajax({
                 url: "/profile/delete/" + uid,
-                method: "PUT",
-                // data: 1
+                method: "PUT"
             }).then(function (response) {
-                if (response.data) {
-                    alert("Profile deleted.");
+                console.log("response", response)
+                if (response[0] === 1) {
+                    // log if successful delete
+                    console.log("Profile deactivated.");
+                    // send user to login
                     location.replace("/login");
                 } else {
-                    alert("Data not saved.")
+                    //alert("Profile was not deleted");
+                    $('.modal').modal();
+                    $('#error-body').empty()
+                    $('#error-body').append(`<p class="modal-p">This profile was not deleted.</p>`);
                 }
             })
-        }
+
+        })
+
+
 
     })
 
