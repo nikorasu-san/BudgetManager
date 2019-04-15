@@ -93,11 +93,11 @@ app.set("view engine", "handlebars");
 //   warnAmount: 1000
 // };
 
-// Route 13/16
-//  var uid = req.params.id;
-var queryObject = {
-  uid: 5
-};
+// // Route 13/16
+// //  var uid = req.params.id;
+// var queryObject = {
+//   uid: 5
+// };
 
 // // Route 17
 // //  var eid = req.params.id;
@@ -125,15 +125,15 @@ var queryObject = {
 //   uid: id
 // };
 
-// // Route 15
-// var id = 1;
-// // We will need the main dashboard page to send across the id. This will likely be in local storage.
-// var queryObject = {
-//   uid: id
-// };
+// Route 15
+var id = 1;
+// We will need the main dashboard page to send across the id. This will likely be in local storage.
+var queryObject = {
+  uid: id
+};
 
-var put16 = require("./utils/put16.js");
-put16(queryObject, function(res) {
+var get15 = require("./utils/get15.js");
+get15(queryObject, function(res) {
   console.log("server", res);
 });
 
