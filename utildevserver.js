@@ -113,14 +113,21 @@ var queryObject = {
 // //    activeFlag: true
 // //  };
 
-// // Route 10
-// var id = 1;
+// // // Route 10
+// var id = 4;
 // queryObject = {
-//   id: id
+//   uid: id
 // };
 
-var get13 = require("./utils/get13.js");
-get13(queryObject, function(res) {
+// // Route 15
+// var id = 1;
+// // We will need the main dashboard page to send across the id. This will likely be in local storage.
+// var queryObject = {
+//   uid: id
+// };
+
+var get10 = require("./utils/get10.js");
+get10(queryObject, function(res) {
   console.log("server", res);
 });
 
