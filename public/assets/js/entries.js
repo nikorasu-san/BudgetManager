@@ -1,13 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var uid;
-  checkCookie(function(data) {
+  checkCookie(function (data) {
     uid = data;
   });
   if (!uid) {
     document.location.href = "/login";
   }
 
-  $("#spendingForm").on("submit", function(e) {
+  $(".dashboardLink").attr("href", `/${uid}`)
+  $(".profileLink").attr("href", `/profile/${uid}`)
+
+  $("#spendingForm").on("submit", function (e) {
     var description = $("#desc").val();
     var amount = $("#amount").val();
     var category = $("#spendingList option:selected").val();
@@ -34,18 +37,18 @@ $(document).ready(function() {
     console.log("it works!");
     console.log(data);
 
-    $.post("/entry", data).then(function(data) {
+    $.post("/entry", data).then(function (data) {
       console.log("success!");
     });
   });
 
-  $(".spending-delete").on("click", function() {
+  $(".spending-delete").on("click", function () {
     var id = $(this).attr("data-entryId");
     console.log(id);
 
     $.ajax(`/entry/delete/${id}`, {
       type: "PUT"
-    }).then(function() {
+    }).then(function () {
       console.log("deleted bill id " + id);
     });
   });
