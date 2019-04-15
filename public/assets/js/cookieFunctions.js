@@ -4,6 +4,7 @@
 
 // Check if our cookie exists. If it does, we return the user id. If it does not, we return false.
 function checkCookie() {
+  console.log("Checking for a cookie");
   var id = getCookie("budgetAppID");
   if (id != "") {
     var uid = getCookie("userid");
@@ -24,19 +25,23 @@ function getCookie(cname) {
       c = c.substring(1);
     }
     if (c.indexOf(name) == 0) {
+      console.log("Found a cookie");
       return c.substring(name.length, c.length);
     }
   }
+  console.log("Didn't find a cookie");
   return "";
 }
 
 // Create a new cookie named budgetAppID. Include the path that it should be associated with, the user id, and the date that it should expire.
 // Not certain if the browser handles expiration for us or not.
-function setCookie(path, userid) {
+function setCookie(userid) {
+  console.log("Created a cookie");
   var d = new Date();
   //   Set expiration time for the cookie to 2 days. Can mess with it as we see fit.
   d.setTime(d.getTime() + 2 * 24 * 60 * 60 * 1000);
   var expires = "expires=" + d.toUTCString();
+  // Set the path to /, so the cookie should be accessible from every single page.
   document.cookie =
-    "cname=budgetAppID;path=" + path + ";userid=" + userid + expires;
+    "cname=budgetAppID; path=/; userid=" + userid + " " + expires;
 }

@@ -1,26 +1,21 @@
 // Routes
 // =============================================================
 module.exports = function(app) {
-
-
-// Require get helping functions
-  var get6 = require("./../utils/get6.js")
-  var get8 = require("./../utils/get8.js")
-  var get10 = require("./../utils/get10.js")
-  var get13 = require("./../utils/get13.js")
+  // Require get helping functions
+  var get6 = require("./../utils/get6.js");
+  var get8 = require("./../utils/get8.js");
+  var get10 = require("./../utils/get10.js");
+  // var get13 = require("./../utils/get13.js")
 
   // Require post helping functions
-  var post3 = require("./../utils/post3.js")
-  var post5 = require("./../utils/post5.js")
-  var post9 = require("./../utils/post9.js")
-  
-// Require put helping functions
-var put7 = require("./../utils/put7.js")
-var put12 = require("./../utils/put12.js")
-var put14 = require("./../utils/put14.js")
+  var post3 = require("./../utils/post3.js");
+  var post5 = require("./../utils/post5.js");
+  var post9 = require("./../utils/post9.js");
 
-
-
+  // Require put helping functions
+  var put7 = require("./../utils/put7.js");
+  // var put12 = require("./../utils/put12.js");
+  // var put14 = require("./../utils/put14.js");
 
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
@@ -35,15 +30,14 @@ var put14 = require("./../utils/put14.js")
       email: req.email,
       password: req.password
     };
-     post3(queryObject,function(response){
-    var id = response.uid
-    if (id){
-    res.send(id)
-    }
-    else{
-    res.send(false)
-    }
-    })
+    post3(queryObject, function(response) {
+      var id = response.uid;
+      if (id) {
+        res.send(id);
+      } else {
+        res.send(false);
+      }
+    });
   });
 
   app.get("/signup", function(req, res) {
@@ -53,23 +47,23 @@ var put14 = require("./../utils/put14.js")
 
   app.post("/signup", function(req, res) {
     // Route 5
+    console.log("In route 5");
     var queryObject = {
       preferredName: req.body.preferredName,
       email: req.body.email,
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    post5(queryObject,function(response){
-    res.send(response)
-    })
+    post5(queryObject, function(response) {
+      res.send(response);
+    });
   });
 
   app.get("/profile/:id", function(req, res) {
     // Route 6
     var queryObject = {
-
-    uid: req.params.userid}
-    
+      uid: req.params.userid
+    };
 
     res.render("profile", data);
   });
@@ -87,9 +81,9 @@ var put14 = require("./../utils/put14.js")
       phoneFlag: req.body.phoneFlag,
       catNames: req.body.catName
     };
-    put7(queryObject,function(response){
-      res.send(response)
-    })
+    put7(queryObject, function(response) {
+      res.send(response);
+    });
   });
 
   app.get("/entry/:id", function(req, res) {
@@ -111,10 +105,9 @@ var put14 = require("./../utils/put14.js")
     });
   });
 
-
   app.post("/entry", function(req, res) {
     // Route 9
-    uid = req.params.userid
+    uid = req.params.userid;
 
     var req = req.body;
     var queryObject = {
@@ -129,9 +122,6 @@ var put14 = require("./../utils/put14.js")
       // billFlag: REVISIT
     };
     post9(queryObject, function(response) {
-
-
-
       res.send(response);
     });
   });
@@ -160,62 +150,60 @@ var put14 = require("./../utils/put14.js")
     };
   });
 
+  app.put("/bills/delete/:id", function(req, res) {
+    // Route 12
+    var uid = req.params.id;
+    var req = req.body;
+    var queryObject = {
+      uid: uid,
+      eid: req.eventid
+    };
 
-app.put("/bills/delete/:id",function(req,res){
-  // Route 12
-  var uid = req.params.id
-  var req = req.body;
-  var queryObject = {
-    uid:uid,
-    eid: req.eventid
-  }
+    put12(queryObject, function(response) {
+      res.send(response);
+    });
+  });
 
-  put12(queryObject,function(response){
-    res.send(response)
-  })
-})
+  app.get("/caps/:id", function(req, res) {
+    // Route 13
+    var uid = req.params.id;
+    var queryObject = {
+      uid: uid
+    };
+    get13(queryObject, function(response) {
+      res.render("caps", response);
+    });
+  });
 
-app.get("/caps/:id",function(req,res){
-  // Route 13
-  var uid = req.params.id;
-  var queryObject = {
-    uid:uid
-  }
-  get13(queryObject,function(response){
-    res.render("caps",response)
-  })
-})
+  app.put("/caps/:id", function(req, res) {
+    // Route 14
+    var uid = req.params.id;
+    req = req.body;
+    var querObject = {
+      // date:req.dueDate,
+      uid: uid,
+      description: req.description,
+      category: req.categoryid,
+      capAmount: req.amount
+    };
+    put14(queryObject, function(response) {
+      res.send(response);
+    });
+  });
 
-app.put("/caps/:id",function(req,res){
-  // Route 14
-  var uid = req.params.id;
-  req = req.body
-  var querObject = {
-    // date:req.dueDate,
-    uid:uid,
-    description:req.description,
-     category: req.categoryid,
-     capAmount:req.amount
-  }
-  put14(queryObject,function(response){
-    res.send(response)
-  })
-})
-
-  app.get("/:id", function(req, res) {
+  app.get("/", function(req, res) {
     // Route 15
     var id = req.params.id;
 
     // We will need the main dashboard page to send across the id. This will likely be in local storage.
     var queryObject = {
-      uid:id,
-
-    }
-    get15(queryObject,function(response){
-      res.render('dashboard',response)
-    })
-
-
+      uid: id
+    };
+    var response = true;
+    res.render("dashboard", response);
+    // get15(queryObject, function(response) {
+    //   res.render("dashboard", response);
+    // });
   });
 
   app.get("/caps", function(req, res) {
