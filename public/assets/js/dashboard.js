@@ -9,7 +9,7 @@ $(document).ready(function() {
   }
 
   //get the information from the api to the dashboard
-  $.get("/api/dashboard/" + uid).then(function(data) {
+  $.get("/" + uid).then(function(data) {
     pieChart(
       data.cat0name,
       data.cat1name,
