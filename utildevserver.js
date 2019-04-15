@@ -126,8 +126,8 @@ var queryObject = {
 //   uid: id
 // };
 
-var get6 = require("./utils/get6.js");
-get6(queryObject, function(res) {
+var get8 = require("./utils/get8.js");
+get8(queryObject, function(res) {
   console.log("server", res);
 });
 
