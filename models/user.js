@@ -31,9 +31,9 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false
     },
     phone: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
       //   allowNull: false,
-      validate: { len: [10] }
+      // validate: { len: [10] }
     },
     // if user would like text updates
     phoneFlag: {
