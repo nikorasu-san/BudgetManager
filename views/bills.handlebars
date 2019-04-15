@@ -17,7 +17,7 @@
                 {{!-- handlebars goes here --}}
                 {{#each all}}
                 <div class="col l4 m6 s12">
-                    <div class="bill-section">
+                    <div class="bill-entry">
                         <div class="bill-entry-title">
                             <h5>{{title}}</h5>
                         </div>
@@ -25,7 +25,7 @@
                             <p class="bill-entry-text">Date: {{date}}</p>
                             <p class="bill-entry-text">Category: {{category}}</p>
                             <p class="bill-entry-text">Amount: {{amount}} </p>
-                            <button class="btn btn-large buttonDelete">Delete Bill</button>
+                            <button class="btn btn-large buttonDelete" data-billId="{{id}}">Delete Bill</button>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,6 @@
             </div>
 
         </div>
-
-
     </section>
+    <script src="/assets/js/bills.js"></script>
 </body>

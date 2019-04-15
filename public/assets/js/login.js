@@ -1,11 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // var uid = checkCookie();
   // // Check to see if the user has a login id.
 
   // if (uid){
   //     // Code to redirect them to the dashboard.
   // }
-  $(document).on("click", "#loginbtn", function() {
+  $(document).on("click", "#loginbtn", function () {
     let email = $("#email").val();
     let password = $("#password").val();
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
         password: password.trim()
       };
       console.log(userDetails);
-      $.post("/login", userDetails).then(function(data) {
+      $.post("/login", userDetails).then(function (data) {
         if (data) {
           window.location.href = "/dashboard";
         }
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
   });
 
-  $(document).on("click", "#newUser", function() {
+  $(document).on("click", "#newUser", function () {
     let preferredName = $("#preferredName").val();
     let email = $("#email").val();
     let phoneNumber = $("#phoneNumber").val();
@@ -52,7 +52,7 @@ $(document).ready(function() {
         password: password
       };
       console.log(newUser);
-      $.post("/signup", userDetails).then(function(data) {
+      $.post("/signup", userDetails).then(function (data) {
         if (data.id) {
           window.location.href = "/dashboard";
         } else if (data.error) {

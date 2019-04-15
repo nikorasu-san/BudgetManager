@@ -81,6 +81,11 @@ body {
     border-radius: 5px;
 }
 
+.btn-large:hover {
+    color: var(--light-yellow);
+    background-color: var(--dark-blue);
+}
+
 #dashboardBody {
     background-color: var(--light-blue);
 }
@@ -108,7 +113,7 @@ header {
 }
 
 #spendingSection {
-    width: 80%;
+    width: 90%;
     margin-top: .5rem;
 }
 
@@ -128,6 +133,11 @@ header {
     background-color: var(--dark-blue);
     color: var(--light-yellow);
     border-radius: 5px;
+}
+
+.spending-delete:hover {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
 }
 
 ::placeholder {
@@ -158,15 +168,26 @@ header {
     background-color: var(--dark-blue);
 }
 
+.datepicker-cancel,
+.datepicker-done {
+    color: var(--dark-blue);
+}
+
+.datepicker-table td.is-today {
+    color: var(--light-yellow);
+    background-color: var(--dark-blue);
+}
+
 select {
     display: block;
     background-color: var(--light-yellow);
 }
 
-.bill-section {
+.bill-entry {
     background-color: var(--light-yellow);
     border-radius: 5px;
     margin-bottom: 20px;
+
 }
 
 .bill-entry-title {
@@ -201,7 +222,8 @@ select {
 
 .dashboard-section,
 .spending-item,
-#spendingForm {
+#spendingForm,
+.bill-entry {
     -webkit-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     -moz-box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
     box-shadow: 9px 11px 10px -8px rgba(20, 45, 76, 1);
