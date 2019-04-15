@@ -7,7 +7,7 @@ var path = require("path");
 var logPath = path.join(__dirname, "./chronLog.txt");
 
 function checkLog(callback) {
-  fs.readFile(logPath, "utf8", (err, data) => {
+  fs.readFile(`${logPath}`, "utf8", (err, data) => {
     if (err) throw err;
     // console.log(data);
     data = data.split("\n");
@@ -17,7 +17,7 @@ function checkLog(callback) {
   });
 }
 let logDate = moment().format("YYYY-MM-DD hh:mm:ss");
-
+console.log(logPath);
 function execute(callback) {
   checkLog(x => {
     // console.log(typeof x);
@@ -34,7 +34,7 @@ function execute(callback) {
 }
 
 function writeLog(logDate) {
-  fs.appendFile("./chronLog.txt", `${logDate} \n`, err => {
+  fs.appendFile(`${logPath}`, `${logDate} \n`, err => {
     if (err) throw err;
     console.log('The "data to append" was appended to file!');
   });

@@ -3,13 +3,13 @@ var db = require("../models");
 var moment = require("moment");
 
 let today = moment().format("YYYY-MM-DD");
-console.log("dateBills today", today);
+// console.log("dateBills today", today);
 
 function dateBills(callback) {
   db.Event.findAll({
     where: {
       billFlag: true,
-      //   billFlag: false,
+      // billFlag: false,
       date: {
         [db.Op.lte]: today
       }
@@ -17,7 +17,7 @@ function dateBills(callback) {
   }).then(x => {
     updateObject = {
       billFlag: false
-      //   billFlag: true
+      // billFlag: true
     };
     x.forEach(v => {
       db.Event.update(updateObject, {
@@ -25,8 +25,8 @@ function dateBills(callback) {
           id: v.dataValues.id
         }
       }).then(y => {
-        // console.log("bill flag updated", y)
-        // callback();
+        console.log("bill flag updated", y);
+        callback();
       });
     });
   });
