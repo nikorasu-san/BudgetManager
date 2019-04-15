@@ -6,6 +6,7 @@ module.exports = function (app) {
   var get8 = require("./../utils/get8.js");
   var get10 = require("./../utils/get10.js");
   var get13 = require("./../utils/get13.js");
+  var get15 = require("./../utils/get15.js")
 
   // Require post helping functions
   var post3 = require("./../utils/post3.js");
