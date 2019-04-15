@@ -165,8 +165,8 @@ $(document).ready(function () {
                         setCookie(data.id);
 
                         // set local storage as backup
-                        localStorage.setItem("budget_user_id", data.id);
-                        // location.replace("/" + data.id);
+                        //localStorage.setItem("budget_user_id", data.id);
+                        location.replace("/" + data.id);
                     } else if (data.error) {
                         let message = data.error;
                         // open error modal
