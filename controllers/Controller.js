@@ -195,10 +195,6 @@ module.exports = function(app) {
 
   app.get("/:id", function(req, res) {
     // Route 15
-    var id = req.params.id;
-
-  app.get("/:id", function(req, res) {
-    // Route 13
     var uid = req.params.id;
     var queryObject = {
       uid: uid

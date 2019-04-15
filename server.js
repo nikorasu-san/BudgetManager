@@ -3,7 +3,9 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
-var chronJobScheduler = require("./utils/chron");
+var chronJobScheduler = require("./utils/chron")(function() {
+  console.log("I ran");
+});
 var chronJobs = require("./utils/chronJobs");
 // database requires all models in folder
 var db = require("./models");
