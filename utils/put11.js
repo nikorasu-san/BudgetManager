@@ -10,7 +10,7 @@ var put11 = function(entryObject, callback) {
     category: entryObject.category,
     amount: entryObject.amount,
     date: entryObject.date
-    // eid: entryObject.eventId
+    // eventId: entryObject.eventId
   };
 
   db.Event.update(insertOb, {

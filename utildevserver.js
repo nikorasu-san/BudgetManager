@@ -99,8 +99,35 @@ var queryObject = {
   uid: 1
 };
 
-var get13 = require("./utils/get13.js");
-get13(queryObject, function(res) {
+// // Route 8
+// var uid = 1;
+// //  var req = req.body;
+// //  var queryObject = {
+// //    uid: uid,
+// //    description: req.description,
+// //    category: req.category,
+// //    amount: req.amount,
+// //    billFlag: req.isBill,
+// //    date: req.date,
+// //    recurringFlag: req.isRecurring,
+// //    activeFlag: true
+// //  };
+
+// // // Route 10
+// var id = 4;
+// queryObject = {
+//   uid: id
+// };
+
+// // Route 15
+// var id = 1;
+// // We will need the main dashboard page to send across the id. This will likely be in local storage.
+// var queryObject = {
+//   uid: id
+// };
+
+var get10 = require("./utils/get10.js");
+get10(queryObject, function(res) {
   console.log("server", res);
 });
 
