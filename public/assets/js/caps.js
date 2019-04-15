@@ -1,14 +1,17 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var uid;
-  checkCookie(function(data) {
+  checkCookie(function (data) {
     uid = data;
   });
   if (!uid) {
     document.location.href = "/login";
   }
 
+  $(".dashboardLink").attr("href", `/${uid}`)
+  $(".profileLink").attr("href", `/profile/${uid}`)
+
   // skill bar animation
-  $(".skillbar").each(function() {
+  $(".skillbar").each(function () {
     $(this)
       .find(".skillbar-bar")
       .animate(
@@ -31,7 +34,7 @@ $(document).ready(function() {
   });
 
   // Add category data to budget form
-  $(document).on("click", "#toBudgetForm", function() {
+  $(document).on("click", "#toBudgetForm", function () {
     console.log(
       $(this)
         .parent()
@@ -78,7 +81,7 @@ $(document).ready(function() {
     );
   });
 
-  $(document).on("click", "#updateBudget", function(event) {
+  $(document).on("click", "#updateBudget", function (event) {
     event.preventDefault();
     console.log("clicked");
     let newTarget = $("#targetAmount").val();
@@ -97,7 +100,7 @@ $(document).ready(function() {
       url: "/caps/" + category,
       method: "PUT",
       data: reqObj
-    }).then(function(response) {
+    }).then(function (response) {
       if (response.data) {
         alert("Updates saved.");
         location.replace("caps/");
