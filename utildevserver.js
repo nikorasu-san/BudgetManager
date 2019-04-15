@@ -119,15 +119,15 @@ var queryObject = {
 //   uid: id
 // };
 
-// Route 15
-var id = 1;
-// We will need the main dashboard page to send across the id. This will likely be in local storage.
-var queryObject = {
-  uid: id
-};
+// // Route 15
+// var id = 1;
+// // We will need the main dashboard page to send across the id. This will likely be in local storage.
+// var queryObject = {
+//   uid: id
+// };
 
-var get13 = require("./utils/get13.js");
-get13(queryObject, function(res) {
+var get6 = require("./utils/get6.js");
+get6(queryObject, function(res) {
   console.log("server", res);
 });
 
