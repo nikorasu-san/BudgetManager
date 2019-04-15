@@ -200,9 +200,9 @@ module.exports = function (app) {
 
     // temporarily commented to allow server to load dashboard page
 
-    //get15(queryObject, function (response) {
-    res.render("dashboard", { response: true });
-    // });
+    get15(queryObject, function (response) {
+      res.render("dashboard", { response: true });
+    });
   });
 
   app.get("/caps", function (req, res) {
