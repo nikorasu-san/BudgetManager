@@ -17,7 +17,7 @@
                         <div class="spending-item">
                             <p class="spending-text">{{description}}</p>
                             <span>{{date}} | ${{amount}} </span>
-                            <button class="btn spending-delete">Delete</button>
+                            <button class="btn spending-delete" data-entryId="{{id}}">Delete</button>
                         </div>
                         {{/each}}
                     </div>
@@ -41,7 +41,7 @@
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
                                 {{#each cat}}
-                                <option value="{{category}}">{{category}}</option>
+                                <option value="{{id}}">{{name}}</option>
                                 {{/each}}
                             </select>
 

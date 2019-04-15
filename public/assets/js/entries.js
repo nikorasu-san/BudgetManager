@@ -8,7 +8,9 @@ $(document).ready(function () {
         var date = $('#date').val();
         //reset the date to make it readable by the database
         console.log(date);
-
+        console.log(category);
+        category = parseInt(category);
+        amount = parseFloat(amount);
         let formatDate = moment(date, 'MMM-DD-YYYY');
         console.log(formatDate);
         let newDate = formatDate.format('YYYY-MM-DD');
@@ -29,6 +31,17 @@ $(document).ready(function () {
             console.log('success!');
         })
     });
+
+    $('.spending-delete').on('click', function () {
+        var id = $(this).attr('data-entryId');
+        console.log(id);
+
+        $.ajax(`/entry/delete/${id}`, {
+            type: 'PUT',
+        }).then(function () {
+            console.log('deleted bill id ' + id);
+        })
+    })
 
 });
 //grab the entry info on submit

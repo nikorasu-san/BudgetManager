@@ -108,6 +108,24 @@ body {
     margin-bottom: 10px;
 }
 
+.dashboard-bills {
+    border-bottom: 1px solid var(--dark-blue);
+    margin-bottom: 5px;
+}
+
+.d-bills-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.d-bills-date {
+    float: right;
+}
+
+#capsInfo {
+    margin-left: 11%;
+}
+
 header {
     background-color: var(--dark-blue);
     padding-bottom: 1rem;
@@ -352,4 +370,8 @@ select {
     line-height: 35px;
     color: #ffffff;
     color: rgba(0, 0, 0, 0.4);
+}
+
+.dash-catName {
+    width: 90%;
 }

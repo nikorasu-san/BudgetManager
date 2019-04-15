@@ -28,7 +28,7 @@ function execute(callback) {
     if (now != lastLog) {
       console.log("kaboom");
       writeLog(logDate);
-      callback();
+      //callback();
     }
   });
 }

@@ -2,12 +2,25 @@
 $(document).ready(function () {
     var id = 1;
     //get the information from the api to the dashboard 
-    $.get('/api/dashboard/' + id).then(function (data) {
+    $.get('/' + id).then(function (data) {
         pieChart(data.cat0name, data.cat1name, data.cat2name, data.cat3name, data.cat4name, data.cat5name, data.cat6name, data.cat7name, data.cat8name, data.cat9name, 100, 34, 43, 25, 76, 235, 432, 85, 134, 135);
         //make a function for the pieChart
+    });
 
-        console.log(data);
-    })
+    $('.skillbar').each(function () {
+        $(this).find('.skillbar-bar').animate({
+            width: $(this).attr('data-percent')
+        }, 3000);
+
+        // Second bar for warning level if desired
+
+        jQuery(this).find('.skillbar-bar2').animate({
+            width: jQuery(this).attr('data-warn-percent')
+        }, 3000);
+
+    });
+
+
 })
 //split it up into sections 
 

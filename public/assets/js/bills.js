@@ -3,8 +3,8 @@ $(document).ready(function () {
         var id = $(this).attr('data-billId');
         console.log(id);
         //make the ajax put
-        $.ajax(`/bills/${id}`, {
-            type: 'DELETE',
+        $.ajax(`/bills/delete/${id}`, {
+            type: 'PUT',
         }).then(function () {
             console.log('deleted bill id ' + id);
         })
