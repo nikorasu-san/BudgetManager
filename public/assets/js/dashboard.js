@@ -1,15 +1,17 @@
 //get all the information and format it
-$(document).ready(function() {
+$(document).ready(function () {
   var uid;
-  checkCookie(function(data) {
+  checkCookie(function (data) {
     uid = data;
   });
   if (!uid) {
     document.location.href = "/login";
   }
+  $(".dashboardLink").attr("href", `/${uid}`)
+  $(".profileLink").attr("href", `/profile/${uid}`)
 
   //get the information from the api to the dashboard
-  $.get("/" + uid).then(function(data) {
+  $.get("/" + uid).then(function (data) {
     pieChart(
       data.cat0name,
       data.cat1name,
@@ -34,7 +36,7 @@ $(document).ready(function() {
     );
     //make a function for the pieChart
 
-    console.log(data);
+    // console.log(data);
   });
 });
 //split it up into sections
