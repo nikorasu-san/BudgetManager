@@ -3,7 +3,7 @@ var db = require("../models");
 var moment = require("moment");
 
 let today = moment().format("YYYY-MM-DD");
-console.log("dateBills today", today);
+// console.log("dateBills today", today);
 
 function dateBills(callback) {
   db.Event.findAll({
