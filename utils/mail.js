@@ -1,29 +1,25 @@
-// // this file is for automatic email updates via nodemailer
-var db = require("../models");
-var thismonth = require("./date");
+var db = require("./models");
+var thismonth = require("./utils/date");
 const nodemailer = require("nodemailer");
 // let transporter = nodemailer.createTransport(options[ defaults])
-findRecipients();
+// findRecipients();
 function findRecipients() {
   db.User.findAll({
     where: {
       emailFlag: 0
-      // obviously, it will need to be below
+      // if we had expected to get this far past MVP into our nice to haves
+      // we would want to be able to give users the option to disable this functionality,
+      // in which case, obviously, the emailFlag as above will need to be as below
       // emailFlag:1
     }
   }).then(x => {
     // console.log(x);
-
+    // we need to got through each user and check if their spending is exceeding their expectations
     x.forEach((x, i) => {
-      //   console.log(x.dataValues.preferredName);
-
       let name = x.dataValues.preferredName;
       let email = x.dataValues.email;
       let uid = x.dataValues.id;
-      let flags = {
-        // catCapFloats: null,
-        // catWarnFloats: null
-      };
+      let flags = {};
       let catNames = [
         {
           cat: x.dataValues.cat0name
@@ -120,7 +116,7 @@ function findRecipients() {
           catWarn: x.dataValues.cat9warn
         }
       ];
-
+      // now that we have the necessaries from the user table, we need this user's events!
       db.Event.findAll({
         where: {
           userId: uid,
@@ -225,29 +221,22 @@ function findRecipients() {
             catWarnF: 0
           }
         ];
-        //     // let catTotalFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        //     // let catCapFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        //     // let catWarnFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        //     // // loop through all events, and add each event amount to the appropriate total array
-        //     // // position using category id as index
+
+        // now loop through all events, and add each event amount to the appropriate total array
+        // position using category id as index
         y.forEach(v => {
           let w = v.dataValues;
           catTotalFloats[w.category].catTotalF += parseFloat(w.amount);
         });
-        // // now that all events or sorted, do the math on the categories
+        // now that all events are sorted, do the math on the categories to find the percents
         catTotalFloats.forEach((v, i) => {
-          // console.log("i", i, catCaps[i]);
-          // console.log("float", i, parseFloat(catCaps[i]));
-          // console.log(v);
-
           catCapFloats[i].catCapF = parseInt(
             (v.catTotalF * 100) / parseFloat(catCaps[i].catCap)
           );
-
           catWarnFloats[i].catWarnF = parseInt(
             (v.catTotalF * 100) / parseFloat(catWarns[i].catWarn)
           );
-
+          // I can't count to NaN, and it looks ugly up front
           if (isNaN(catCapFloats[i].catCapF)) {
             catCapFloats[i].catCapF = 0;
           }
@@ -255,6 +244,7 @@ function findRecipients() {
             catWarnFloats[i].catWarnF = 0;
           }
         });
+        // now that we've done our math we use computed properties to flag the categories that have exceeded 100%
         catCapFloats.forEach((v, i) => {
           if (v.catCapF > 100) {
             flags[`C${i}`] = v.catCapF;
@@ -265,7 +255,8 @@ function findRecipients() {
             flags[`W${i}`] = v.catWarnF;
           }
         });
-        let returnOb = {
+        // a is perhaps the fastest name to write for our useful object, and dev time is scarce
+        let a = {
           flags,
           name,
           email,
@@ -276,73 +267,57 @@ function findRecipients() {
           catCapFloats,
           catWarnFloats
         };
-        // console.log(returnOb);
-        let a = returnOb;
         // console.log(a.flags, a.name, a.email, a.catNames);
         let flagArr = Object.keys(a.flags);
-        let message = `Hi ${a.name}! \n\n The bad news is: \n\n`;
+        let messageStart = `<h4>Hi ${a.name}!</h4>`;
+        let message = `<p> The bad news is: </p>`;
+        // we need to generate an informative message based on our array of flags
         flagArr.forEach((v, i) => {
           let b = v.split("");
-          //   console.log("$", a.flags[flagArr[i]]);
-          //   console.log("$$", catNames[b[1]].cat);
-          //   console.log(b);
-
+          // if the flag is a cap flag, then user will have also exceeded the warning, we don't want rub their nose in it, so we start with the less inclusive situation
           if (b[0] == "C") {
-            let messagePlus = `   You are ${
+            let messagePlus = `<p>You are ${
               a.flags[flagArr[i]]
-            }% overbudget in ${catNames[b[1]].cat}.\n\n`;
-            // console.log(messagePlus);
+            }% over budget for ${catNames[b[1]].cat}.</p>`;
             message = message.concat(messagePlus);
-            // console.log("BANG");
           } else if (b[0] == "W") {
-            // console.log("Look out below");
+            let messagePlus = `<p>You are ${
+              a.flags[flagArr[i]]
+            }% over your warning level for ${catNames[b[1]].cat}.</p>`;
+            message = message.concat(messagePlus);
           }
         });
-        message = message.concat(
-          " But the good news is you have CHECK YOURSELF!\n\nSincerely,\n\n  The CONN Artist: Budget Manager Team\n\n\n"
-        );
+        let messageEnd =
+          " <p> But the good news is you have CHECK YOURSELF!</p><p>Sincerely,</p> <p><i>The CONN Artist: Budget Manager Team</i></p>";
+        // if there were no flags for the user, we won't bother them with an email, they're on track
         if (flagArr.length > 0) {
-          console.log(message);
-
+          // Michael Campbell of team SPATIFY was most helpful with issues we had implementing nodemailer
+          // (which ended up being more on the google side than the javascript side)
           async function sendThatMail() {
             let transporter = nodemailer.createTransport({
               service: "gmail",
-              //   host: "smtp.gmail.email",
-              //   port: 587,
-              //   secure: true,
               auth: {
-                user: "spatifyTest123@gmail.com",
-                pass: "Root123!"
-                // web: {
-                //   client_id:
-                //     "917800584321-9sbvkj4edk0o1mrfd1lnftfgvcc4fgte.apps.googleusercontent.com",
-                //   project_id: "modified-tine-237818",
-                //   auth_uri: "https://accounts.google.com/o/oauth2/auth",
-                //   token_uri: "https://oauth2.googleapis.com/token",
-                //   auth_provider_x509_cert_url:
-                //     "https://www.googleapis.com/oauth2/v1/certs",
-                //   client_secret: "bJz2ImaOJHUA0jBszUKcUnOE"
-                // }
+                //   DON"T FORGET TO HIDE THE KEYS
+                user: "checkyourselfapp@gmail.com",
+                pass: "4skywalker"
               }
             });
-
             var mailOptions = {
-              from: "budgetmangerteam@gmail.com",
-              to: `nhgroesch@gmx.com`,
-              subject: "Test",
-              text: "hey hey email is here!",
-              html: `<h6>${message}</h6>`
+              from: "budgetmanagerteam@gmail.com",
+              // to: `nhgroesch@gmx.com`,
+              // lets insert the real email when we're done testing- hopefully on heroku/jaws they're not all fake and crash it
+              to: `${a.email}`,
+              subject: "CHECK YOURSELF",
+              text: `Look alive ${a.name}`,
+              html: `${messageStart}${message}${messageEnd}`
             };
-
-            //let info = await
             transporter.sendMail(mailOptions, (err, info) => {
               if (err) {
-                throw new Error("Error: Something Bad Happened :(");
+                throw new Error("Uh-oh: Something Bad Happened");
               } else {
                 console.log(info);
               }
             });
-            //console.log("Preview URL: " + nodemailer.getTestMessageUrl(info));
           }
           sendThatMail().catch(console.error);
         }
@@ -350,58 +325,3 @@ function findRecipients() {
     });
   });
 }
-
-// // we need to get the info from the database and create the actual mail content here
-// var name;
-// var email;
-// var message;
-
-// // this part will post from our send route
-// sendEmail (name, email, message) {
-//     fetch('/send', {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         name: name,
-//         email: email,
-//         message: message
-//       })
-//     })
-//     .then((res) => res.json())
-//     .then((res) => {
-//       console.log('here is the response: ', res);
-//     })
-//     .catch((err) => {
-//       console.error('here is the error: ', err);
-//     })
-//    }
-
-// //    i think we need to require this in the app on server
-
-// //   the transporter will actually send the emails from the service we set up
-// app.post('/send', function(req, res, next) {
-//     const transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         user: 'test-email@gmail.com',
-//         pass: 'test123'
-//       }
-//     })
-//   }
-//     const mailOptions = {
-//       from: `${req.body.email}`,
-//       to: 'test-email@gmail.com',
-//       subject: `${req.body.name}`,
-//       text: `${req.body.message}`,
-//       replyTo: `${req.body.email}`
-//     }
-//     transporter.sendMail(mailOptions, function(err, res) {
-//         if (err) {
-//           console.error('there was an error: ', err);
-//         } else {
-//           console.log('here is the res: ', res)
-//         }
-//       })
