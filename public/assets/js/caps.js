@@ -18,7 +18,7 @@ $(document).ready(function () {
         {
           width: $(this).attr("data-percent")
         },
-        6000
+        3000
       );
 
     // Second bar for warning level if desired
