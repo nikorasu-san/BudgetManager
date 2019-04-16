@@ -1,9 +1,6 @@
 //get all the information and format it
-$(document).ready(function () {
-  var uid;
-  checkCookie(function (data) {
-    uid = data;
-  });
+$(document).ready(function() {
+  var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
   }
@@ -11,41 +8,40 @@ $(document).ready(function () {
   $(".dashboardLink").attr("tabindex", `0`);
   $(".profileLink").attr("href", `/profile/${uid}`);
   $(".profileLink").attr("tabindex", `0`);
-  $('.entriesLink').attr('href', `/entry/${uid}`);
-  $('.entriesLink').attr('tabindex', `0`);
-  $('.billsLink').attr('href', `/bills/${uid}`);
-  $('.billsLink').attr('tabindex', `0`);
-  $('.budgetLink').attr('href', `/caps/${uid}`);
-  $('.budgetLink').attr('tabindex', `0`);
+  $(".entriesLink").attr("href", `/entry/${uid}`);
+  $(".entriesLink").attr("tabindex", `0`);
+  $(".billsLink").attr("href", `/bills/${uid}`);
+  $(".billsLink").attr("tabindex", `0`);
+  $(".budgetLink").attr("href", `/caps/${uid}`);
+  $(".budgetLink").attr("tabindex", `0`);
 
-  $(".skillbar").each(function () {
-
-    var dataSplit = $(this).attr('data-percent').split('%')
-    var number = parseInt(dataSplit[0])
+  $(".skillbar").each(function() {
+    var dataSplit = $(this)
+      .attr("data-percent")
+      .split("%");
+    var number = parseInt(dataSplit[0]);
     console.log(number);
     if (number >= 100) {
       $(this).css({
-        "background": "#B40404"
+        background: "#B40404"
       });
     }
 
     if (number < 100) {
       $(this)
         .find(".skillbar-bar")
-        .animate({
-          width: $(this).attr("data-percent")
-        },
+        .animate(
+          {
+            width: $(this).attr("data-percent")
+          },
           2000
         );
     }
 
-
-    //if the width of the 
-
-
+    //if the width of the
   });
   //get the information from the api to the dashboard
-  $.get("/api/" + uid).then(function (data) {
+  $.get("/api/" + uid).then(function(data) {
     //console.log(two);
     pieChart(
       [data.catNames[0].cat],
@@ -74,11 +70,10 @@ $(document).ready(function () {
     // console.log(data);
   });
 
-  $(".logOut").on("click", function () {
+  $(".logOut").on("click", function() {
     deleteCookie();
     document.location.href = "/login";
   });
-
 });
 //split it up into sections
 
@@ -131,33 +126,35 @@ function pieChart(
       cat8name,
       cat9name
     ],
-    datasets: [{
-      data: [
-        cat0value,
-        cat1value,
-        cat2value,
-        cat3value,
-        cat4value,
-        cat5value,
-        cat6value,
-        cat7value,
-        cat8value,
-        cat9value
-      ],
-      backgroundColor: [
-        "#480032",
-        "#8158fc",
-        "#ff8b6a",
-        "#34314f",
-        "#df0054",
-        "#ffc15e",
-        "#ffd6c2",
-        "#692db7",
-        "#ff5959",
-        "#3426a4"
-      ],
-      borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    }]
+    datasets: [
+      {
+        data: [
+          cat0value,
+          cat1value,
+          cat2value,
+          cat3value,
+          cat4value,
+          cat5value,
+          cat6value,
+          cat7value,
+          cat8value,
+          cat9value
+        ],
+        backgroundColor: [
+          "#480032",
+          "#8158fc",
+          "#ff8b6a",
+          "#34314f",
+          "#df0054",
+          "#ffc15e",
+          "#ffd6c2",
+          "#692db7",
+          "#ff5959",
+          "#3426a4"
+        ],
+        borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      }
+    ]
   };
   var newDoughnut = new Chart(chart, {
     type: "doughnut",
@@ -166,6 +163,4 @@ function pieChart(
   });
 
   console.log("success!");
-
-
 }
