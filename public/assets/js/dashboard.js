@@ -1,9 +1,6 @@
 //get all the information and format it
 $(document).ready(function() {
-  var uid;
-  checkCookie(function(data) {
-    uid = data;
-  });
+  var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
   }
@@ -125,4 +122,9 @@ function pieChart(
   });
 
   console.log("success!");
+
+  $("#logOut").on("click", function() {
+    deleteCookie();
+    document.location.href = "/login";
+  });
 }

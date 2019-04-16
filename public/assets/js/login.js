@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  var uid;
-  checkCookie(function(data) {
-    uid = data;
-  });
+  var uid = checkCookie();
   // Check to see if the user has a login id.
 
   if (uid) {

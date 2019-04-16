@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  var uid;
-  checkCookie(function(data) {
-    uid = data;
-  });
+  var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
   }
