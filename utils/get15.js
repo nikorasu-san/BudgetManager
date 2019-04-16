@@ -106,6 +106,9 @@ var get15 = function(userid, callback) {
         catCapFloats[i].catCapF = parseInt(
           (v.catTotalF * 100) / parseFloat(catCaps[i].catCap)
         );
+        if (isNaN(catCapFloats[i].catCapF)) {
+          catCapFloats[i].catCapF = 0;
+        }
 
         // catWarnFloats[i].catWarnF = parseInt(
         //   (catTotalFloats[i].catTotalF * 100) / parseFloat(catWarns[i].catWarn)
