@@ -18,14 +18,34 @@ $(document).ready(function () {
   $('.budgetLink').attr('href', `/caps/${uid}`);
   $('.budgetLink').attr('tabindex', `0`);
 
-  $('.skillbar').each(function () {
-    $(this).find('.skillbar-bar').animate({
-      width: jQuery(this).attr('data-percent')
-    }, 1500);
+  $(".skillbar").each(function () {
+
+    var dataSplit = $(this).attr('data-percent').split('%')
+    var number = parseInt(dataSplit[0])
+    console.log(number);
+    if (number >= 100) {
+      $(this).css({
+        "background": "#B40404"
+      });
+    }
+
+    if (number < 100) {
+      $(this)
+        .find(".skillbar-bar")
+        .animate({
+            width: $(this).attr("data-percent")
+          },
+          2000
+        );
+    }
+
+
+    //if the width of the 
+
+
   });
   //get the information from the api to the dashboard
   $.get("/api/" + uid).then(function (data) {
-    console.log(data);
     //console.log(two);
     pieChart(
       [data.catNames[0].cat],
