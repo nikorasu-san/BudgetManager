@@ -13,11 +13,11 @@
                 <div class="col l6 s12">
                     <h3 class="pageSubTitle">View Spending</h3>
                     <div id="spendingSection">
-                        {{#each all}}
+                        {{#each events}}
                         <div class="spending-item">
                             <p class="spending-text">{{description}}</p>
                             <span>{{date}} | ${{amount}} </span>
-                            <button class="btn spending-delete" data-entryId="{{id}}">Delete</button>
+                            <button class="btn spending-delete" data-entryId="{{eventId}}">Delete</button>
                         </div>
                         {{/each}}
                     </div>
@@ -40,8 +40,8 @@
                             <select name="categoryList" id="spendingList">
                                 {{!-- enter handlebars for this part --}}
                                 <option value="" disabled selected>Choose your category</option>
-                                {{#each cat}}
-                                <option value="{{id}}">{{name}}</option>
+                                {{#each catNames}}
+                                <option value="{{@index}}">{{cat}}</option>
                                 {{/each}}
                             </select>
 

@@ -27,9 +27,10 @@ $(document).ready(function () {
     console.log(newDate);
     //store the values into an object
     var data = {
+      uid: parseInt(uid),
       description: description,
       amount: amount,
-      category: category,
+      categoryId: category,
       isRecurring: isBill,
       date: newDate
     };
@@ -38,18 +39,24 @@ $(document).ready(function () {
     console.log(data);
 
     $.post("/entry", data).then(function (data) {
-      console.log("success!");
+      if (data.id) {
+        // console.log("success!");
+        location.reload();
+      }
     });
   });
 
   $(".spending-delete").on("click", function () {
     var id = $(this).attr("data-entryId");
-    console.log(id);
+    // console.log(id);
 
-    $.ajax(`/entry/delete/${id}`, {
-      type: "PUT"
-    }).then(function () {
-      console.log("deleted bill id " + id);
+    $.ajax({
+      url: `/entry/delete/${id}`,
+      method: "PUT"
+    }).then(function (data) {
+      // console.log(data);
+      // console.log("deleted bill id " + id);
+      location.reload();
     });
   });
 });

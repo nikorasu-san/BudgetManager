@@ -18,6 +18,7 @@ module.exports = function (app) {
   var put12 = require("./../utils/put12.js");
   var put14 = require("./../utils/put14.js");
   var put16 = require("./../utils/put16.js");
+  var put17 = require("./../utils/put17.js");
 
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
@@ -109,13 +110,13 @@ module.exports = function (app) {
 
   app.post("/entry", function (req, res) {
     // Route 9
-    uid = req.params.userid;
+    //uid = req.body.uid;
 
     var req = req.body;
     var queryObject = {
-      UserId: uid,
+      UserId: req.uid,
       description: req.description,
-      category: req.categoryid,
+      category: req.categoryId,
       amount: req.amount,
       date: req.date,
       recurringFlag: req.isRecurring
@@ -132,9 +133,10 @@ module.exports = function (app) {
     // Route 10
     var uid = req.params.id;
     queryObject = {
-      uid: uid
+      uid: parseInt(uid)
     };
     get10(queryObject, function (response) {
+      console.log("get10:", response)
       res.render("bills", response);
     });
   });
@@ -156,11 +158,11 @@ module.exports = function (app) {
     // Route 12
 
     //NG thinks userId not required, eventId is sufficient bc indexed to user
-    // var uid = req.params.id
-    var req = req.body;
+    var eid = req.params.id
+    // var req = req.body;
     var queryObject = {
       // uid:uid,
-      eid: req.eventid
+      eid: eid
     };
 
     put12(queryObject, function (response) {
@@ -175,6 +177,23 @@ module.exports = function (app) {
       uid: uid
     };
     get13(queryObject, function (response) {
+      console.log("get13", response)
+      let combinedData = [];
+      function Caps(cat, catCap, catWarn, catTotalF, catCapF, catWarnF) {
+        this.cat = cat,
+          this.catCap = catCap,
+          this.catWarn = catWarn,
+          this.catTotalF = catTotalF,
+          this.catCapF = catCapF,
+          this.catWarnF = catWarnF
+      }
+      // loop to run constructor function & push to array
+      for (let i = 0; i < response.catNames.length; i++) {
+        var cap = new Caps(response.catNames[i].cat, response.catCaps[i].catCap, response.catWarns[i].catWarn, response.catTotalFloats[i].catTotalF, response.catCapFloats[i].catCapF, response.catWarnFloats[i].catWarnF);
+        combinedData.push(cap);
+      }
+      // add combinedData array to front end response
+      response.combinedData = combinedData
       res.render("caps", response);
     });
   });
@@ -187,8 +206,10 @@ module.exports = function (app) {
       // date:req.dueDate,
       uid: uid,
       // description: req.description,
-      category: req.categoryid,
-      capAmount: req.amount
+      category: req.categoryId,
+      capAmount: req.capAmount,
+      warnAmount: req.warnAmount
+
     };
     put14(queryObject, function (response) {
       res.send(response);
@@ -234,4 +255,18 @@ module.exports = function (app) {
       res.send(response);
     });
   })
+
+  app.put("/entry/delete/:eid", function (req, res) {
+    // Route 17
+    let eid = req.params.eid;
+    var queryObject = {
+      eid: eid
+    }
+    put17(queryObject, function (response) {
+      // returns [1] if successful edit
+      res.send(response);
+    });
+  })
+
+
 };

@@ -17,8 +17,12 @@ $(document).ready(function () {
         //make the ajax put
         $.ajax(`/bills/delete/${id}`, {
             type: 'PUT',
-        }).then(function () {
-            console.log('deleted bill id ' + id);
+        }).then(function (data) {
+            console.log(data)
+            if (data[0] === 1) {
+                // console.log('deleted bill id ' + id);
+                location.reload();
+            }
         })
 
     })
