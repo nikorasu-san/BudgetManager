@@ -13,6 +13,11 @@
     --darker-blue: #142d4c;
 }
 
+html,body {
+    height:100%;
+    margin:0;
+}
+
 body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
@@ -391,4 +396,24 @@ select {
 
 .modal-p {
     padding: 20px;
+}
+
+footer,.footer-copyright,.page-footer {
+    background-color: var(--dark-blue);
+    color: var(--light-yellow);
+}
+
+.footer-button {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    margin: 4px;
+}
+
+footer,.push {
+    height:100px;
+}
+
+.wrapper {
+min-height:100%;
+margin-bottom: -50px;
 }

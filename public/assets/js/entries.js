@@ -9,6 +9,8 @@ $(document).ready(function () {
 
   $(".dashboardLink").attr("href", `/${uid}`)
   $(".profileLink").attr("href", `/profile/${uid}`)
+  $(".datepicker").datepicker();
+
 
   $("#spendingForm").on("submit", function (e) {
     var description = $("#desc").val();
@@ -70,7 +72,11 @@ $(document).ready(function () {
       location.reload();
     });
   });
+
+  $(".logOut").on("click", function () {
+    deleteCookie();
+    document.location.href = "/login";
+  });
+
 });
-//grab the entry info on submit
-//define the object
-//put info in an ajax post
+

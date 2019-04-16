@@ -26,8 +26,8 @@ $(document).ready(function () {
       $(this)
         .find(".skillbar-bar")
         .animate({
-            width: $(this).attr("data-percent")
-          },
+          width: $(this).attr("data-percent")
+        },
           2000
         );
 
@@ -36,8 +36,8 @@ $(document).ready(function () {
       $(this)
         .find(".skillbar-bar2")
         .animate({
-            width: $(this).attr("data-warn-percent")
-          },
+          width: $(this).attr("data-warn-percent")
+        },
           2000
         );
     }
@@ -52,24 +52,24 @@ $(document).ready(function () {
   $(document).on("click", "#toBudgetForm", function () {
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-budget")
-      .find("input")
-      .val()
+        .parent()
+        .siblings(".sel-budget")
+        .find("input")
+        .val()
     );
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-warning")
-      .find("input")
-      .val()
+        .parent()
+        .siblings(".sel-warning")
+        .find("input")
+        .val()
     );
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-catName")
-      .find("h5")
-      .html()
+        .parent()
+        .siblings(".sel-catName")
+        .find("h5")
+        .html()
     );
 
     let selectedCatName = $(this)
@@ -123,5 +123,10 @@ $(document).ready(function () {
         alert("Data not saved.");
       }
     });
+  });
+
+  $(".logOut").on("click", function () {
+    deleteCookie();
+    document.location.href = "/login";
   });
 });
