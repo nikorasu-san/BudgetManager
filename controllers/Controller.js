@@ -55,7 +55,9 @@ module.exports = function (app) {
       password: req.body.password
     };
     post5(queryObject, function (response) {
-      res.send({ id: response });
+      res.send({
+        id: response
+      });
     });
   });
 
@@ -180,6 +182,7 @@ module.exports = function (app) {
     get13(queryObject, function (response) {
       console.log("get13", response)
       let combinedData = [];
+
       function Caps(cat, catCap, catWarn, catTotalF, catCapF, catWarnF) {
         this.cat = cat,
           this.catCap = catCap,
@@ -217,6 +220,22 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/:id", function (req, res) {
+    // Route 15
+    // making the UID a number seemed to resolve query issues
+    var uid = parseInt(req.params.id);
+    var queryObject = {
+      uid: uid
+    };
+
+    // temporarily commented to allow server to load dashboard page
+
+    get15(queryObject, function (response) {
+      console.log("This is the response: " + JSON.stringify(response));
+      res.json(response);
+    });
+  });
+
   app.get("/:id", function (req, res) {
     // Route 15
     // making the UID a number seemed to resolve query issues
@@ -228,6 +247,7 @@ module.exports = function (app) {
     // temporarily commented to allow server to load dashboard page
 
     get15(queryObject, function (response) {
+      // console.log("This is the response: " + JSON.stringify(response));
       res.render("dashboard", response);
     });
   });
