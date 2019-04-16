@@ -133,9 +133,10 @@ module.exports = function (app) {
     // Route 10
     var uid = req.params.id;
     queryObject = {
-      uid: uid
+      uid: parseInt(uid)
     };
     get10(queryObject, function (response) {
+      console.log("get10:", response)
       res.render("bills", response);
     });
   });
@@ -157,11 +158,11 @@ module.exports = function (app) {
     // Route 12
 
     //NG thinks userId not required, eventId is sufficient bc indexed to user
-    // var uid = req.params.id
-    var req = req.body;
+    var eid = req.params.id
+    // var req = req.body;
     var queryObject = {
       // uid:uid,
-      eid: req.eventid
+      eid: eid
     };
 
     put12(queryObject, function (response) {

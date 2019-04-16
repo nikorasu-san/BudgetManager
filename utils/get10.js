@@ -3,7 +3,7 @@ var thismonth = require("./date");
 
 // function
 let catNames;
-var get8 = function(userid, callback) {
+var get8 = function (userid, callback) {
   // // we find the user's row and return the relevant array of columns
 
   db.User.findOne({
@@ -39,7 +39,7 @@ var get8 = function(userid, callback) {
 
   db.Event.findAll({
     where: {
-      userId: userid.uid,
+      UserId: userid.uid,
       billFlag: true,
       activeFlag: true,
       date: thismonth
