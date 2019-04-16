@@ -55,7 +55,7 @@ module.exports = function (app) {
       password: req.body.password
     };
     post5(queryObject, function (response) {
-      res.send({ id: response });
+      res.json({ id: response });
     });
   });
 
