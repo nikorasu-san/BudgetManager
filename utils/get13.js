@@ -8,21 +8,42 @@ let catWarns;
 var get13 = function (userid, callback) {
   // // get the data from user table
   db.User.findOne({
-    where: { id: userid.uid }
+    where: {
+      id: userid.uid
+    }
   }).then(x => {
     //// we could change these initializations to loops based on number of categories if they were dynamic
     //// but since I had typed it out once it seemed faster to copy an paste
-    catNames = [
-      { cat: x.dataValues.cat0name },
-      { cat: x.dataValues.cat1name },
-      { cat: x.dataValues.cat2name },
-      { cat: x.dataValues.cat3name },
-      { cat: x.dataValues.cat4name },
-      { cat: x.dataValues.cat5name },
-      { cat: x.dataValues.cat6name },
-      { cat: x.dataValues.cat7name },
-      { cat: x.dataValues.cat8name },
-      { cat: x.dataValues.cat9name }
+    catNames = [{
+        cat: x.dataValues.cat0name
+      },
+      {
+        cat: x.dataValues.cat1name
+      },
+      {
+        cat: x.dataValues.cat2name
+      },
+      {
+        cat: x.dataValues.cat3name
+      },
+      {
+        cat: x.dataValues.cat4name
+      },
+      {
+        cat: x.dataValues.cat5name
+      },
+      {
+        cat: x.dataValues.cat6name
+      },
+      {
+        cat: x.dataValues.cat7name
+      },
+      {
+        cat: x.dataValues.cat8name
+      },
+      {
+        cat: x.dataValues.cat9name
+      }
     ];
     // catNames = [
     //   x.dataValues.cat0name,
@@ -36,17 +57,36 @@ var get13 = function (userid, callback) {
     //   x.dataValues.cat8name,
     //   x.dataValues.cat9name
     // ];
-    catCaps = [
-      { catCap: x.dataValues.cat0cap },
-      { catCap: x.dataValues.cat1cap },
-      { catCap: x.dataValues.cat2cap },
-      { catCap: x.dataValues.cat3cap },
-      { catCap: x.dataValues.cat4cap },
-      { catCap: x.dataValues.cat5cap },
-      { catCap: x.dataValues.cat6cap },
-      { catCap: x.dataValues.cat7cap },
-      { catCap: x.dataValues.cat8cap },
-      { catCap: x.dataValues.cat9cap }
+    catCaps = [{
+        catCap: x.dataValues.cat0cap
+      },
+      {
+        catCap: x.dataValues.cat1cap
+      },
+      {
+        catCap: x.dataValues.cat2cap
+      },
+      {
+        catCap: x.dataValues.cat3cap
+      },
+      {
+        catCap: x.dataValues.cat4cap
+      },
+      {
+        catCap: x.dataValues.cat5cap
+      },
+      {
+        catCap: x.dataValues.cat6cap
+      },
+      {
+        catCap: x.dataValues.cat7cap
+      },
+      {
+        catCap: x.dataValues.cat8cap
+      },
+      {
+        catCap: x.dataValues.cat9cap
+      }
     ];
     // catCaps = [
     //   x.dataValues.cat0cap,
@@ -60,17 +100,36 @@ var get13 = function (userid, callback) {
     //   x.dataValues.cat8cap,
     //   x.dataValues.cat9cap
     // ];
-    catWarns = [
-      { catWarn: x.dataValues.cat0warn },
-      { catWarn: x.dataValues.cat1warn },
-      { catWarn: x.dataValues.cat2warn },
-      { catWarn: x.dataValues.cat3warn },
-      { catWarn: x.dataValues.cat4warn },
-      { catWarn: x.dataValues.cat5warn },
-      { catWarn: x.dataValues.cat6warn },
-      { catWarn: x.dataValues.cat7warn },
-      { catWarn: x.dataValues.cat8warn },
-      { catWarn: x.dataValues.cat9warn }
+    catWarns = [{
+        catWarn: x.dataValues.cat0warn
+      },
+      {
+        catWarn: x.dataValues.cat1warn
+      },
+      {
+        catWarn: x.dataValues.cat2warn
+      },
+      {
+        catWarn: x.dataValues.cat3warn
+      },
+      {
+        catWarn: x.dataValues.cat4warn
+      },
+      {
+        catWarn: x.dataValues.cat5warn
+      },
+      {
+        catWarn: x.dataValues.cat6warn
+      },
+      {
+        catWarn: x.dataValues.cat7warn
+      },
+      {
+        catWarn: x.dataValues.cat8warn
+      },
+      {
+        catWarn: x.dataValues.cat9warn
+      }
     ];
     // catWarns = [
     //   x.dataValues.cat0warn,
@@ -96,41 +155,98 @@ var get13 = function (userid, callback) {
       }
     }).then(y => {
       // // initialize some arrays
-      let catTotalFloats = [
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 }
+      let catTotalFloats = [{
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        }
       ];
-      let catCapFloats = [
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 }
+      let catCapFloats = [{
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        }
       ];
-      let catWarnFloats = [
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 }
+      let catWarnFloats = [{
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        }
       ];
       // let catTotalFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       // let catCapFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
