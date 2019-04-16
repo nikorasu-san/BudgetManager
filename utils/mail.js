@@ -15,12 +15,15 @@ function findRecipients() {
     // console.log(x);
 
     x.forEach((x, i) => {
-      console.log(x.dataValues.preferredName);
+      //   console.log(x.dataValues.preferredName);
 
       let name = x.dataValues.preferredName;
       let email = x.dataValues.email;
       let uid = x.dataValues.id;
-
+      let flags = {
+        // catCapFloats: null,
+        // catWarnFloats: null
+      };
       let catNames = [
         {
           cat: x.dataValues.cat0name
@@ -252,9 +255,18 @@ function findRecipients() {
             catWarnFloats[i].catWarnF = 0;
           }
         });
-        // // returning identically indexed arrays of category names, budget caps, warning levels,
-        // // totals, and totals' percentage of budget caps and warning levels
+        catCapFloats.forEach((v, i) => {
+          if (v.catCapF > 100) {
+            flags[`C${i}`] = v.catCapF;
+          }
+        });
+        catWarnFloats.forEach((v, i) => {
+          if (v.catWarnF > 100) {
+            flags[`W${i}`] = v.catWarnF;
+          }
+        });
         let returnOb = {
+          flags,
           name,
           email,
           catNames,
@@ -264,8 +276,76 @@ function findRecipients() {
           catCapFloats,
           catWarnFloats
         };
-        console.log(returnOb);
-        //   (returnOb);
+        // console.log(returnOb);
+        let a = returnOb;
+        // console.log(a.flags, a.name, a.email, a.catNames);
+        let flagArr = Object.keys(a.flags);
+        let message = `Hi ${a.name}! \n\n The bad news is: \n\n`;
+        flagArr.forEach((v, i) => {
+          let b = v.split("");
+          //   console.log("$", a.flags[flagArr[i]]);
+          //   console.log("$$", catNames[b[1]].cat);
+          //   console.log(b);
+
+          if (b[0] == "C") {
+            let messagePlus = `   You are ${
+              a.flags[flagArr[i]]
+            }% overbudget in ${catNames[b[1]].cat}.\n\n`;
+            // console.log(messagePlus);
+            message = message.concat(messagePlus);
+            // console.log("BANG");
+          } else if (b[0] == "W") {
+            // console.log("Look out below");
+          }
+        });
+        message = message.concat(
+          " But the good news is you have CHECK YOURSELF!\n\nSincerely,\n\n  The CONN Artist: Budget Manager Team\n\n\n"
+        );
+        if (flagArr.length > 0) {
+          console.log(message);
+
+          async function sendThatMail() {
+            let transporter = nodemailer.createTransport({
+              service: "gmail",
+              //   host: "smtp.gmail.email",
+              //   port: 587,
+              //   secure: true,
+              auth: {
+                user: "spatifyTest123@gmail.com",
+                pass: "Root123!"
+                // web: {
+                //   client_id:
+                //     "917800584321-9sbvkj4edk0o1mrfd1lnftfgvcc4fgte.apps.googleusercontent.com",
+                //   project_id: "modified-tine-237818",
+                //   auth_uri: "https://accounts.google.com/o/oauth2/auth",
+                //   token_uri: "https://oauth2.googleapis.com/token",
+                //   auth_provider_x509_cert_url:
+                //     "https://www.googleapis.com/oauth2/v1/certs",
+                //   client_secret: "bJz2ImaOJHUA0jBszUKcUnOE"
+                // }
+              }
+            });
+
+            var mailOptions = {
+              from: "budgetmangerteam@gmail.com",
+              to: `nhgroesch@gmx.com`,
+              subject: "Test",
+              text: "hey hey email is here!",
+              html: `<h6>${message}</h6>`
+            };
+
+            //let info = await
+            transporter.sendMail(mailOptions, (err, info) => {
+              if (err) {
+                throw new Error("Error: Something Bad Happened :(");
+              } else {
+                console.log(info);
+              }
+            });
+            //console.log("Preview URL: " + nodemailer.getTestMessageUrl(info));
+          }
+          sendThatMail().catch(console.error);
+        }
       });
     });
   });
