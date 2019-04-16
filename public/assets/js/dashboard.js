@@ -33,8 +33,8 @@ $(document).ready(function () {
       $(this)
         .find(".skillbar-bar")
         .animate({
-            width: $(this).attr("data-percent")
-          },
+          width: $(this).attr("data-percent")
+        },
           2000
         );
     }
@@ -73,6 +73,12 @@ $(document).ready(function () {
 
     // console.log(data);
   });
+
+  $(".logOut").on("click", function () {
+    deleteCookie();
+    document.location.href = "/login";
+  });
+
 });
 //split it up into sections
 
@@ -160,4 +166,6 @@ function pieChart(
   });
 
   console.log("success!");
+
+
 }
