@@ -3,7 +3,7 @@
 
 function checkCookie() {
   if (Cookies.get("id")) {
-    return Cookies.get("id");
+    return parseInt(Cookies.get("id"));
   } else {
     return false;
   }

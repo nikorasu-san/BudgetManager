@@ -1,5 +1,6 @@
 //get all the information and format it
 $(document).ready(function() {
+  console.log("in the dashboard");
   var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
