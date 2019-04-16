@@ -14,29 +14,67 @@ var get15 = function (userid, callback) {
     }
   }).then(x => {
 
-    catNames = [
-      { cat: x.dataValues.cat0name },
-      { cat: x.dataValues.cat1name },
-      { cat: x.dataValues.cat2name },
-      { cat: x.dataValues.cat3name },
-      { cat: x.dataValues.cat4name },
-      { cat: x.dataValues.cat5name },
-      { cat: x.dataValues.cat6name },
-      { cat: x.dataValues.cat7name },
-      { cat: x.dataValues.cat8name },
-      { cat: x.dataValues.cat9name }
+    catNames = [{
+        cat: x.dataValues.cat0name
+      },
+      {
+        cat: x.dataValues.cat1name
+      },
+      {
+        cat: x.dataValues.cat2name
+      },
+      {
+        cat: x.dataValues.cat3name
+      },
+      {
+        cat: x.dataValues.cat4name
+      },
+      {
+        cat: x.dataValues.cat5name
+      },
+      {
+        cat: x.dataValues.cat6name
+      },
+      {
+        cat: x.dataValues.cat7name
+      },
+      {
+        cat: x.dataValues.cat8name
+      },
+      {
+        cat: x.dataValues.cat9name
+      }
     ];
-    catCaps = [
-      { catCap: x.dataValues.cat0cap },
-      { catCap: x.dataValues.cat1cap },
-      { catCap: x.dataValues.cat2cap },
-      { catCap: x.dataValues.cat3cap },
-      { catCap: x.dataValues.cat4cap },
-      { catCap: x.dataValues.cat5cap },
-      { catCap: x.dataValues.cat6cap },
-      { catCap: x.dataValues.cat7cap },
-      { catCap: x.dataValues.cat8cap },
-      { catCap: x.dataValues.cat9cap }
+    catCaps = [{
+        catCap: x.dataValues.cat0cap
+      },
+      {
+        catCap: x.dataValues.cat1cap
+      },
+      {
+        catCap: x.dataValues.cat2cap
+      },
+      {
+        catCap: x.dataValues.cat3cap
+      },
+      {
+        catCap: x.dataValues.cat4cap
+      },
+      {
+        catCap: x.dataValues.cat5cap
+      },
+      {
+        catCap: x.dataValues.cat6cap
+      },
+      {
+        catCap: x.dataValues.cat7cap
+      },
+      {
+        catCap: x.dataValues.cat8cap
+      },
+      {
+        catCap: x.dataValues.cat9cap
+      }
     ];
     let monthlyIncome = x.dataValues.monthlyIncome;
     let preferredName = x.dataValues.preferredName;
@@ -49,41 +87,98 @@ var get15 = function (userid, callback) {
       }
     }).then(y => {
       // // initialize some arrays
-      let catTotalFloats = [
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 },
-        { catTotalF: 0 }
+      let catTotalFloats = [{
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        },
+        {
+          catTotalF: 0
+        }
       ];
-      let catCapFloats = [
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 },
-        { catCapF: 0 }
+      let catCapFloats = [{
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        },
+        {
+          catCapF: 0
+        }
       ];
-      let catWarnFloats = [
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 },
-        { catWarnF: 0 }
+      let catWarnFloats = [{
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        },
+        {
+          catWarnF: 0
+        }
       ];
       // let catTotalFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       // let catCapFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -118,7 +213,9 @@ var get15 = function (userid, callback) {
           billFlag: false,
           date: thismonth
         },
-        order: [["date", "DESC"]],
+        order: [
+          ["date", "DESC"]
+        ],
         limit: 3
       }).then(z => {
         let entryArr = [];
@@ -137,7 +234,9 @@ var get15 = function (userid, callback) {
             billFlag: true,
             date: thismonth
           },
-          order: [["date", "DESC"]],
+          order: [
+            ["date", "DESC"]
+          ],
           limit: 3
         }).then(z => {
           let billsArr = [];

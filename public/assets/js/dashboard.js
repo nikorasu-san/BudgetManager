@@ -7,32 +7,47 @@ $(document).ready(function () {
   if (!uid) {
     document.location.href = "/login";
   }
-  $(".dashboardLink").attr("href", `/${uid}`)
-  $(".profileLink").attr("href", `/profile/${uid}`)
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".dashboardLink").attr("tabindex", `0`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
+  $(".profileLink").attr("tabindex", `0`);
+  $('.entriesLink').attr('href', `/entry/${uid}`);
+  $('.entriesLink').attr('tabindex', `0`);
+  $('.billsLink').attr('href', `/bills/${uid}`);
+  $('.billsLink').attr('tabindex', `0`);
+  $('.budgetLink').attr('href', `/caps/${uid}`);
+  $('.budgetLink').attr('tabindex', `0`);
 
+  $('.skillbar').each(function () {
+    $(this).find('.skillbar-bar').animate({
+      width: jQuery(this).attr('data-percent')
+    }, 1500);
+  });
   //get the information from the api to the dashboard
-  $.get("/" + uid).then(function (data) {
+  $.get("/api/" + uid).then(function (data) {
+    console.log(data);
+    //console.log(two);
     pieChart(
-      data.cat0name,
-      data.cat1name,
-      data.cat2name,
-      data.cat3name,
-      data.cat4name,
-      data.cat5name,
-      data.cat6name,
-      data.cat7name,
-      data.cat8name,
-      data.cat9name,
-      100,
-      34,
-      43,
-      25,
-      76,
-      235,
-      432,
-      85,
-      134,
-      135
+      [data.catNames[0].cat],
+      [data.catNames[1].cat],
+      [data.catNames[2].cat],
+      [data.catNames[3].cat],
+      [data.catNames[4].cat],
+      [data.catNames[5].cat],
+      [data.catNames[6].cat],
+      [data.catNames[7].cat],
+      [data.catNames[8].cat],
+      [data.catNames[9].cat],
+      [data.catTotalFloats[0].catTotalF],
+      [data.catTotalFloats[1].catTotalF],
+      [data.catTotalFloats[2].catTotalF],
+      [data.catTotalFloats[3].catTotalF],
+      [data.catTotalFloats[4].catTotalF],
+      [data.catTotalFloats[5].catTotalF],
+      [data.catTotalFloats[6].catTotalF],
+      [data.catTotalFloats[7].catTotalF],
+      [data.catTotalFloats[8].catTotalF],
+      [data.catTotalFloats[9].catTotalF]
     );
     //make a function for the pieChart
 
@@ -90,35 +105,33 @@ function pieChart(
       cat8name,
       cat9name
     ],
-    datasets: [
-      {
-        data: [
-          cat0value,
-          cat1value,
-          cat2value,
-          cat3value,
-          cat4value,
-          cat5value,
-          cat6value,
-          cat7value,
-          cat8value,
-          cat9value
-        ],
-        backgroundColor: [
-          "#480032",
-          "#8158fc",
-          "#ff8b6a",
-          "#34314f",
-          "#df0054",
-          "#ffc15e",
-          "#ffd6c2",
-          "#692db7",
-          "#ff5959",
-          "#3426a4"
-        ],
-        borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-      }
-    ]
+    datasets: [{
+      data: [
+        cat0value,
+        cat1value,
+        cat2value,
+        cat3value,
+        cat4value,
+        cat5value,
+        cat6value,
+        cat7value,
+        cat8value,
+        cat9value
+      ],
+      backgroundColor: [
+        "#480032",
+        "#8158fc",
+        "#ff8b6a",
+        "#34314f",
+        "#df0054",
+        "#ffc15e",
+        "#ffd6c2",
+        "#692db7",
+        "#ff5959",
+        "#3426a4"
+      ],
+      borderWidth: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    }]
   };
   var newDoughnut = new Chart(chart, {
     type: "doughnut",
