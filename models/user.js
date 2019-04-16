@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // how app will address the user
     preferredName: {
@@ -56,32 +56,86 @@ module.exports = function(sequelize, DataTypes) {
     },
     // The other categories are optional, for slicing the pie (chart)
     cat1name: DataTypes.STRING,
-    cat1cap: DataTypes.DECIMAL(10, 2),
-    cat1warn: DataTypes.DECIMAL(10, 2),
-    cat2warn: DataTypes.DECIMAL(10, 2),
+    cat1cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat1warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat2warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat2name: DataTypes.STRING,
-    cat2cap: DataTypes.DECIMAL(10, 2),
+    cat2cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat3name: DataTypes.STRING,
-    cat3cap: DataTypes.DECIMAL(10, 2),
-    cat3warn: DataTypes.DECIMAL(10, 2),
+    cat3cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat3warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat4name: DataTypes.STRING,
-    cat4cap: DataTypes.DECIMAL(10, 2),
-    cat4warn: DataTypes.DECIMAL(10, 2),
+    cat4cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat4warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat5name: DataTypes.STRING,
-    cat5cap: DataTypes.DECIMAL(10, 2),
-    cat5warn: DataTypes.DECIMAL(10, 2),
+    cat5cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat5warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat6name: DataTypes.STRING,
-    cat6cap: DataTypes.DECIMAL(10, 2),
-    cat6warn: DataTypes.DECIMAL(10, 2),
+    cat6cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat6warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat7name: DataTypes.STRING,
-    cat7cap: DataTypes.DECIMAL(10, 2),
-    cat7warn: DataTypes.DECIMAL(10, 2),
+    cat7cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat7warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat8name: DataTypes.STRING,
-    cat8cap: DataTypes.DECIMAL(10, 2),
-    cat8warn: DataTypes.DECIMAL(10, 2),
+    cat8cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat8warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     cat9name: DataTypes.STRING,
-    cat9cap: DataTypes.DECIMAL(10, 2),
-    cat9warn: DataTypes.DECIMAL(10, 2),
+    cat9cap: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
+    cat9warn: {
+      type: DataTypes.DECIMAL(10, 2),
+      defaultValue: 0
+    },
     // should the user wish to 'delete' their account, it will be deactivated
     activeFlag: {
       type: DataTypes.BOOLEAN,
@@ -89,7 +143,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   // 1 user to many events
-  User.associate = function(models) {
+  User.associate = function (models) {
     // console.log("hello", models);
 
     User.hasMany(models.Event, {
