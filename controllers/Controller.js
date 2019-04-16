@@ -20,6 +20,8 @@ module.exports = function(app) {
   var put16 = require("./../utils/put16.js");
   var put17 = require("./../utils/put17.js");
 
+  var emailValidation = require("./../utils/emailValidation.js");
+
   // Each of the below routes just handles the handlebars page that the user gets sent to.
 
   app.get("/login", function(req, res) {
@@ -54,8 +56,22 @@ module.exports = function(app) {
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    post5(queryObject, function(response) {
-      res.json({ id: response });
+    // Check whether or not a user's email is already in our database
+    emailValidation(queryObject, function(response) {
+      // console.log(response);
+
+      // Check if we received an error telling us that there was an e-mail address for that in the system. If there is, send back the error.
+      // If there isn't, we proceed to our post5 helper function.
+      if (!response.error) {
+        post5(queryObject, function(response) {
+          console.log("I should now insert into the database");
+          res.json({ id: response });
+        });
+      } else {
+        console.log("I should now return an error");
+        var responseObj = { error: "This e-mail address is already in use." };
+        res.json(responseObj);
+      }
     });
   });
 
@@ -272,5 +288,19 @@ module.exports = function(app) {
       // returns [1] if successful edit
       res.send(response);
     });
+  });
+
+  // Default routes
+
+  app.get("/entry", function(req, res) {
+    res.render("entry");
+  });
+
+  app.get("/profile", function(req, res) {
+    res.render("profile");
+  });
+
+  app.get("/bills", function(req, res) {
+    res.render("bills");
   });
 };
