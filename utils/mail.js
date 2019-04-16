@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// this file is for automatic email updates via nodemailer
-=======
 // // this file is for automatic email updates via nodemailer
->>>>>>> master
 // var db = require("../models");
 // var thismonth = require("./date");
 
@@ -62,8 +58,3 @@
 //           console.log('here is the res: ', res)
 //         }
 //       })
-<<<<<<< HEAD
-//     })
-=======
-
->>>>>>> master
