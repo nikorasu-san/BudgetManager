@@ -375,3 +375,11 @@ select {
 .dash-catName {
     width: 90%;
 }
+
+.modal,.modal-footer{
+    background-color: var(--yellow)!important;
+}
+
+.modal-p {
+    padding:20px;
+}

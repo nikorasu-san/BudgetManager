@@ -4,6 +4,8 @@ $(document).ready(function() {
   if (!uid) {
     document.location.href = "/login";
   }
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
 
   //get the information from the api to the dashboard
   $.get("/" + uid).then(function(data) {
@@ -31,7 +33,7 @@ $(document).ready(function() {
     );
     //make a function for the pieChart
 
-    console.log(data);
+    // console.log(data);
   });
 });
 //split it up into sections

@@ -2,7 +2,7 @@
 var db = require("../models");
 
 // // function
-var get6 = function(userid, callback) {
+var get6 = function (userid, callback) {
   // // we find the user's row and return the relevant columns or arrays of columns
   db.User.findOne({
     where: { id: userid.uid }
@@ -12,6 +12,7 @@ var get6 = function(userid, callback) {
       preferredName: x.dataValues.preferredName,
       email: x.dataValues.email,
       phone: x.dataValues.phone,
+      password: x.dataValues.password,
       monthlyIncome: x.dataValues.monthlyIncome,
       // catNames: [
       //   x.dataValues.cat0name,

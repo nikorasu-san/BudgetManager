@@ -4,6 +4,9 @@ $(document).ready(function() {
     document.location.href = "/login";
   }
 
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
+
   // skill bar animation
   $(".skillbar").each(function() {
     $(this)
@@ -12,7 +15,7 @@ $(document).ready(function() {
         {
           width: $(this).attr("data-percent")
         },
-        6000
+        3000
       );
 
     // Second bar for warning level if desired
@@ -77,27 +80,27 @@ $(document).ready(function() {
 
   $(document).on("click", "#updateBudget", function(event) {
     event.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
     let newTarget = $("#targetAmount").val();
     let newWarning = $("#warningAmount").val();
-    let category = $("#categoryList")
+    let categoryId = $("#categoryList")
       .find(":selected")
       .val();
 
     let reqObj = {
-      category: category,
+      categoryId: categoryId,
       capAmount: newTarget,
-      capWarning: newWarning
+      warnAmount: newWarning
     };
     console.log(reqObj);
     $.ajax({
-      url: "/caps/" + category,
+      url: "/caps/" + uid,
       method: "PUT",
       data: reqObj
     }).then(function(response) {
-      if (response.data) {
-        alert("Updates saved.");
-        location.replace("caps/");
+      if (response[0] === 1) {
+        // alert("Updates saved.");
+        location.reload();
       } else {
         alert("Data not saved.");
       }
