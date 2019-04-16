@@ -1,0 +1,184 @@
+<body id="profileBody">
+    <header>
+        <div class="container">
+            <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
+            <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
+            <h1 class="pageTitle">Profile</h1>
+        </div>
+    </header>
+    <form>
+        <section id="profileInfo">
+            <div class="container">
+                <div class="row">
+                    <div class="col m2">
+                    </div>
+                    <div class="col m8">
+                        <div class="row">
+                            <h4 class="b-text pageSubTitle">Profile Info</h4>
+                        </div>
+                        <div class="card-panel profile-card">
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="preferredName" type="text" class="validate yellow-text"
+                                        placeholder={{preferredName}}>
+                                    <label class="yellow-text" for="preferredName">Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate yellow-text" placeholder={{email}}>
+                                    <label class="yellow-text" for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="phone" type="text" class="validate yellow-text" placeholder={{phone}}>
+                                    <label class="yellow-text" for="phone">Phone Number (optional)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate yellow-text"
+                                        placeholder={{password}}>
+                                    <label class="yellow-text" for="password">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col m2"></div>
+                </div>
+            </div>
+        </section>
+        <section id="profileIncome">
+            <div class="container">
+                <div class="row">
+                    <div class="col m2"></div>
+                    <div class="col m8">
+                        <div class="row">
+                            <h4 class="pageSubTitle">Income and Spend Categories</h4>
+                        </div>
+                        <div class="card-panel income-card">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="income" type="text" class="validate yellow-text"
+                                        placeholder={{monthlyIncome}}>
+                                    <label class="yellow-text" for="income">Monthly Income</label>
+                                </div>
+                            </div>
+                            {{!-- <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat0name" type="text" class="validate yellow-text"
+                                        placeholder={{cat0name}}>
+                                    <label class="yellow-text" for="cat0name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat1name" type="text" class="validate yellow-text"
+                                        placeholder={{cat1name}}>
+                                    <label class="yellow-text" for="cat1name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat2name" type="text" class="validate yellow-text"
+                                        placeholder={{cat2name}}>
+                                    <label class="yellow-text" for="cat2name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat3name" type="text" class="validate yellow-text"
+                                        placeholder={{cat3name}}>
+                                    <label class="yellow-text" for="cat3name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat4name" type="text" class="validate yellow-text"
+                                        placeholder={{cat4name}}>
+                                    <label class="yellow-text" for="cat4name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat5name" type="text" class="validate yellow-text"
+                                        placeholder={{cat5name}}>
+                                    <label class="yellow-text" for="cat5name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat6name" type="text" class="validate yellow-text"
+                                        placeholder={{cat6name}}>
+                                    <label class="yellow-text" for="cat6name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat7name" type="text" class="validate yellow-text"
+                                        placeholder={{cat7name}}>
+                                    <label class="yellow-text" for="cat7name">Add Category</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat8name" type="text" class="validate yellow-text"
+                                        placeholder={{cat8name}}>
+                                    <label class="yellow-text" for="cat8name">Add Category</label>
+                                </div>
+                            </div> --}}
+                            {{#each catNames}}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cat{{@index}}name" type="text" class="validate yellow-text"
+                                        placeholder={{cat}}>
+                                    <label class="yellow-text" for="{{cat}}">Add Category</label>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col m2"></div>
+            </div>
+            </div>
+        </section>
+        <div id="modal1" class="modal" style="bottom:10%;">
+            <div class="modal-content" id="error-content">
+                <h4>Alert</h4>
+            </div>
+            <div id="error-body">
+            </div>
+            <div class="modal-footer">
+                <a href="#close-modal" rel="modal:close" id="deleteConfirm" type="submit"
+                    class="modal-close btn btn-large b-text right-align deleteConfirm">Agree</a>
+            </div>
+        </div>
+        <section id="bottom-buttons"><br>
+            <div class="row">
+                <div class="col m5"></div>
+                <div class="col m2">
+                    <button id="profileEdit" class="btn btn-large bigButton">SUBMIT EDIT</button>
+                </div>
+                <div class="col m5"></div>
+            </div>
+        </section>
+        <section id="bottom-buttons">
+            <div class="row">
+                <div class="col m5"></div>
+                <div class="col m2">
+                    <button id="profileDelete" class="btn btn-large bigButton">DEACTIVATE</button>
+                </div>
+                <div class="col m5"></div>
+            </div>
+        </section>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
+    <script src="/assets/js/profile.js"></script>
+</body>

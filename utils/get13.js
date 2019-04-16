@@ -5,8 +5,7 @@ var thismonth = require("./date");
 let catNames;
 let catCaps;
 let catWarns;
-var get13 = function(userid, callback) {
-  // console.log(userid);
+var get13 = function (userid, callback) {
   // // get the data from user table
   db.User.findOne({
     where: { id: userid.uid }
@@ -140,7 +139,6 @@ var get13 = function(userid, callback) {
       // // position using category id as index
       y.forEach(v => {
         let w = v.dataValues;
-        console.log(w);
         catTotalFloats[w.category].catTotalF += parseFloat(w.amount);
       });
       // // now that all events or sorted, do the math on the categories
@@ -174,7 +172,6 @@ var get13 = function(userid, callback) {
         catCapFloats,
         catWarnFloats
       };
-      // console.log(returnOb);
       callback(returnOb);
     });
   });

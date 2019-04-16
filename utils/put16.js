@@ -1,7 +1,7 @@
 var db = require("../models");
 // function
 
-var put16 = function(entryObject, callback) {
+var put16 = function (entryObject, callback) {
   let uid = entryObject.uid;
   // // rather than delete a user, we deactivate hir
   let insertObject = {
