@@ -11,19 +11,17 @@ $(document).ready(function() {
   $(".skillbar").each(function() {
     $(this)
       .find(".skillbar-bar")
-      .animate(
-        {
+      .animate({
           width: $(this).attr("data-percent")
         },
-        3000
+        2000
       );
 
     // Second bar for warning level if desired
 
     jQuery(this)
       .find(".skillbar-bar2")
-      .animate(
-        {
+      .animate({
           width: jQuery(this).attr("data-warn-percent")
         },
         6000
@@ -34,24 +32,24 @@ $(document).ready(function() {
   $(document).on("click", "#toBudgetForm", function() {
     console.log(
       $(this)
-        .parent()
-        .siblings(".sel-budget")
-        .find("input")
-        .val()
+      .parent()
+      .siblings(".sel-budget")
+      .find("input")
+      .val()
     );
     console.log(
       $(this)
-        .parent()
-        .siblings(".sel-warning")
-        .find("input")
-        .val()
+      .parent()
+      .siblings(".sel-warning")
+      .find("input")
+      .val()
     );
     console.log(
       $(this)
-        .parent()
-        .siblings(".sel-catName")
-        .find("h5")
-        .html()
+      .parent()
+      .siblings(".sel-catName")
+      .find("h5")
+      .html()
     );
 
     let selectedCatName = $(this)

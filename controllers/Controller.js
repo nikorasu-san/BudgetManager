@@ -56,22 +56,10 @@ module.exports = function(app) {
       phone: req.body.phoneNumber,
       password: req.body.password
     };
-    // Check whether or not a user's email is already in our database
-    emailValidation(queryObject, function(response) {
-      // console.log(response);
-
-      // Check if we received an error telling us that there was an e-mail address for that in the system. If there is, send back the error.
-      // If there isn't, we proceed to our post5 helper function.
-      if (!response.error) {
-        post5(queryObject, function(response) {
-          console.log("I should now insert into the database");
-          res.json({ id: response });
-        });
-      } else {
-        console.log("I should now return an error");
-        var responseObj = { error: "This e-mail address is already in use." };
-        res.json(responseObj);
-      }
+    post5(queryObject, function(response) {
+      res.json({
+        id: response
+      });
     });
   });
 
@@ -196,6 +184,7 @@ module.exports = function(app) {
     get13(queryObject, function(response) {
       console.log("get13", response);
       let combinedData = [];
+
       function Caps(cat, catCap, catWarn, catTotalF, catCapF, catWarnF) {
         (this.cat = cat),
           (this.catCap = catCap),
@@ -239,6 +228,22 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/:id", function(req, res) {
+    // Route 15
+    // making the UID a number seemed to resolve query issues
+    var uid = parseInt(req.params.id);
+    var queryObject = {
+      uid: uid
+    };
+
+    // temporarily commented to allow server to load dashboard page
+
+    get15(queryObject, function(response) {
+      //console.log("This is the response: " + JSON.stringify(response));
+      res.json(response);
+    });
+  });
+
   app.get("/:id", function(req, res) {
     // Route 15
     // making the UID a number seemed to resolve query issues
@@ -246,9 +251,36 @@ module.exports = function(app) {
     var queryObject = {
       uid: uid
     };
-    console.log("uid", uid);
-    console.log("Route 15");
+
+    // temporarily commented to allow server to load dashboard page
+
+    // add combinedData array to front end response
+
     get15(queryObject, function(response) {
+      let combinedData = [];
+
+      function Caps(cat, catCap, catTotalF, catCapF) {
+        (this.cat = cat),
+          (this.catCap = catCap),
+          (this.catTotalF = catTotalF),
+          (this.catCapF = catCapF);
+      }
+      // loop to run constructor function & push to array
+      console.log(response.catNames);
+      for (let i = 0; i < response.catNames.length; i++) {
+        var cap = new Caps(
+          response.catNames[i].cat,
+          response.catCaps[i].catCap,
+          response.catTotalFloats[i].catTotalF.toFixed(2),
+          response.catCapFloats[i].catCapF
+        );
+        console.log(cap);
+        if (combinedData.length < 2) {
+          combinedData.push(cap);
+        }
+      }
+      response.combinedData = combinedData;
+      console.log(response.combinedData);
       res.render("dashboard", response);
     });
   });
@@ -294,13 +326,5 @@ module.exports = function(app) {
 
   app.get("/entry", function(req, res) {
     res.render("entry");
-  });
-
-  app.get("/profile", function(req, res) {
-    res.render("profile");
-  });
-
-  app.get("/bills", function(req, res) {
-    res.render("bills");
   });
 };

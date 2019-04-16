@@ -105,7 +105,12 @@ body {
 
 .dashboard-entry {
     border-bottom: 1px solid var(--dark-blue);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.dashboard-entry p,
+.dashboard-bills p {
+    margin: 0;
 }
 
 .dashboard-bills {
@@ -113,12 +118,14 @@ body {
     margin-bottom: 5px;
 }
 
-.d-bills-text {
+.d-bills-text,
+.dashboard-entry {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-.d-bills-date {
+.d-bills-date,
+.d-entry-date {
     float: right;
 }
 
@@ -376,10 +383,11 @@ select {
     width: 90%;
 }
 
-.modal,.modal-footer{
-    background-color: var(--yellow)!important;
+.modal,
+.modal-footer {
+    background-color: var(--yellow) !important;
 }
 
 .modal-p {
-    padding:20px;
+    padding: 20px;
 }
