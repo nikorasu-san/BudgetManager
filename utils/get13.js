@@ -5,7 +5,7 @@ var thismonth = require("./date");
 let catNames;
 let catCaps;
 let catWarns;
-var get13 = function (userid, callback) {
+var get13 = function(userid, callback) {
   // // get the data from user table
   db.User.findOne({
     where: {
@@ -14,7 +14,8 @@ var get13 = function (userid, callback) {
   }).then(x => {
     //// we could change these initializations to loops based on number of categories if they were dynamic
     //// but since I had typed it out once it seemed faster to copy an paste
-    catNames = [{
+    catNames = [
+      {
         cat: x.dataValues.cat0name
       },
       {
@@ -57,7 +58,8 @@ var get13 = function (userid, callback) {
     //   x.dataValues.cat8name,
     //   x.dataValues.cat9name
     // ];
-    catCaps = [{
+    catCaps = [
+      {
         catCap: x.dataValues.cat0cap
       },
       {
@@ -100,7 +102,8 @@ var get13 = function (userid, callback) {
     //   x.dataValues.cat8cap,
     //   x.dataValues.cat9cap
     // ];
-    catWarns = [{
+    catWarns = [
+      {
         catWarn: x.dataValues.cat0warn
       },
       {
@@ -155,7 +158,8 @@ var get13 = function (userid, callback) {
       }
     }).then(y => {
       // // initialize some arrays
-      let catTotalFloats = [{
+      let catTotalFloats = [
+        {
           catTotalF: 0
         },
         {
@@ -186,7 +190,8 @@ var get13 = function (userid, callback) {
           catTotalF: 0
         }
       ];
-      let catCapFloats = [{
+      let catCapFloats = [
+        {
           catCapF: 0
         },
         {
@@ -217,7 +222,8 @@ var get13 = function (userid, callback) {
           catCapF: 0
         }
       ];
-      let catWarnFloats = [{
+      let catWarnFloats = [
+        {
           catWarnF: 0
         },
         {

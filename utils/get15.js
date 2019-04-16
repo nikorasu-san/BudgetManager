@@ -6,15 +6,15 @@ let catNames;
 let catCaps;
 let catWarns;
 
-var get15 = function (userid, callback) {
+var get15 = function(userid, callback) {
   db.User.findOne({
     where: {
       id: userid.uid,
       activeFlag: true
     }
   }).then(x => {
-
-    catNames = [{
+    catNames = [
+      {
         cat: x.dataValues.cat0name
       },
       {
@@ -45,7 +45,8 @@ var get15 = function (userid, callback) {
         cat: x.dataValues.cat9name
       }
     ];
-    catCaps = [{
+    catCaps = [
+      {
         catCap: x.dataValues.cat0cap
       },
       {
@@ -87,7 +88,8 @@ var get15 = function (userid, callback) {
       }
     }).then(y => {
       // // initialize some arrays
-      let catTotalFloats = [{
+      let catTotalFloats = [
+        {
           catTotalF: 0
         },
         {
@@ -118,7 +120,8 @@ var get15 = function (userid, callback) {
           catTotalF: 0
         }
       ];
-      let catCapFloats = [{
+      let catCapFloats = [
+        {
           catCapF: 0
         },
         {
@@ -149,7 +152,8 @@ var get15 = function (userid, callback) {
           catCapF: 0
         }
       ];
-      let catWarnFloats = [{
+      let catWarnFloats = [
+        {
           catWarnF: 0
         },
         {
@@ -216,9 +220,7 @@ var get15 = function (userid, callback) {
           billFlag: false,
           date: thismonth
         },
-        order: [
-          ["date", "DESC"]
-        ],
+        order: [["date", "DESC"]],
         limit: 3
       }).then(z => {
         let entryArr = [];
@@ -237,9 +239,7 @@ var get15 = function (userid, callback) {
             billFlag: true,
             date: thismonth
           },
-          order: [
-            ["date", "DESC"]
-          ],
+          order: [["date", "DESC"]],
           limit: 3
         }).then(z => {
           let billsArr = [];
