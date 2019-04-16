@@ -190,7 +190,7 @@ module.exports = function (app) {
       }
       // loop to run constructor function & push to array
       for (let i = 0; i < response.catNames.length; i++) {
-        var cap = new Caps(response.catNames[i].cat, response.catCaps[i].catCap, response.catWarns[i].catWarn, response.catTotalFloats[i].catTotalF, response.catCapFloats[i].catCapF, response.catWarnFloats[i].catWarnF);
+        var cap = new Caps(response.catNames[i].cat, response.catCaps[i].catCap, response.catWarns[i].catWarn, response.catTotalFloats[i].catTotalF.toFixed(2), response.catCapFloats[i].catCapF, response.catWarnFloats[i].catWarnF);
         combinedData.push(cap);
       }
       // add combinedData array to front end response
