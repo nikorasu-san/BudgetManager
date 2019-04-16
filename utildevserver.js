@@ -132,8 +132,8 @@ var queryObject = {
   uid: id
 };
 
-var get15 = require("./utils/get15.js");
-get15(queryObject, function(res) {
+var get13 = require("./utils/get13.js");
+get13(queryObject, function(res) {
   console.log("server", res);
 });
 

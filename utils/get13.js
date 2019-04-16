@@ -156,6 +156,13 @@ var get13 = function(userid, callback) {
         catWarnFloats[i].catWarnF = parseInt(
           (v.catTotalF * 100) / parseFloat(catWarns[i].catWarn)
         );
+
+        if (isNaN(catCapFloats[i].catCapF)) {
+          catCapFloats[i].catCapF = 0;
+        }
+        if (isNaN(catWarnFloats[i].catWarnF)) {
+          catWarnFloats[i].catWarnF = 0;
+        }
       });
       // // returning identically indexed arrays of category names, budget caps, warning levels,
       // // totals, and totals' percentage of budget caps and warning levels
