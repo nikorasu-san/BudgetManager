@@ -1,39 +1,53 @@
 <body id="billsBody">
-    <header>
-        <div class="container">
-            <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
-            <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
-            <h1 class="pageTitle">Spending</h1>
-        </div>
-    </header>
-    <section>
-        <div class="container">
-            <div class="col s12">
-                <h3 class="pageSubTitle">Bills</h3>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
+                <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
+                <h1 class="pageTitle">Spending</h1>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                {{!-- handlebars goes here --}}
-                {{#each events}}
-                <div class="col l4 m6 s12">
-                    <div class="bill-entry">
-                        <div class="bill-entry-title">
-                            <h5>{{description}}</h5>
-                        </div>
-                        <div class="bill-body">
-                            <p class="bill-entry-text">Date: {{date}}</p>
-                            <p class="bill-entry-text">Category: {{catName}}</p>
-                            <p class="bill-entry-text">Amount: ${{amount}} </p>
-                            <button class="btn btn-large buttonDelete" data-billId="{{eventId}}">Delete Bill</button>
+        </header>
+        <section>
+            <div class="container">
+                <div class="col s12">
+                    <h3 class="pageSubTitle">Bills</h3>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    {{!-- handlebars goes here --}}
+                    {{#each events}}
+                    <div class="col l4 m6 s12">
+                        <div class="bill-entry">
+                            <div class="bill-entry-title">
+                                <h5>{{description}}</h5>
+                            </div>
+                            <div class="bill-body">
+                                <p class="bill-entry-text">Date: {{date}}</p>
+                                <p class="bill-entry-text">Category: {{catName}}</p>
+                                <p class="bill-entry-text">Amount: ${{amount}} </p>
+                                <button class="btn btn-large buttonDelete" data-billId="{{eventId}}">Delete
+                                    Bill</button>
+                            </div>
                         </div>
                     </div>
+                    {{!-- handlebars end --}}
+                    {{/each}}
                 </div>
-                {{!-- handlebars end --}}
-                {{/each}}
-            </div>
 
+            </div>
+        </section>
+    </div>
+    <div class="push"></div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="date-text">© 2019 Copyright</span>
+                <a class="right btn footer-button logOut">Logout</a>
+                <a class="right btn footer-button" href="https://github.com/nikorasu-san/BudgetManager">Github</a>
+            </div>
         </div>
-    </section>
+    </footer>
+
     <script src="/assets/js/bills.js"></script>
 </body>

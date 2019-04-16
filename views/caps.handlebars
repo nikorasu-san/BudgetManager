@@ -1,100 +1,113 @@
 <body id="spendingBody">
-    <header>
-        <div class="container">
-            <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
-            <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
-            <h1 class="pageTitle">Budgets</h1>
-        </div>
-    </header>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
+                <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
+                <h1 class="pageTitle">Budgets</h1>
+            </div>
+        </header>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                {{!-- Left Panel --}}
-                <div class="col l6 s12">
-                    <h3 class="pageSubTitle b-text">View Budgets</h3>
-                    {{#each combinedData}}
-                    <div class="cap-item dash-cap">
-                        <div class="row sel-catName">
-                            <h5 class="b-text center-align">{{cat}}</h5>
-                            {{!-- bar goes here --}}
+        <section>
+            <div class="container">
+                <div class="row">
+                    {{!-- Left Panel --}}
+                    <div class="col l6 s12">
+                        <h3 class="pageSubTitle b-text">View Budgets</h3>
+                        {{#each combinedData}}
+                        <div class="cap-item dash-cap">
+                            <div class="row sel-catName">
+                                <h5 class="b-text center-align">{{cat}}</h5>
+                                {{!-- bar goes here --}}
 
-                            <div class="skillbar clearfix " data-percent="{{catCapF}}%">
-                                <div class="skillbar-title" style="background: #142d4c;"></div>
-                                <div class="skillbar-bar" style="background: #addce4; max-width: 100%"></div>
-                                <div class="skill-bar-percent">Total Spent {{catCapF}}%</div>
+                                <div class="skillbar clearfix " data-percent="{{catCapF}}%">
+                                    <div class="skillbar-title" style="background: #142d4c;"></div>
+                                    <div class="skillbar-bar" style="background: #addce4; max-width: 100%"></div>
+                                    <div class="skill-bar-percent">Total Spent {{catCapF}}%</div>
+                                </div>
+
+                                <div class="skillbar clearfix " data-percent="{{catWarnF}}%">
+                                    <div class="skillbar-title" style="background: #142d4c;"></div>
+                                    <div class="skillbar-bar" style="background: #ffed78; max-width: 100%"></div>
+                                    <div class="skill-bar-percent">Warning at {{catWarnF}}%</div>
+                                </div>
+
                             </div>
+                            <div class="row">
+                                {{!-- bar stops --}}
+                                {{!-- {{/each}} --}}
+                                <div class="input-field col s12">
+                                    <input disabled value={{catTotalF}} id="disabled" type="text" class="validate">
+                                    <label for="disabled">Total Spend this Month</label>
+                                </div>
+                            </div>
+                            <div class="row sel-budget">
+                                <div class="input-field col s12">
+                                    <input disabled value={{catCap}} id="disabled" type="text" class="validate">
+                                    <label for="disabled">Budget Amount</label>
+                                </div>
+                            </div>
+                            <div class="row sel-warning">
+                                <div class="input-field col s12">
+                                    <input disabled value={{catWarn}} id="disabled" type="text" class="validate">
+                                    <label for="disabled">Warning Amount</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <a id="toBudgetForm" class="btn btn-large bigButton">Add to Form</a>
 
-                            <div class="skillbar clearfix " data-percent="{{catWarnF}}%">
-                                <div class="skillbar-title" style="background: #142d4c;"></div>
-                                <div class="skillbar-bar" style="background: #ffed78; max-width: 100%"></div>
-                                <div class="skill-bar-percent">Warning at {{catWarnF}}%</div>
                             </div>
 
                         </div>
-                        <div class="row">
-                            {{!-- bar stops --}}
-                            {{!-- {{/each}} --}}
-                            <div class="input-field col s12">
-                                <input disabled value={{catTotalF}} id="disabled" type="text" class="validate">
-                                <label for="disabled">Total Spend this Month</label>
-                            </div>
-                        </div>
-                        <div class="row sel-budget">
-                            <div class="input-field col s12">
-                                <input disabled value={{catCap}} id="disabled" type="text" class="validate">
-                                <label for="disabled">Budget Amount</label>
-                            </div>
-                        </div>
-                        <div class="row sel-warning">
-                            <div class="input-field col s12">
-                                <input disabled value={{catWarn}} id="disabled" type="text" class="validate">
-                                <label for="disabled">Warning Amount</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a id="toBudgetForm" class="btn btn-large bigButton">Add to Form</a>
-
-                        </div>
-
+                        {{/each}}
                     </div>
-                    {{/each}}
-                </div>
-                {{!-- Right panel --}}
-                <div class="col l6 s12">
-                    <h3 class="pageSubTitle b-text">Edit Budgets</h3>
-                    <form id="budgetForm" class="cap-item">
-                        <div class="input-field s12">
-                            <select name="categoryList" id="categoryList">
-                                {{!-- enter handlebars for this part --}}
-                                <option value="" disabled selected>Choose your category</option>
-                                {{#each catNames}}
-                                <option data-name="{{cat}}" value="{{@index}}">{{cat}}</option>
-                                {{/each}}
-                            </select>
-                            <br>
+                    {{!-- Right panel --}}
+                    <div class="col l6 s12">
+                        <h3 class="pageSubTitle b-text">Edit Budgets</h3>
+                        <form id="budgetForm" class="cap-item">
                             <div class="input-field s12">
-                                <input type="text" id="targetAmount" tabindex="0" class="spending-input b-text"
-                                    placeholder="Enter Target Amount">
-                                <label for="targetAmount" class="spending-label b-text">Target Budget Amount</label>
+                                <select name="categoryList" id="categoryList">
+                                    {{!-- enter handlebars for this part --}}
+                                    <option value="" disabled selected>Choose your category</option>
+                                    {{#each catNames}}
+                                    <option data-name="{{cat}}" value="{{@index}}">{{cat}}</option>
+                                    {{/each}}
+                                </select>
+                                <br>
+                                <div class="input-field s12">
+                                    <input type="text" id="targetAmount" tabindex="0" class="spending-input b-text"
+                                        placeholder="Enter Target Amount">
+                                    <label for="targetAmount" class="spending-label b-text">Target Budget Amount</label>
+                                </div>
+                                <br>
+                                <div class="input-field s12">
+                                    <input type="text" id="warningAmount" tabindex="0" class="spending-input b-text"
+                                        placeholder="Enter Warning Amount">
+                                    <label for="warningAmount" class="spending-label b-text">Warning Amount</label>
+                                </div>
+
+
                             </div>
-                            <br>
-                            <div class="input-field s12">
-                                <input type="text" id="warningAmount" tabindex="0" class="spending-input b-text"
-                                    placeholder="Enter Warning Amount">
-                                <label for="warningAmount" class="spending-label b-text">Warning Amount</label>
-                            </div>
 
-
-                        </div>
-
-                        <button id="updateBudget" href="/caps/1" type="submit" class="btn btn-large bigButton">Update
-                            Budget</button>
-                    </form>
+                            <button id="updateBudget" href="/caps/1" type="submit"
+                                class="btn btn-large bigButton">Update
+                                Budget</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </section>
+    </div>
+    <div class="push"></div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="date-text">© 2019 Copyright</span>
+                <a class="right btn footer-button logOut">Logout</a>
+                <a class="right btn footer-button" href="https://github.com/nikorasu-san/BudgetManager">Github</a>
+            </div>
         </div>
-    </section>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="/assets/js/caps.js"></script>
