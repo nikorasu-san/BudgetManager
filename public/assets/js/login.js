@@ -49,10 +49,10 @@ $(document).ready(function () {
                         $(".modal").modal();
                         $("#error-body").empty();
                         $("#error-body").append("<p>" + data.error + "</p>");
-                    } else if (data.uid) {
+                    } else if (data.id) {
                         console.log(data.success);
-                        setCookie(data.uid);
-                        location.replace("/" + data.uid);
+                        setCookie(data.id);
+                        location.replace("/" + data.id);
                         // set local storage as backup
                         //localStorage.setItem("budget_user_id", data.uid);
                     }
@@ -102,14 +102,14 @@ $(document).ready(function () {
                 // console.log(newUser);
                 console.log("Should now make a post call");
                 $.post("/signup", newUser).then(function (data) {
-                    console.log("data: ", data);
+                    // console.log("data: ", data);
                     if (data.id) {
                         // Create a cookie
                         setCookie(data.id);
 
                         // set local storage as backup
                         //localStorage.setItem("budget_user_id", data.id);
-                        location.replace("/" + data.id);
+                        location.replace("/profile/" + data.id);
                     } else if (data.error) {
                         let message = data.error;
                         // open error modal

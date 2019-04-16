@@ -12,25 +12,40 @@ $(document).ready(function () {
 
   // skill bar animation
   $(".skillbar").each(function () {
-    $(this)
-      .find(".skillbar-bar")
-      .animate(
-        {
+
+    var dataSplit = $(this).attr('data-percent').split('%')
+    var number = parseInt(dataSplit[0])
+    console.log(number);
+    if (number >= 100) {
+      $(this).css({
+        "background": "#B40404"
+      });
+    }
+
+    if (number < 100) {
+      $(this)
+        .find(".skillbar-bar")
+        .animate({
           width: $(this).attr("data-percent")
         },
-        3000
-      );
+          2000
+        );
 
-    // Second bar for warning level if desired
+      // Second bar for warning level if desired
 
-    jQuery(this)
-      .find(".skillbar-bar2")
-      .animate(
-        {
-          width: jQuery(this).attr("data-warn-percent")
+      $(this)
+        .find(".skillbar-bar2")
+        .animate({
+          width: $(this).attr("data-warn-percent")
         },
-        6000
-      );
+          2000
+        );
+    }
+
+
+    //if the width of the 
+
+
   });
 
   // Add category data to budget form
@@ -108,5 +123,10 @@ $(document).ready(function () {
         alert("Data not saved.");
       }
     });
+  });
+
+  $(".logOut").on("click", function () {
+    deleteCookie();
+    document.location.href = "/login";
   });
 });

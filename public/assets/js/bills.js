@@ -27,4 +27,10 @@ $(document).ready(function () {
 
     })
 
+    $(".logOut").on("click", function () {
+        deleteCookie();
+        document.location.href = "/login";
+    });
+
+
 })

@@ -1,83 +1,92 @@
 <body id="dashboardBody">
-    <header>
-        <div class="container">
-            <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
-            <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
-            <h1 class="pageTitle">Welcome {{data.preferredName}}!</h1>
-        </div>
-    </header>
-    <section>
-        <div class="container">
-            <div class="row">
-                {{!-- entries block --}}
-                <div class="col l4 s12">
-                    <div class="dashboard-section">
-                        <h3 class="pageSubTitle">Entries</h3>
-                        <hr>
-                        <div id="entryInfo">
-                            {{#each data.Events}}
-                            <div class="dashboard-entry">
-                                <p>{{description}} | ${{amount}} | {{date}}</p>
-                            </div>
-                            {{/each}}
-                        </div>
-                        <a href="/entry" class=" btn btn-large bigButton">Add</a>
-                    </div>
-                </div>
-                {{!-- bills block --}}
-                <div class="col l4 s12">
-                    <div class="dashboard-section">
-                        <h3 class="pageSubTitle">Bills</h3>
-                        <hr>
-                        <div id="billsInfo">
-                            <div class="dashboard-bills">
-                                <p class="d-bills-text">Rent:
-                                    <span>$850.00</span> <span class="d-bills-date">04/23/2019</span></p>
-                            </div>
-                        </div>
-                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
-                    </div>
-                </div>
-                {{!-- budgets block --}}
-                <div class="col l4 s12">
-                    <div class="dashboard-section">
-                        <h3 class="pageSubTitle">Budgets</h3>
-                        <div id="capsInfo">
-                            {{#each data}}
-                            <div class="row dash-catName">
-                                <h5 class="b-text center-align">{{catName}}</h5>
-                                {{!-- bar goes here --}}
-                                <div class="skillbar clearfix " data-percent="{{monthPercent}}%"
-                                    data-warn-percent="{{warnPercent}}%">
-                                    <div class="skillbar-title" style="background: #142d4c;"></div>
-                                    <div class="skillbar-bar" style="background: #142d4c;"></div>
-                                    <div class="skill-bar-percent">Total Spent {{monthPercent}}%</div>
-                                </div>
-                                <div class="skillbar clearfix " data-percent="{{warnPercent}}%">
-                                    <div class="skillbar-title" style="background: #142d4c;"></div>
-                                    <div class="skillbar-bar" style="background: #ffed78;"></div>
-                                    <div class="skill-bar-percent">Warning at {{warnPercent}}%</div>
-                                </div>
-                            </div>
-                            {{/each}}
-                        </div>
-                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
-                    </div>
-                </div>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <h4 class="link-left"><a class="dashboardLink">Dashboard</a></h4>
+                <h4 class="link-right"><a class="profileLink">Profile</a></h4>
+                <h1 class="pageTitle">Welcome {{preferredName}}!</h1>
             </div>
-    </section>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <div class="dashboard-section">
-                        <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
-                        <canvas id="pieChart"></canvas>
+        </header>
+        <section>
+            <div class="container">
+                <div class="row">
+                    {{!-- entries block --}}
+                    <div class="col l4 s12">
+                        <div class="dashboard-section">
+                            <h3 class="pageSubTitle">Entries</h3>
+                            <hr>
+                            <div id="entryInfo">
+                                {{#each entryArr}}
+                                <div class="dashboard-entry">
+                                    <p>{{description}} <br> <span>${{amount}}</span> <span
+                                            class="d-entry-date">{{date}}</span> </p>
+                                </div>
+                                {{/each}}
+                            </div>
+                            <a class=" btn btn-large bigButton entriesLink">Add</a>
+                        </div>
                     </div>
+                    {{!-- bills block --}}
+                    <div class="col l4 s12">
+                        <div class="dashboard-section">
+                            <h3 class="pageSubTitle">Bills</h3>
+                            <hr>
+                            <div id="billsInfo">
+                                {{#each billsArr}}
+                                <div class="dashboard-bills">
+                                    <p class="d-bills-text">{{description}} <br>
+                                        <span>$ {{amount}}</span> <span class="d-bills-date">{{date}}</span></p>
+                                </div>
+                                {{/each}}
+                            </div>
+                            <a tabindex="0" class="btn btn-large bigButton billsLink">Manage</a>
+                        </div>
+                    </div>
+                    {{!-- budgets block --}}
+                    <div class="col l4 s12">
+                        <div class="dashboard-section">
+                            <h3 class="pageSubTitle">Budgets</h3>
+                            <hr>
+                            <div id="capsInfo">
+                                <div class="row dash-catName">
+                                    {{#each combinedData}}
+                                    <h5 class="b-text center-align">{{cat}}</h5>
+                                    {{!-- bar goes here --}}
 
+                                    <div class="skillbar clearfix " data-percent="{{catCapF}}%">
+                                        <div class="skillbar-title" style="background: #142d4c;"></div>
+                                        <div class="skillbar-bar" style="background: #ffed78; max-width: 100%;"></div>
+                                        <div class="skill-bar-percent">Total Spent {{catTotalF}}%</div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <a tabindex="0" class="btn btn-large bigButton budgetLink">Manage</a>
+                        </div>
+                    </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="dashboard-section">
+                            <h3 class="pageSubTitle">You Have ${{moneyLeft}} Left This Month!</h3>
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+    </div>
+    <div class="push"></div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="date-text">© 2019 Copyright</span>
+                <a class="right btn footer-button logOut">Logout</a>
+                <a class="right btn footer-button" href="https://github.com/nikorasu-san/BudgetManager">Github</a>
+            </div>
         </div>
-    </section>
+    </footer>
     <script src="/assets/js/dashboard.js"></script>
 </body>

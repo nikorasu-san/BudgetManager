@@ -47,3 +47,7 @@ function setCookie(userid) {
     "budgetAppID=" + userid + "; path=/; userid=" + userid + " " + expires;
   console.log("Break point");
 }
+
+function deleteCookie() {
+  cookies.remove("id");
+}

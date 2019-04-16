@@ -193,11 +193,12 @@ $(document).ready(function () {
                     $('#error-body').append(`<p class="modal-p">This profile was not deleted.</p>`);
                 }
             })
-
         })
-
-
-
     })
+
+    $(".logOut").on("click", function () {
+        deleteCookie();
+        document.location.href = "/login";
+    });
 
 });

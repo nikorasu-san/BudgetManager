@@ -13,6 +13,11 @@
     --darker-blue: #142d4c;
 }
 
+html,body {
+    height:100%;
+    margin:0;
+}
+
 body {
     font-family: 'Lato', Arial, Helvetica, sans-serif;
 }
@@ -105,7 +110,12 @@ body {
 
 .dashboard-entry {
     border-bottom: 1px solid var(--dark-blue);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.dashboard-entry p,
+.dashboard-bills p {
+    margin: 0;
 }
 
 .dashboard-bills {
@@ -113,12 +123,14 @@ body {
     margin-bottom: 5px;
 }
 
-.d-bills-text {
+.d-bills-text,
+.dashboard-entry {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-.d-bills-date {
+.d-bills-date,
+.d-entry-date {
     float: right;
 }
 
@@ -279,7 +291,7 @@ select {
 .income-card {
     background-color: var(--dark-blue);
     color: var(--light-yellow) !important;
-    height: 40rem;
+    height: 30rem;
     width: 100%;
     overflow: auto;
 
@@ -303,6 +315,7 @@ select {
     display: block;
     margin-bottom: 15px;
     width: 100%;
+    max-width: 100%;
     background: #eee;
     height: 35px;
     border-radius: 3px;
@@ -376,10 +389,31 @@ select {
     width: 90%;
 }
 
-.modal,.modal-footer{
-    background-color: var(--yellow)!important;
+.modal,
+.modal-footer {
+    background-color: var(--yellow) !important;
 }
 
 .modal-p {
-    padding:20px;
+    padding: 20px;
+}
+
+footer,.footer-copyright,.page-footer {
+    background-color: var(--dark-blue);
+    color: var(--light-yellow);
+}
+
+.footer-button {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    margin: 4px;
+}
+
+footer,.push {
+    height:100px;
+}
+
+.wrapper {
+min-height:100%;
+margin-bottom: -50px;
 }
