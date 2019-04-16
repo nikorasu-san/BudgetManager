@@ -49,10 +49,10 @@ $(document).ready(function () {
                         $(".modal").modal();
                         $("#error-body").empty();
                         $("#error-body").append("<p>" + data.error + "</p>");
-                    } else if (data.uid) {
+                    } else if (data.id) {
                         console.log(data.success);
-                        setCookie(data.uid);
-                        location.replace("/" + data.uid);
+                        setCookie(data.id);
+                        location.replace("/" + data.id);
                         // set local storage as backup
                         //localStorage.setItem("budget_user_id", data.uid);
                     }
