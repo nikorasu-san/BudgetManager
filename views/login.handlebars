@@ -1,55 +1,66 @@
 <body id="login-body">
-
-    <div class="container">
-        <div class="row">
-            <div class="col m2"></div>
-            <div class="col m8">
-                <div class="card-panel solo-card" id="login-card">
-                    <h1 class="pageSubTitle">Welcome!</h1>
-                    <form>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="email" type="email" class="validate b-text">
-                                <label class="b-text" for="email">Email</label>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col m2"></div>
+                <div class="col m8">
+                    <div class="card-panel solo-card" id="login-card">
+                        <h3 class="pageSubTitle">Welcome to</h3>
+                        <h1 class="pageSubTitle">Check Yourself!</h1>
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate b-text">
+                                    <label class="b-text" for="email">Email</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="password" type="password" class="validate b-text">
-                                <label class="b-text" for="password">Password</label>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate b-text">
+                                    <label class="b-text" for="password">Password</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col m4"></div>
-                            <div class="col m4">
-                                <button id="loginbtn" class="btn-large bigButton">Login</button>
+                            <div class="row">
+                                <div class="col m4"></div>
+                                <div class="col m4">
+                                    <button id="loginbtn" class="btn-large bigButton">Login</button>
+                                </div>
+                                <div class="col m4"></div>
                             </div>
-                            <div class="col m4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col m4"></div>
-                            <div class="col m4">
-                                <a href="/signup" class="btn-large bigButton">Sign-Up</a>
+                            <div class="row">
+                                <div class="col m4"></div>
+                                <div class="col m4">
+                                    <a href="/signup" class="btn-large bigButton">Sign-Up</a>
+                                </div>
+                                <div class="col m4"></div>
                             </div>
-                            <div class="col m4"></div>
-                        </div>
-                    </form>
-                </div>
-                <div id="modal1" class="modal" style="margin-top:-25rem;">
-                    <div class="modal-content" id="error-content">
-                        <h4>Error</h4>
-                        <div id="error-body">
-
-                        </div>
+                        </form>
                     </div>
-                    {{!-- <div class="modal-footer">
+                    <div id="modal1" class="modal" style="margin-top:-25rem;">
+                        <div class="modal-content" id="error-content">
+                            <h4>Error</h4>
+                            <div id="error-body">
+
+                            </div>
+                        </div>
+                        {{!-- <div class="modal-footer">
                         <a href="#!" class="modal-close bigButton btn-large">Agree</a>
                     </div> --}}
+                    </div>
                 </div>
+                <div class="col m2"></div>
             </div>
-            <div class="col m2"></div>
         </div>
     </div>
+    <div class="push"></div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="date-text">© 2019 Copyright</span>
+                <a class="right btn footer-button" href="https://github.com/nikorasu-san/BudgetManager">Github</a>
+            </div>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>

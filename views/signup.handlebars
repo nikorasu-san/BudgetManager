@@ -1,64 +1,74 @@
 <body id="login-body" style="overflow=auto">
-
-    <div class="container">
-        <div class="row">
-            <div class="col m2"></div>
-            <div class="col m8">
-                <div id="modal1" class="modal" style="margin-top:-42rem;">
-                    <div class="modal-content" id="error-content">
-                        <h4>Error</h4>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col m2"></div>
+                <div class="col m8">
+                    <div id="modal1" class="modal" style="margin-top:-42rem;">
+                        <div class="modal-content" id="error-content">
+                            <h4>Error</h4>
+                        </div>
+                        <div id="error-body">
+                        </div>
                     </div>
-                    <div id="error-body">
+                    <div class="card-panel solo-card" id="login-card">
+                        <h1 class="pageSubTitle">User Sign-Up</h1>
+                        <form>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="preferredName" type="text" class="validate b-text">
+                                    <label class="b-text" for="preferredName">Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate b-text">
+                                    <label class="b-text" for="email">Email</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="phoneNumber" type="text" class="validate b-text">
+                                    <label class="b-text" for="phoneNumber">Phone Number (optional)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate b-text">
+                                    <label class="b-text" for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col m4"></div>
+                                <div class="col m4">
+                                    <button id="newUser" class="login-button btn-large bigButton">Submit</button>
+                                </div>
+                                <div class="col m4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col m4"></div>
+                                <div class="col m4">
+                                    <a href="/login" class="login-button btn-large bigButton">Back</a>
+                                </div>
+                                <div class="col m4"></div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="card-panel solo-card" id="login-card">
-                    <h1 class="pageSubTitle">User Sign-Up</h1>
-                    <form>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="preferredName" type="text" class="validate b-text">
-                                <label class="b-text" for="preferredName">Name</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="email" type="email" class="validate b-text">
-                                <label class="b-text" for="email">Email</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="phoneNumber" type="text" class="validate b-text">
-                                <label class="b-text" for="phoneNumber">Phone Number (optional)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="password" type="password" class="validate b-text">
-                                <label class="b-text" for="password">Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col m4"></div>
-                            <div class="col m4">
-                                <button id="newUser" class="login-button btn-large bigButton">Submit</button>
-                            </div>
-                            <div class="col m4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col m4"></div>
-                            <div class="col m4">
-                                <a href="/login" class="login-button btn-large bigButton">Back</a>
-                            </div>
-                            <div class="col m4"></div>
-                        </div>
-                    </form>
-                </div>
 
+                </div>
+                <div class="col m2"></div>
             </div>
-            <div class="col m2"></div>
         </div>
     </div>
+    <div class="push"></div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span class="date-text">© 2019 Copyright</span>
+                <a class="right btn footer-button" href="https://github.com/nikorasu-san/BudgetManager">Github</a>
+            </div>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
