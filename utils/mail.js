@@ -33,7 +33,6 @@
 
 // //    i think we need to require this in the app on server
 
-
 // //   the transporter will actually send the emails from the service we set up
 // app.post('/send', function(req, res, next) {
 //     const transporter = nodemailer.createTransport({
