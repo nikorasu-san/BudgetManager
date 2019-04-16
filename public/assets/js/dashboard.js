@@ -7,9 +7,22 @@ $(document).ready(function () {
   if (!uid) {
     document.location.href = "/login";
   }
-  $(".dashboardLink").attr("href", `/${uid}`)
-  $(".profileLink").attr("href", `/profile/${uid}`)
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".dashboardLink").attr("tabindex", `0`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
+  $(".profileLink").attr("tabindex", `0`);
+  $('.entriesLink').attr('href', `/entry/${uid}`);
+  $('.entriesLink').attr('tabindex', `0`);
+  $('.billsLink').attr('href', `/bills/${uid}`);
+  $('.billsLink').attr('tabindex', `0`);
+  $('.budgetLink').attr('href', `/caps/${uid}`);
+  $('.budgetLink').attr('tabindex', `0`);
 
+  $('.skillbar').each(function () {
+    $(this).find('.skillbar-bar').animate({
+      width: jQuery(this).attr('data-percent')
+    }, 1500);
+  });
   //get the information from the api to the dashboard
   $.get("/api/" + uid).then(function (data) {
     console.log(data);

@@ -1,8 +1,8 @@
 <body id="dashboardBody">
     <header>
         <div class="container">
-            <h4 class="link-left"><a href="/" tabindex="0" class="dashboardLink">Dashboard</a></h4>
-            <h4 class="link-right"><a href="/profile" tabindex="0" class="profileLink">Profile</a></h4>
+            <h4 class="link-left"><a class="dashboardLink">Dashboard</a></h4>
+            <h4 class="link-right"><a class="profileLink">Profile</a></h4>
             <h1 class="pageTitle">Welcome {{preferredName}}!</h1>
         </div>
     </header>
@@ -15,13 +15,14 @@
                         <h3 class="pageSubTitle">Entries</h3>
                         <hr>
                         <div id="entryInfo">
-                            {{#each data.Events}}
+                            {{#each entryArr}}
                             <div class="dashboard-entry">
-                                <p>{{description}} | ${{amount}} | {{date}}</p>
+                                <p>{{description}} <br> <span>${{amount}}</span> <span
+                                        class="d-entry-date">{{date}}</span> </p>
                             </div>
                             {{/each}}
                         </div>
-                        <a href="/entry" class=" btn btn-large bigButton">Add</a>
+                        <a class=" btn btn-large bigButton entriesLink">Add</a>
                     </div>
                 </div>
                 {{!-- bills block --}}
@@ -30,51 +31,47 @@
                         <h3 class="pageSubTitle">Bills</h3>
                         <hr>
                         <div id="billsInfo">
+                            {{#each billsArr}}
                             <div class="dashboard-bills">
-                                <p class="d-bills-text">Rent:
-                                    <span>$850.00</span> <span class="d-bills-date">04/23/2019</span></p>
+                                <p class="d-bills-text">{{description}} <br>
+                                    <span>$ {{amount}}</span> <span class="d-bills-date">{{date}}</span></p>
                             </div>
+                            {{/each}}
                         </div>
-                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
+                        <a tabindex="0" class="btn btn-large bigButton billsLink">Manage</a>
                     </div>
                 </div>
                 {{!-- budgets block --}}
                 <div class="col l4 s12">
                     <div class="dashboard-section">
                         <h3 class="pageSubTitle">Budgets</h3>
+                        <hr>
                         <div id="capsInfo">
-                            {{#each data}}
                             <div class="row dash-catName">
-                                <h5 class="b-text center-align">{{catName}}</h5>
+                                {{#each combinedData}}
+                                <h5 class="b-text center-align">{{cat}}</h5>
                                 {{!-- bar goes here --}}
-                                <div class="skillbar clearfix " data-percent="{{monthPercent}}%"
-                                    data-warn-percent="{{warnPercent}}%">
-                                    <div class="skillbar-title" style="background: #142d4c;"></div>
-                                    <div class="skillbar-bar" style="background: #142d4c;"></div>
-                                    <div class="skill-bar-percent">Total Spent {{monthPercent}}%</div>
-                                </div>
-                                <div class="skillbar clearfix " data-percent="{{warnPercent}}%">
+
+                                <div class="skillbar clearfix " data-percent="{{catCapF}}%">
                                     <div class="skillbar-title" style="background: #142d4c;"></div>
                                     <div class="skillbar-bar" style="background: #ffed78;"></div>
-                                    <div class="skill-bar-percent">Warning at {{warnPercent}}%</div>
+                                    <div class="skill-bar-percent">Total Spent {{catTotalF}}%</div>
                                 </div>
+                                {{/each}}
                             </div>
-                            {{/each}}
                         </div>
-                        <a tabindex="0" class="btn btn-large bigButton">Manage</a>
+                        <a tabindex="0" class="btn btn-large bigButton budgetLink">Manage</a>
                     </div>
                 </div>
-            </div>
     </section>
     <section>
         <div class="container">
             <div class="row">
                 <div class="col s12">
                     <div class="dashboard-section">
-                        <h3 class="pageSubTitle">You Have X Amount Left This Month!</h3>
+                        <h3 class="pageSubTitle">You Have ${{moneyLeft}} Left This Month!</h3>
                         <canvas id="pieChart"></canvas>
                     </div>
-
                 </div>
             </div>
         </div>

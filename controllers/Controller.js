@@ -231,7 +231,7 @@ module.exports = function (app) {
     // temporarily commented to allow server to load dashboard page
 
     get15(queryObject, function (response) {
-      console.log("This is the response: " + JSON.stringify(response));
+      //console.log("This is the response: " + JSON.stringify(response));
       res.json(response);
     });
   });
@@ -246,8 +246,29 @@ module.exports = function (app) {
 
     // temporarily commented to allow server to load dashboard page
 
+    // add combinedData array to front end response
+
+
     get15(queryObject, function (response) {
-      // console.log("This is the response: " + JSON.stringify(response));
+      let combinedData = [];
+
+      function Caps(cat, catCap, catTotalF, catCapF, ) {
+        this.cat = cat,
+          this.catCap = catCap,
+          this.catTotalF = catTotalF,
+          this.catCapF = catCapF
+      }
+      // loop to run constructor function & push to array
+      console.log(response.catNames);
+      for (let i = 0; i < response.catNames.length; i++) {
+        var cap = new Caps(response.catNames[i].cat, response.catCaps[i].catCap, response.catTotalFloats[i].catTotalF.toFixed(2), response.catCapFloats[i].catCapF);
+        console.log(cap);
+        if (combinedData.length < 2) {
+          combinedData.push(cap);
+        }
+      }
+      response.combinedData = combinedData
+      console.log(response.combinedData);
       res.render("dashboard", response);
     });
   });
