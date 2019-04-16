@@ -286,7 +286,7 @@ select {
 .income-card {
     background-color: var(--dark-blue);
     color: var(--light-yellow) !important;
-    height: 40rem;
+    height: 30rem;
     width: 100%;
     overflow: auto;
 
@@ -310,6 +310,7 @@ select {
     display: block;
     margin-bottom: 15px;
     width: 100%;
+    max-width: 100%;
     background: #eee;
     height: 35px;
     border-radius: 3px;

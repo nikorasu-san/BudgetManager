@@ -9,47 +9,64 @@ $(document).ready(function() {
 
   // skill bar animation
   $(".skillbar").each(function() {
-    $(this)
-      .find(".skillbar-bar")
-      .animate({
-          width: $(this).attr("data-percent")
-        },
-        2000
-      );
+    var dataSplit = $(this)
+      .attr("data-percent")
+      .split("%");
+    var number = parseInt(dataSplit[0]);
+    console.log(number);
+    if (number >= 100) {
+      $(this).css({
+        background: "#B40404"
+      });
+    }
 
-    // Second bar for warning level if desired
+    if (number < 100) {
+      $(this)
+        .find(".skillbar-bar")
+        .animate(
+          {
+            width: $(this).attr("data-percent")
+          },
+          2000
+        );
 
-    jQuery(this)
-      .find(".skillbar-bar2")
-      .animate({
-          width: jQuery(this).attr("data-warn-percent")
-        },
-        6000
-      );
+      // Second bar for warning level if desired
+
+      $(this)
+        .find(".skillbar-bar2")
+        .animate(
+          {
+            width: $(this).attr("data-warn-percent")
+          },
+          2000
+        );
+    }
+
+    //if the width of the
   });
 
   // Add category data to budget form
   $(document).on("click", "#toBudgetForm", function() {
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-budget")
-      .find("input")
-      .val()
+        .parent()
+        .siblings(".sel-budget")
+        .find("input")
+        .val()
     );
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-warning")
-      .find("input")
-      .val()
+        .parent()
+        .siblings(".sel-warning")
+        .find("input")
+        .val()
     );
     console.log(
       $(this)
-      .parent()
-      .siblings(".sel-catName")
-      .find("h5")
-      .html()
+        .parent()
+        .siblings(".sel-catName")
+        .find("h5")
+        .html()
     );
 
     let selectedCatName = $(this)
