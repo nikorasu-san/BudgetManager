@@ -25,6 +25,16 @@ $(document).ready(function () {
     console.log(formatDate);
     let newDate = formatDate.format("YYYY-MM-DD");
     console.log(newDate);
+    // check if in the future
+    let today = moment().format("YYYY-MM-DD")
+    let diff = moment(newDate).diff(today)
+    let billFlag = false;
+    console.log("diff:", diff)
+    if (diff > 0) {
+      billFlag = true;
+    }
+    console.log("billFlag:", billFlag)
+
     //store the values into an object
     var data = {
       uid: parseInt(uid),
@@ -32,7 +42,8 @@ $(document).ready(function () {
       amount: amount,
       categoryId: category,
       isRecurring: isBill,
-      date: newDate
+      date: newDate,
+      billFlag: billFlag
     };
     e.preventDefault();
     console.log("it works!");
