@@ -39,6 +39,7 @@ var get15 = function (userid, callback) {
       { catCap: x.dataValues.cat9cap }
     ];
     let monthlyIncome = x.dataValues.monthlyIncome;
+    let preferredName = x.dataValues.preferredName;
     // console.log("monthly income", monthlyIncome);
     db.Event.findAll({
       where: {
@@ -150,6 +151,7 @@ var get15 = function (userid, callback) {
           console.log("billsarray", billsArr);
 
           let returnOb = {
+            preferredName,
             catNames,
             catCaps,
             // catWarns,
