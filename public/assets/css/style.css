@@ -310,6 +310,7 @@ select {
     display: block;
     margin-bottom: 15px;
     width: 100%;
+    max-width: 100%;
     background: #eee;
     height: 35px;
     border-radius: 3px;
