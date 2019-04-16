@@ -4,17 +4,17 @@ VALUES ("Connie","sugarrush",9000,"star@star.com","5554443333","Travel","Concert
 ("Sonny", "jambam",8500,"bra@ski.com","9998887777","Brew Supplies","CTA","Food","Rent","Utilities","Loans","Music Lessons", "Weekend","Gym","Clothes", 50, 60, 80, 600, 110, 300, 35, 50, 80, 30,40,40,60,500,90,250,30,40,60,20);
 SELECT * FROM budget.Users;
 
-insert into events( userId, description, category, amount,date)
-Values( 1, "cheetos", 2, 500.00, "2019-04-01"),
-( 1, "cheetos", 2, 500.00, "2019-04-02"),
-( 2, "cheetos", 2, 500.00, "2019-04-01"),
-( 2, "CheezeWhiz", 2, 500.00, "2019-04-01"),
-( 2, "rent", 3, 1500.00, "2019-04-01"),
-( 1, "rent", 6, 500.00, "2019-04-01"),
-( 1, "cheetos", 2, 50.00, "2019-04-01"),
-( 1, "cheezeWhiz", 2, 500.00, "2019-04-01")
+insert into events( userId, description, category, amount,date, createdAt, updatedAt)
+Values( 1, "cheetos", 2, 2.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 1, "cheetos", 2, 2.00, "2019-04-02","2019-04-15","2019-04-15"),
+( 2, "cheetos", 2, 2.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 2, "CheezeWhiz", 2, 5.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 2, "rent", 3, 1500.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 1, "rent", 6, 500.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 1, "cheetos", 2, 2.00, "2019-04-01","2019-04-15","2019-04-15"),
+( 1, "cheezeWhiz", 2, 5.00, "2019-04-01","2019-04-15","2019-04-15");
 
-insert into events( userId, description, category, amount,date, billFlag)
-Values( 1, "car insurance", 5, 500.00, "2019-04-30", true),
-( 1, "venmo", 1, 500.00, "2019-04-30", true),
-( 2, "taxes", 4, 500.00, "2019-04-30", true)
+INSERT into events( userId, description, category, amount,date, billFlag,createdAt,updatedAt)
+Values( 1, "car insurance", 5, 500.00, "2019-04-30", true,"2019-04-15","2019-04-15"),
+( 1, "venmo", 1, 20.00, "2019-04-30", true,"2019-04-15","2019-04-15"),
+( 2, "taxes", 4, 30.00, "2019-04-30", true,"2019-04-15","2019-04-15");

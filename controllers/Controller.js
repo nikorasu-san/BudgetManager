@@ -175,6 +175,23 @@ module.exports = function (app) {
       uid: uid
     };
     get13(queryObject, function (response) {
+      console.log("get13", response)
+      let combinedData = [];
+      function Caps(cat, catCap, catWarn, catTotalF, catCapF, catWarnF) {
+        this.cat = cat,
+          this.catCap = catCap,
+          this.catWarn = catWarn,
+          this.catTotalF = catTotalF,
+          this.catCapF = catCapF,
+          this.catWarnF = catWarnF
+      }
+      // loop to run constructor function & push to array
+      for (let i = 0; i < response.catNames.length; i++) {
+        var cap = new Caps(response.catNames[i].cat, response.catCaps[i].catCap, response.catWarns[i].catWarn, response.catTotalFloats[i].catTotalF, response.catCapFloats[i].catCapF, response.catWarnFloats[i].catWarnF);
+        combinedData.push(cap);
+      }
+      // add combinedData array to front end response
+      response.combinedData = combinedData
       res.render("caps", response);
     });
   });
@@ -187,8 +204,10 @@ module.exports = function (app) {
       // date:req.dueDate,
       uid: uid,
       // description: req.description,
-      category: req.categoryid,
-      capAmount: req.amount
+      category: req.categoryId,
+      capAmount: req.capAmount,
+      warnAmount: req.warnAmount
+
     };
     put14(queryObject, function (response) {
       res.send(response);
