@@ -6,14 +6,14 @@ let catNames;
 let catCaps;
 let catWarns;
 
-var get15 = function(userid, callback) {
+var get15 = function (userid, callback) {
   db.User.findOne({
     where: {
       id: userid.uid,
       activeFlag: true
     }
   }).then(x => {
-    // console.log(x);
+
     catNames = [
       { cat: x.dataValues.cat0name },
       { cat: x.dataValues.cat1name },
@@ -129,7 +129,7 @@ var get15 = function(userid, callback) {
           entryObject.description = x.dataValues.description;
           entryArr.push(entryObject);
         });
-        console.log(entryArr);
+        console.log("entry arr", entryArr);
         db.Event.findAll({
           where: {
             userId: userid.uid,
@@ -148,7 +148,7 @@ var get15 = function(userid, callback) {
             billsObject.description = x.dataValues.description;
             billsArr.push(billsObject);
           });
-          console.log(billsArr);
+          console.log("billsarray", billsArr);
 
           let returnOb = {
             preferredName,
@@ -164,7 +164,7 @@ var get15 = function(userid, callback) {
             entryArr,
             billsArr
           };
-          // console.log(returnOb);
+          console.log("returns:", returnOb);
           callback(returnOb);
         });
       });
