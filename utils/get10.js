@@ -1,27 +1,12 @@
 var db = require("../models");
 var thismonth = require("./date");
-
-// function
 let catNames;
-var get8 = function (userid, callback) {
+var get8 = function(userid, callback) {
   // // we find the user's row and return the relevant array of columns
 
   db.User.findOne({
     where: { id: userid.uid }
   }).then(x => {
-    // console.log("returned user object", x.dataValues);
-    // catNames = [
-    //   x.dataValues.cat0name,
-    //   x.dataValues.cat1name,
-    //   x.dataValues.cat2name,
-    //   x.dataValues.cat3name,
-    //   x.dataValues.cat4name,
-    //   x.dataValues.cat5name,
-    //   x.dataValues.cat6name,
-    //   x.dataValues.cat7name,
-    //   x.dataValues.cat8name,
-    //   x.dataValues.cat9name
-    // ];
     catNames = [
       { cat: x.dataValues.cat0name },
       { cat: x.dataValues.cat1name },
@@ -35,8 +20,7 @@ var get8 = function (userid, callback) {
       { cat: x.dataValues.cat9name }
     ];
   });
-  // // find all active bill spending events of user
-
+  // find all active bill spending events of user
   db.Event.findAll({
     where: {
       UserId: userid.uid,
@@ -45,9 +29,9 @@ var get8 = function (userid, callback) {
       date: thismonth
     }
   }).then(y => {
-    // // initialize an empty array to push to
+    // initialize an empty array to push to
     let eventsArr = [];
-    // // create a relevantly keyed object out of each row, then push it
+    // create a relevantly keyed object out of each row, then push it
     y.forEach(v => {
       let eventOb = {
         description: v.dataValues.description,
@@ -59,20 +43,12 @@ var get8 = function (userid, callback) {
       };
       eventsArr.push(eventOb);
     });
-    //  // we return the front end what it needs, as a callback for async issues
+    // we return the front end what it needs, as a callback for async issues
     let returnOb = {
       catNames,
       events: eventsArr
     };
-    // console.log(returnOb);
     callback(returnOb);
   });
 };
 module.exports = get8;
-
-// // //HOW I CALLED IN SERVER
-// // dev environment-----THIS IS WHERE WE WORK
-// var get10 = require("./utils/get10.js");
-// get10(2, function(res) {
-//   console.log("server", res);
-// });

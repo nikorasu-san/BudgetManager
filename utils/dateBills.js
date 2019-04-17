@@ -28,9 +28,7 @@ function dateBills(callback) {
 
     x.forEach(v => {
       // if the bill is recurring we will first create next months version
-      // console.log("recurringFlag", v.dataValues.recurringFlag);
       if (v.dataValues.recurringFlag) {
-        // console.log(v.dataValues);
         // date logic inspired (and reworked to give end of next month rather than push, e.g. one month after 1/31 to 3/1)
         // by silentw from stack overflow: https://stackoverflow.com/questions/33440646/how-to-properly-add-1-month-from-now-to-current-date-in-moment-js
         moment.addRealMonth = function addRealMonth(d) {

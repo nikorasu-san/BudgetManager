@@ -1,7 +1,5 @@
 var db = require("../models");
 var thismonth = require("./date");
-
-// function
 let catNames;
 let catCaps;
 let catWarns;
@@ -79,7 +77,6 @@ var get15 = function(userid, callback) {
     ];
     let monthlyIncome = x.dataValues.monthlyIncome;
     let preferredName = x.dataValues.preferredName;
-    // console.log("monthly income", monthlyIncome);
     db.Event.findAll({
       where: {
         userId: userid.uid,
@@ -184,14 +181,10 @@ var get15 = function(userid, callback) {
           catWarnF: 0
         }
       ];
-      // let catTotalFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      // let catCapFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      // let catWarnFloats = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      // // loop through all events, and add each event amount to the appropriate total array
-      // // position using category id as index
+      // loop through all events, and add each event amount to the appropriate total array
+      // position using category id as index
       y.forEach(v => {
         let w = v.dataValues;
-        // console.log(w);
         catTotalFloats[w.category].catTotalF += parseFloat(w.amount);
       });
 
@@ -208,10 +201,6 @@ var get15 = function(userid, callback) {
         if (isNaN(catCapFloats[i].catCapF)) {
           catCapFloats[i].catCapF = 0;
         }
-
-        // catWarnFloats[i].catWarnF = parseInt(
-        //   (catTotalFloats[i].catTotalF * 100) / parseFloat(catWarns[i].catWarn)
-        // );
       });
       db.Event.findAll({
         where: {
@@ -231,7 +220,6 @@ var get15 = function(userid, callback) {
           entryObject.description = x.dataValues.description;
           entryArr.push(entryObject);
         });
-        console.log("entry arr", entryArr);
         db.Event.findAll({
           where: {
             userId: userid.uid,
@@ -250,23 +238,18 @@ var get15 = function(userid, callback) {
             billsObject.description = x.dataValues.description;
             billsArr.push(billsObject);
           });
-          console.log("billsarray", billsArr);
-
           let returnOb = {
             preferredName,
             catNames,
             catCaps,
-            // catWarns,
             catTotalFloats,
             catCapFloats,
             monthlyIncome,
-            // catWarnFloats,
             moneySpent,
             moneyLeft,
             entryArr,
             billsArr
           };
-          console.log("returns:", returnOb);
           callback(returnOb);
         });
       });

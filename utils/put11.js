@@ -1,5 +1,4 @@
 var db = require("../models");
-// function
 
 var put11 = function(entryObject, callback) {
   // //here we update a row by the event's unique id
@@ -10,7 +9,6 @@ var put11 = function(entryObject, callback) {
     category: entryObject.category,
     amount: entryObject.amount,
     date: entryObject.date
-    // eventId: entryObject.eventId
   };
 
   db.Event.update(insertOb, {
@@ -18,7 +16,7 @@ var put11 = function(entryObject, callback) {
       id: eid
     }
   }).then(function(data) {
-    // // "success is the number of rows changed (hopefully 1)"
+    // "success is the number of rows changed (hopefully 1)"
     callback(data);
   });
 };

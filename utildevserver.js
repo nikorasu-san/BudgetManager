@@ -5,6 +5,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 // database requires all models in folder
 var db = require("./models");
+require("dotenv").config();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -129,7 +130,7 @@ var db = require("./models");
 var thismonth = require("./utils/date");
 const nodemailer = require("nodemailer");
 // let transporter = nodemailer.createTransport(options[ defaults])
-findRecipients();
+// findRecipients();
 function findRecipients() {
   db.User.findAll({
     where: {
@@ -424,8 +425,8 @@ function findRecipients() {
             let transporter = nodemailer.createTransport({
               service: "gmail",
               auth: {
-                user: "checkyourselfapp@gmail.com",
-                pass: "4skywalker"
+                user: process.env.GMAILUSER,
+                pass: process.env.GMAILPASS
               }
             });
             var mailOptions = {
