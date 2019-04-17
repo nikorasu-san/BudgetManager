@@ -12,10 +12,6 @@ $(document).ready(function () {
     } else {
 
 
-        // if (uid){
-        //     // Code to redirect them to the dashboard.
-        // }
-
         $(document).on("click", "#loginbtn", function (event) {
             event.preventDefault();
             let email = $("#email").val();
@@ -41,16 +37,16 @@ $(document).ready(function () {
                     email: email.trim(),
                     password: password.trim()
                 };
-                console.log(userDetails);
+                // console.log(userDetails);
                 $.post("/login", userDetails).then(function (data) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.error) {
                         // open error modal
                         $(".modal").modal();
                         $("#error-body").empty();
                         $("#error-body").append("<p>" + data.error + "</p>");
                     } else if (data.id) {
-                        console.log(data.success);
+                        // console.log(data.success);
                         setCookie(data.id);
                         location.replace("/" + data.id);
                         // set local storage as backup
@@ -100,7 +96,7 @@ $(document).ready(function () {
                     password: password
                 };
                 // console.log(newUser);
-                console.log("Should now make a post call");
+                // console.log("Should now make a post call");
                 $.post("/signup", newUser).then(function (data) {
                     // console.log("data: ", data);
                     if (data.id) {
@@ -126,7 +122,7 @@ $(document).ready(function () {
                         );
                     }
                 });
-                console.log("After the post");
+                // console.log("After the post");
             }
         });
     }

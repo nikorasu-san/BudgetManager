@@ -277,12 +277,12 @@ function findRecipients() {
           if (b[0] == "C") {
             let messagePlus = `<p>You are ${
               a.flags[flagArr[i]]
-            }% over budget for ${catNames[b[1]].cat}.</p>`;
+              }% over budget for ${catNames[b[1]].cat}.</p>`;
             message = message.concat(messagePlus);
           } else if (b[0] == "W") {
             let messagePlus = `<p>You are ${
               a.flags[flagArr[i]]
-            }% over your warning level for ${catNames[b[1]].cat}.</p>`;
+              }% over your warning level for ${catNames[b[1]].cat}.</p>`;
             message = message.concat(messagePlus);
           }
         });
