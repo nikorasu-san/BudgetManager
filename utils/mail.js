@@ -311,11 +311,11 @@ function findRecipients() {
               html: `${messageStart}${message}${messageEnd}`
             };
             transporter.sendMail(mailOptions, (err, info) => {
-              if (err) {
-                throw new Error("Uh-oh: Something Bad Happened");
-              } else {
-                console.log(info);
-              }
+              // if (err) {
+              //   throw new Error("Uh-oh: Something Bad Happened");
+              // } else {
+              console.log(info);
+              // }
             });
           }
           sendThatMail().catch(console.error);
