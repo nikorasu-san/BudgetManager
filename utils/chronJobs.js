@@ -3,10 +3,10 @@
 var dateBills = require("./dateBills");
 
 var mail = require("./mail");
+console.log(mail);
 function chronJobs() {
   dateBills(otherfunction);
-  //   console.log("hello", dateBills);
-  // mail()
+  mail();
   console.log("success dateBills updated");
 }
 function otherfunction() {
