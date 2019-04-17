@@ -1,8 +1,7 @@
-var db = require("./models");
-var thismonth = require("./utils/date");
+var db = require("../models");
+var thismonth = require("./date");
 const nodemailer = require("nodemailer");
-// let transporter = nodemailer.createTransport(options[ defaults])
-// findRecipients();
+
 function findRecipients() {
   db.User.findAll({
     where: {
@@ -13,7 +12,6 @@ function findRecipients() {
       // emailFlag:1
     }
   }).then(x => {
-    // console.log(x);
     // we need to got through each user and check if their spending is exceeding their expectations
     x.forEach((x, i) => {
       let name = x.dataValues.preferredName;
@@ -325,3 +323,5 @@ function findRecipients() {
     });
   });
 }
+
+module.exports = findRecipients;

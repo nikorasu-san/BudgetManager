@@ -129,7 +129,7 @@ var db = require("./models");
 var thismonth = require("./utils/date");
 const nodemailer = require("nodemailer");
 // let transporter = nodemailer.createTransport(options[ defaults])
-// findRecipients();
+findRecipients();
 function findRecipients() {
   db.User.findAll({
     where: {
@@ -430,9 +430,9 @@ function findRecipients() {
             });
             var mailOptions = {
               from: "budgetmanagerteam@gmail.com",
-              // to: `nhgroesch@gmx.com`,
+              to: `nhgroesch@gmx.com`,
               // lets insert the real email when we're done testing- hopefully on heroku/jaws they're not all fake and crash it
-              to: `${a.email}`,
+              // to: `${a.email}`,
               subject: "CHECK YOURSELF",
               text: `Look alive ${a.name}`,
               html: `${messageStart}${message}${messageEnd}`
