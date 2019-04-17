@@ -4,6 +4,7 @@ var exphbs = require("express-handlebars");
 var app = express();
 var PORT = process.env.PORT || 8080;
 var chronJobScheduler = require("./utils/chron");
+require("dotenv").config();
 
 var chronJobs = require("./utils/chronJobs");
 var dateBills = require("./utils/dateBills");

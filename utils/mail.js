@@ -1,6 +1,7 @@
 var db = require("../models");
 var thismonth = require("./date");
 const nodemailer = require("nodemailer");
+// require("dotenv").config();
 
 function findRecipients() {
   db.User.findAll({
@@ -292,12 +293,12 @@ function findRecipients() {
           // Michael Campbell of team SPATIFY was most helpful with issues we had implementing nodemailer
           // (which ended up being more on the google side than the javascript side)
           async function sendThatMail() {
+            console.log("user", process.env.GMAILUSER);
             let transporter = nodemailer.createTransport({
               service: "gmail",
               auth: {
-                //   DON"T FORGET TO HIDE THE KEYS
-                user: "checkyourselfapp@gmail.com",
-                pass: "4skywalker"
+                user: process.env.GMAILUSER,
+                pass: process.env.GMAILPASS
               }
             });
             var mailOptions = {
