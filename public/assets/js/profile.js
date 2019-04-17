@@ -1,11 +1,5 @@
-// $(document).ready(function () {
-// if cookies or local storage isn't figured out
-// console.log(window.location.href)
-// console.log(window.location.href.split("/"))
-// let windowArray = window.location.href.split("/");
-// let uid = windowArray[windowArray.length - 1]
-// console.log(uid)
-$(document).ready(function() {
+
+$(document).ready(function () {
   var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
@@ -17,7 +11,7 @@ $(document).ready(function() {
   // let uid = localStorage.getItem("budget_user_id")
   // console.log(uid)
 
-  $(document).on("click", "#profileEdit", function() {
+  $(document).on("click", "#profileEdit", function () {
     // define field answers as new answer || placeholder from database
     // performing a validation as conditionals to prevent synchronicity issue with function
     let preferredName = $("#preferredName").val();
@@ -99,25 +93,16 @@ $(document).ready(function() {
         cat8name,
         cat9name
       ]
-      // cat0name: cat0name,
-      // cat1name: cat1name,
-      // cat2name: cat2name,
-      // cat3name: cat3name,
-      // cat4name: cat4name,
-      // cat5name: cat5name,
-      // cat6name: cat6name,
-      // cat7name: cat7name,
-      // cat8name: cat8name,
-      // cat9name: cat9name
+
     };
-    console.log(updateDetails.catNames);
+    // console.log(updateDetails.catNames);
     // console.log("email: ", email)
     //$.put("/profile/1", updateDetails)
     $.ajax({
       url: "/profile/" + uid,
       method: "PUT",
       data: updateDetails
-    }).then(function(response) {
+    }).then(function (response) {
       if (response[0] === 1) {
         // alert("Updates saved.");
         location.replace("/" + uid);
@@ -130,40 +115,10 @@ $(document).ready(function() {
       }
     });
 
-    // let updateDetails = {
-    //     preferredName: preferredName,
-    //     email: email,
-    //     phone: phone,
-    //     password: password,
-    //     monthlyIncome: income,
-    //     cat0name: cat0name,
-    //     cat1name: cat1name,
-    //     cat2name: cat2name,
-    //     cat3name: cat3name,
-    //     cat4name: cat4name,
-    //     cat5name: cat5name,
-    //     cat6name: cat6name,
-    //     cat7name: cat7name,
-    //     cat8name: cat8name,
-    //     cat9name: cat9name
-    // };
-    // console.log(updateDetails);
-    // // console.log("email: ", email)
-    // //$.put("/profile/1", updateDetails)
-    // $.ajax({
-    //     url: "/profile/" + uid,
-    //     method: "PUT",
-    //     data: updateDetails
-    // }).then(function (response) {
-    //     if (response.data) {
-    //         alert("Updates saved.");
-    //         location.replace("/" + uid);
-    //     } else {
-    //         alert("Data not saved.");
-    //     }
+
   });
 
-  $(document).on("click", "#profileDelete", function(event) {
+  $(document).on("click", "#profileDelete", function (event) {
     event.preventDefault();
     let message = "Are you sure that you want to delete this profile?";
     // deleteConfirm
@@ -173,7 +128,7 @@ $(document).ready(function() {
     $("#error-body").empty();
     $("#error-body").append(`<p class="modal-p">${message}</p>`);
 
-    $(document).on("click", "#deleteConfirm", function(event) {
+    $(document).on("click", "#deleteConfirm", function (event) {
       event.preventDefault();
       console.log("clicked");
       // sent a put request with id.
@@ -181,8 +136,8 @@ $(document).ready(function() {
       $.ajax({
         url: "/profile/delete/" + uid,
         method: "PUT"
-      }).then(function(response) {
-        console.log("response", response);
+      }).then(function (response) {
+        //console.log("response", response);
         if (response[0] === 1) {
           // log if successful delete
           console.log("Profile deactivated.");
@@ -200,7 +155,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".logOut").on("click", function() {
+  $(".logOut").on("click", function () {
     deleteCookie();
     document.location.href = "/login";
   });

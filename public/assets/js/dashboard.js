@@ -1,5 +1,5 @@
 //get all the information and format it
-$(document).ready(function() {
+$(document).ready(function () {
   var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
@@ -15,12 +15,12 @@ $(document).ready(function() {
   $(".budgetLink").attr("href", `/caps/${uid}`);
   $(".budgetLink").attr("tabindex", `0`);
 
-  $(".skillbar").each(function() {
+  $(".skillbar").each(function () {
     var dataSplit = $(this)
       .attr("data-percent")
       .split("%");
     var number = parseInt(dataSplit[0]);
-    console.log(number);
+    //console.log(number);
     if (number >= 100) {
       $(this).css({
         background: "#B40404"
@@ -41,7 +41,7 @@ $(document).ready(function() {
     //if the width of the
   });
   //get the information from the api to the dashboard
-  $.get("/api/" + uid).then(function(data) {
+  $.get("/api/" + uid).then(function (data) {
     //console.log(two);
     pieChart(
       [data.catNames[0].cat],
@@ -70,7 +70,7 @@ $(document).ready(function() {
     // console.log(data);
   });
 
-  $(".logOut").on("click", function() {
+  $(".logOut").on("click", function () {
     deleteCookie();
     document.location.href = "/login";
   });
@@ -162,5 +162,5 @@ function pieChart(
     options: options
   });
 
-  console.log("success!");
+  //console.log("success!");
 }

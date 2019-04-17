@@ -24,10 +24,10 @@ Presentation Slides - https://docs.google.com/presentation/d/1k6WAa7mlcXgiOvsaaa
 13. Go back to Dashboard and see your progress
 
 ## Team
-Nick Groesch - https://github.com/NickGroesch
-Ogechi Ike - https://github.com/BlackMG27
-Chris Pete - https://github.com/neagtivefriction
-Nick Williams - https://github.com/nikorasu-san
+* Nick Groesch - https://github.com/NickGroesch
+* Ogechi Ike - https://github.com/BlackMG27
+* Chris Pete - https://github.com/neagtivefriction
+* Nick Williams - https://github.com/nikorasu-san
 
 ## Technology Used
 **Front End:**
