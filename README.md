@@ -1,5 +1,11 @@
 # Check Yourself
-Live Link - https://pacific-forest-78479.herokuapp.com/
+
+**Live Link:**
+https://pacific-forest-78479.herokuapp.com/
+
+**Test Creds:**
+user email: star@star.com
+password: sugarrush
 
 ## Overview
 Check Yourself is a web app that allows users to log and manage their spending habits. Users will be able to set custom categories, see upcoming bills, and set warning triggers to be notified when spending approaches their limit. 
