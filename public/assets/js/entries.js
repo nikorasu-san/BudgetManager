@@ -1,18 +1,14 @@
-$(document).ready(function () {
-  var uid;
-  checkCookie(function (data) {
-    uid = data;
-  });
+$(document).ready(function() {
+  var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
   }
 
-  $(".dashboardLink").attr("href", `/${uid}`)
-  $(".profileLink").attr("href", `/profile/${uid}`)
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
   $(".datepicker").datepicker();
 
-
-  $("#spendingForm").on("submit", function (e) {
+  $("#spendingForm").on("submit", function(e) {
     var description = $("#desc").val();
     var amount = $("#amount").val();
     var category = $("#spendingList option:selected").val();
@@ -28,14 +24,14 @@ $(document).ready(function () {
     let newDate = formatDate.format("YYYY-MM-DD");
     console.log(newDate);
     // check if in the future
-    let today = moment().format("YYYY-MM-DD")
-    let diff = moment(newDate).diff(today)
+    let today = moment().format("YYYY-MM-DD");
+    let diff = moment(newDate).diff(today);
     let billFlag = false;
-    console.log("diff:", diff)
+    console.log("diff:", diff);
     if (diff > 0) {
       billFlag = true;
     }
-    console.log("billFlag:", billFlag)
+    console.log("billFlag:", billFlag);
 
     //store the values into an object
     var data = {
@@ -51,7 +47,7 @@ $(document).ready(function () {
     console.log("it works!");
     console.log(data);
 
-    $.post("/entry", data).then(function (data) {
+    $.post("/entry", data).then(function(data) {
       if (data.id) {
         // console.log("success!");
         location.reload();
@@ -59,24 +55,22 @@ $(document).ready(function () {
     });
   });
 
-  $(".spending-delete").on("click", function () {
+  $(".spending-delete").on("click", function() {
     var id = $(this).attr("data-entryId");
     // console.log(id);
 
     $.ajax({
       url: `/entry/delete/${id}`,
       method: "PUT"
-    }).then(function (data) {
+    }).then(function(data) {
       // console.log(data);
       // console.log("deleted bill id " + id);
       location.reload();
     });
   });
 
-  $(".logOut").on("click", function () {
+  $(".logOut").on("click", function() {
     deleteCookie();
     document.location.href = "/login";
   });
-
 });
-

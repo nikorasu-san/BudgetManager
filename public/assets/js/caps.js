@@ -1,33 +1,32 @@
-$(document).ready(function () {
-  var uid;
-  checkCookie(function (data) {
-    uid = data;
-  });
+$(document).ready(function() {
+  var uid = checkCookie();
   if (!uid) {
     document.location.href = "/login";
   }
 
-  $(".dashboardLink").attr("href", `/${uid}`)
-  $(".profileLink").attr("href", `/profile/${uid}`)
+  $(".dashboardLink").attr("href", `/${uid}`);
+  $(".profileLink").attr("href", `/profile/${uid}`);
 
   // skill bar animation
-  $(".skillbar").each(function () {
-
-    var dataSplit = $(this).attr('data-percent').split('%')
-    var number = parseInt(dataSplit[0])
+  $(".skillbar").each(function() {
+    var dataSplit = $(this)
+      .attr("data-percent")
+      .split("%");
+    var number = parseInt(dataSplit[0]);
     console.log(number);
     if (number >= 100) {
       $(this).css({
-        "background": "#B40404"
+        background: "#B40404"
       });
     }
 
     if (number < 100) {
       $(this)
         .find(".skillbar-bar")
-        .animate({
-          width: $(this).attr("data-percent")
-        },
+        .animate(
+          {
+            width: $(this).attr("data-percent")
+          },
           2000
         );
 
@@ -35,21 +34,19 @@ $(document).ready(function () {
 
       $(this)
         .find(".skillbar-bar2")
-        .animate({
-          width: $(this).attr("data-warn-percent")
-        },
+        .animate(
+          {
+            width: $(this).attr("data-warn-percent")
+          },
           2000
         );
     }
 
-
-    //if the width of the 
-
-
+    //if the width of the
   });
 
   // Add category data to budget form
-  $(document).on("click", "#toBudgetForm", function () {
+  $(document).on("click", "#toBudgetForm", function() {
     console.log(
       $(this)
         .parent()
@@ -96,7 +93,7 @@ $(document).ready(function () {
     );
   });
 
-  $(document).on("click", "#updateBudget", function (event) {
+  $(document).on("click", "#updateBudget", function(event) {
     event.preventDefault();
     // console.log("clicked");
     let newTarget = $("#targetAmount").val();
@@ -115,7 +112,7 @@ $(document).ready(function () {
       url: "/caps/" + uid,
       method: "PUT",
       data: reqObj
-    }).then(function (response) {
+    }).then(function(response) {
       if (response[0] === 1) {
         // alert("Updates saved.");
         location.reload();
@@ -125,7 +122,7 @@ $(document).ready(function () {
     });
   });
 
-  $(".logOut").on("click", function () {
+  $(".logOut").on("click", function() {
     deleteCookie();
     document.location.href = "/login";
   });
