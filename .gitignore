@@ -1,3 +1,5 @@
+#we don't need the development environment server up there
+utildevserver.js
 # Logs
 logs
 *.log
