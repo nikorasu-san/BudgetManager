@@ -41,11 +41,11 @@ Presentation Slides - https://docs.google.com/presentation/d/1k6WAa7mlcXgiOvsaaa
 * Chart.js
 * Moment.js
 * Jquery
+* Handlebars
 
 **Back End:**
 * Node JS 
 * Express.js
-* Handlebars
 * Nodemailer
 * Sequelize (ORM)
 
