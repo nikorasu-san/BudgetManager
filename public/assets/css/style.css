@@ -298,9 +298,11 @@ select {
 }
 
 
-.yellow-text {
-    color: var(--light-yellow);
+.light-yellow-text {
+    color: var(--light-yellow)!important;
 }
+
+
 
 .profile-card ::placeholder {
     color: var(--light-yellow) !important;
