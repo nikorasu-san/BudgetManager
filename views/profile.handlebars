@@ -22,29 +22,27 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="preferredName" type="text" class="validate yellow-text"
-                                            placeholder={{preferredName}}>
-                                        <label class="yellow-text" for="preferredName">Name</label>
+                                            value={{preferredName}}>
+                                        <label class="light-yellow-text" for="preferredName">Name</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="email" type="email" class="validate yellow-text"
-                                            placeholder={{email}}>
-                                        <label class="yellow-text" for="email">Email</label>
+                                        <input id="email" type="email" class="validate yellow-text" value={{email}}>
+                                        <label class="light-yellow-text" for="email">Email</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input id="phone" type="text" class="validate yellow-text"
-                                            placeholder={{phone}}>
-                                        <label class="yellow-text" for="phone">Phone Number (optional)</label>
+                                        <input id="phone" type="text" class="validate yellow-text" value={{phone}}>
+                                        <label class="light-yellow-text" for="phone">Phone Number (optional)</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="password" type="password" class="validate yellow-text"
-                                            placeholder={{password}}>
-                                        <label class="yellow-text" for="password">Password</label>
+                                            value={{password}}>
+                                        <label class="light-yellow-text" for="password">Password</label>
                                     </div>
                                 </div>
                             </div>
@@ -65,8 +63,8 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="income" type="text" class="validate yellow-text"
-                                            placeholder={{monthlyIncome}}>
-                                        <label class="yellow-text" for="income">Monthly Income</label>
+                                            value={{monthlyIncome}}>
+                                        <label class="light-yellow-text" for="income">Monthly Income</label>
                                     </div>
                                 </div>
                                 {{!-- <div class="row">
@@ -136,8 +134,8 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="cat{{@index}}name" type="text" class="validate yellow-text"
-                                            placeholder={{cat}}>
-                                        <label class="yellow-text" for="{{cat}}">Add Category</label>
+                                            value="{{cat}}">
+                                        <label class="light-yellow-text" for="{{cat}}">Add Category</label>
                                     </div>
                                 </div>
                                 {{/each}}
